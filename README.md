@@ -2,7 +2,7 @@
 
 > 🚀 Dynamically generated 42 stats for your git readmes.
 
-
+![jaeskim's stats](https://42-readme-stats.vercel.app/api/stats/jaeskim)
 
 ### ✅ ToDo List
 
