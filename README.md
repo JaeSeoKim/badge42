@@ -26,7 +26,7 @@
 
 - [ ] `/api/stats/:user_name`
   - [ ] api request 낭비를 막기 위해 `res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate')` 사용 필요!
-  - [ ] 비동기 처리로 하나씩 실행시 Response 응답이 무지막지 하게 느려짐 `Promiss` 공부하여서 동기처리로 해결 하기!
+  - [ ] 비동기 처리로 하나씩 실행시 Response 응답이 무지막지 하게 느려짐 `Promise` 공부하여서 동기처리로 해결 하기!
   - [ ] token에 대하여 memory에 넣어서 관리 하면 좋은데 `vercel`은 `serverless`형태로 서비스를 해주서 대안 찾아봐야 함.
     - [ ] 외부 DB 서비스 사용하기?
 - [ ]  `readme stats svg 디자인 하기`
