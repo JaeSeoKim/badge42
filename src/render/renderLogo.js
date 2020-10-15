@@ -2,7 +2,7 @@ export default (color, logo) => {
   return `
   <g
     data-testid="card-logo"
-    transform="translate(10, 0)"
+    transform="translate(10, 1)"
   >
     <svg
       width="34px"

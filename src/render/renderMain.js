@@ -1,13 +1,26 @@
 import getImageToBase64 from "../util/getImageToBase64";
+import getRemainDay from "../util/getRemainDay";
+import renderBlackhole from "./renderBlackhole";
+import renderCursus from "./renderCursus";
 import renderHeader from "./renderHeader";
 import renderLogo from "./renderLogo";
 
 export default async (user_data) => {
-  const background_color = user_data.color ? user_data.color : "#00BABC";
+  console.log(user_data);
 
-  const name = user_data.first_name + " " + user_data.last_name;
+  const color = user_data.color
+    ? user_data.color.substring(0, 1) == "#"
+      ? user_data.color
+      : "#" + user_data.color
+    : "#00BABC";
 
   const logo = await getImageToBase64(user_data.image_url);
+
+  // TODO: end_at이 null이 아닌 경우 언제 종료 했는지 보여주어야 함.
+  const blackhole_remain = getRemainDay(
+    user_data.begin_at,
+    user_data.blackholed_at
+  );
 
   return `
     <svg
@@ -24,12 +37,17 @@ export default async (user_data) => {
     }
 
     .header {
-      font: 600 20px 'Segoe UI', Ubuntu, Sans-Serif;
+      font: 600 18px 'Arial', 'Segoe UI', Ubuntu, Sans-Serif;
       fill: #fff;
     }
 
     .logo {
 
+    }
+
+    .cursus {
+      font: 600 14px 'Arial', 'Segoe UI', Ubuntu, Sans-Serif;
+      fill: #fff;
     }
 
     </style>
@@ -42,11 +60,13 @@ export default async (user_data) => {
       height="99%"
       stroke="#E4E2E2"
       width="494"
-      fill="${background_color}"
+      fill="${color}"
       stroke-opacity="1"
     />
-    ${renderLogo(background_color, logo)}
-    ${renderHeader(user_data.login)}
+    ${renderLogo(color, logo)}
+    ${renderHeader(user_data.login, user_data.capus.name)}
+    ${renderCursus(user_data.cursus_name)}
+    ${renderBlackhole(blackhole_remain)}
     </svg>
   `;
 };
