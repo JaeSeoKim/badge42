@@ -1,5 +1,5 @@
-export default (start, end) => {
-  const startDate = new Date(start);
+export default (end) => {
+  const startDate = new Date();
   const endDate = new Date(end);
 
   const Difference_In_Time = endDate.getTime() - startDate.getTime();

@@ -17,10 +17,7 @@ export default async (user_data) => {
   const logo = await getImageToBase64(user_data.image_url);
 
   // TODO: end_at이 null이 아닌 경우 언제 종료 했는지 보여주어야 함.
-  const blackhole_remain = getRemainDay(
-    user_data.begin_at,
-    user_data.blackholed_at
-  );
+  const blackhole_remain = getRemainDay(user_data.blackholed_at);
 
   return `
     <svg

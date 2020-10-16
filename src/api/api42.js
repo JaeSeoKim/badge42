@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/16 02:39:37 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/16 12:30:21 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ export const get42User = async (user_name) => {
 
   const userInfo = await get42UserInfo(user_name, access_token);
 
+  // 동기화로 실행시 일정확률로 Block
   // const promise_result = await Promise.all([
   //   get42UserCoalition(user_name, access_token),
   //   get42UserCrusus(userInfo.id, access_token),
