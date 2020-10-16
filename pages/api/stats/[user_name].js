@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/16 05:20:05 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/16 12:35:10 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ export default async (req, res) => {
   const user_data = await get42User(user_name);
 
   res.setHeader("Content-Type", "image/svg+xml");
-  // res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
+  res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
 
   res.send(await renderMain(user_data));
 };
