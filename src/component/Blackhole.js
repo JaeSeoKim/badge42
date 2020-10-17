@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:13:40 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/17 19:52:57 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/18 01:13:43 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ const getDayColor = (day) => {
 const Blackhole = ({ blackholeRemain }) => {
   const fillColor = getDayColor(blackholeRemain);
   return (
-    <g transform="translate(320, 50)">
+    <g transform="translate(324, 50)">
       <g transform="translate(0, 0)">
         <rect
           x="0.5"
