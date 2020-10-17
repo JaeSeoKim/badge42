@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   getImageToBase64.js                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/17 19:16:35 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/10/17 19:16:56 by jaeskim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 import Axios from "axios";
 
 const base64encode = (res) => {
@@ -7,10 +19,12 @@ const base64encode = (res) => {
   ).toString("base64")}`;
 };
 
-export default async (url) => {
+const getImageToBase64 = async (url) => {
   const response = await Axios.get(url, {
     responseType: "arraybuffer",
   });
 
   return base64encode(response);
 };
+
+export default getImageToBase64;

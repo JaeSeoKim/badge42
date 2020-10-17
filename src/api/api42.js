@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/16 12:30:21 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/17 01:52:11 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ if (NODE_ENV === "development") {
   require("dotenv").config();
 }
 
+const END_POINT_42API = "https://api.intra.42.fr"
+
 export const get42Token = async () => {
   const {
     // Result Example
@@ -27,7 +29,7 @@ export const get42Token = async () => {
       created_at: 1602765731
     }*/
     data: { access_token, expires_in, created_at },
-  } = await Axios.post("https://api.intra.42.fr/oauth/token", {
+  } = await Axios.post(`${END_POINT_42API}/oauth/token`, {
     grant_type: "client_credentials",
     client_id: process.env.CLIENT_ID_42,
     client_secret: process.env.CLIENT_SECRET_42,
@@ -63,7 +65,7 @@ export const get42UserInfo = async (user_name, access_token) => {
       // Extract First campus!
       campus: [{ id: campus_id, name: campus_name }],
     },
-  } = await Axios.get(`https://api.intra.42.fr/v2/users/${user_name}`, {
+  } = await Axios.get(`${END_POINT_42API}/v2/users/${user_name}`, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
@@ -103,7 +105,7 @@ export const get42UserCoalition = async (user_name, access_token) => {
       },
     ],
   } = await Axios.get(
-    `https://api.intra.42.fr/v2/users/${user_name}/coalitions`,
+    `${END_POINT_42API}/v2/users/${user_name}/coalitions`,
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -142,7 +144,7 @@ export const get42UserCrusus = async (user_id, access_token) => {
       },
     ],
   } = await Axios.get(
-    `https://api.intra.42.fr/v2/users/${user_id}/cursus_users`,
+    `${END_POINT_42API}/v2/users/${user_id}/cursus_users`,
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
