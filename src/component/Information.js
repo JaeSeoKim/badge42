@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Infomation.js                                      :+:      :+:    :+:   */
+/*   Information.js                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 01:19:08 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 01:40:28 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/18 01:41:54 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 
-const Infomation = ({ email, name, grade }) => {
+const Information = ({ email, name, grade }) => {
   return (
     <g
       transform="translate(18, 80)"
@@ -43,4 +43,4 @@ const Infomation = ({ email, name, grade }) => {
   );
 };
 
-export default Infomation;
+export default Information;
