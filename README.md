@@ -19,7 +19,8 @@ Change the `[user_name]` value to your 42 Intra username.
 ### ✅ ToDo List - 머리속에서 떠오르는 작업 작성해둔 리스트...
 
 - [ ] Vercel -> Heroko로 이전하기!
-- [ ] Next.js 에서 Express 또는 Koa를 이용하여 API 응답 처리 하도록 작동하기!
+- [x] Next.js 에서 Express 또는 Koa를 이용하여 API 응답 처리 하도록 작동하기!
+  - [x] express custom route 사용하도록 변경! 
   - [ ] Memory Cache를 통한 토큰 관리
   - [ ] 응답 Cache하여 사용하기!
 
