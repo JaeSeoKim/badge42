@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Main.js                                            :+:      :+:    :+:   */
+/*   index.js                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 01:42:04 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/18 02:17:45 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
-import getRemainDay from "../util/getRemainDay";
+import getRemainDay from "../../util/getRemainDay";
 import Blackhole from "./Blackhole";
 import Cursus from "./Cursus";
 import Header from "./Header";
@@ -19,7 +19,7 @@ import Information from "./Information";
 import Level from "./Level";
 import Logo from "./Logo";
 
-const Main = ({ userData, logo }) => {
+export default ({ userData, logo }) => {
   const {
     color: _color,
     login: name,
@@ -75,5 +75,3 @@ const Main = ({ userData, logo }) => {
     </svg>
   );
 };
-
-export default Main;
