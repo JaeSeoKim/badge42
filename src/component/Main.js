@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 01:12:38 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/18 01:40:38 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ import getRemainDay from "../util/getRemainDay";
 import Blackhole from "./Blackhole";
 import Cursus from "./Cursus";
 import Header from "./Header";
+import Infomation from "./Infomation";
 import Level from "./Level";
 import Logo from "./Logo";
 
@@ -26,6 +27,11 @@ const Main = ({ userData, logo }) => {
     cursus_name: cursusName,
     blackholed_at,
     level,
+    email,
+    coalition_name: coalitionName,
+    grade,
+    first_name,
+    last_name,
   } = userData;
 
   const color =
@@ -59,6 +65,11 @@ const Main = ({ userData, logo }) => {
       <Logo color={color} logo={logo} />
       <Header name={name} cpusName={capusName} />
       <Cursus cursusName={cursusName} />
+      <Infomation
+        email={email}
+        name={(first_name + " " + last_name).trim()}
+        grade={grade}
+      />
       <Blackhole blackholeRemain={blackholeRemain} />
       <Level level={level} color={color} />
     </svg>

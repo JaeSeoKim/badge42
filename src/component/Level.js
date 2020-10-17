@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:12:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 01:12:36 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/18 01:17:06 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ const Level = ({ level, color }) => {
           height="100%"
           rx="4.5"
           fill={color}
-          opacity="0.8"
+          opacity="0.7"
         />
         <text
           x="239"
