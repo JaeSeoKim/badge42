@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/17 01:52:11 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/17 20:58:50 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ if (NODE_ENV === "development") {
   require("dotenv").config();
 }
 
-const END_POINT_42API = "https://api.intra.42.fr"
+const END_POINT_42API = "https://api.intra.42.fr";
 
 export const get42Token = async () => {
   const {
@@ -104,14 +104,11 @@ export const get42UserCoalition = async (user_name, access_token) => {
         color,
       },
     ],
-  } = await Axios.get(
-    `${END_POINT_42API}/v2/users/${user_name}/coalitions`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    }
-  );
+  } = await Axios.get(`${END_POINT_42API}/v2/users/${user_name}/coalitions`, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 
   return {
     coalition_name,
@@ -127,6 +124,7 @@ export const get42UserCrusus = async (user_id, access_token) => {
     // Extract First cursus!
     // Result Example
     /*{
+        level: 1.6600000000000001,
         grade: "Learner",
         blackholed_at: "2021-04-05T01:00:00.000Z",
         begin_at: "2020-09-28T01:00:00.000Z",
@@ -136,6 +134,7 @@ export const get42UserCrusus = async (user_id, access_token) => {
       }*/
     data: [
       {
+        level,
         grade,
         blackholed_at,
         begin_at,
@@ -143,16 +142,14 @@ export const get42UserCrusus = async (user_id, access_token) => {
         cursus: { name: cursus_name, slug: cursus_slug },
       },
     ],
-  } = await Axios.get(
-    `${END_POINT_42API}/v2/users/${user_id}/cursus_users`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    }
-  );
+  } = await Axios.get(`${END_POINT_42API}/v2/users/${user_id}/cursus_users`, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 
   return {
+    level,
     grade,
     blackholed_at,
     begin_at,
@@ -166,20 +163,8 @@ export const get42User = async (user_name) => {
   const { access_token } = await get42Token();
 
   const userInfo = await get42UserInfo(user_name, access_token);
-
-  // 동기화로 실행시 일정확률로 Block
-  // const promise_result = await Promise.all([
-  //   get42UserCoalition(user_name, access_token),
-  //   get42UserCrusus(userInfo.id, access_token),
-  // ]);
-
-  // let result = {};
-  // promise_result.map((value) => (result = { ...result, ...value }));
-
   const userCoaltion = await get42UserCoalition(user_name, access_token);
   const userCrusus = await get42UserCrusus(userInfo.id, access_token);
-
-  const result = { ...userCoaltion, ...userCrusus };
 
   // Result Example
   /*{
@@ -191,6 +176,7 @@ export const get42User = async (user_name) => {
     image_url: "https://cdn.intra.42.fr/coalition/image/85/gun-svg-svg.svg",
     cover_url: "https://cdn.intra.42.fr/coalition/cover/85/gun_cover.jpg",
     color: "#ffc221",
+    level: 1.6600000000000001,
     grade: "Learner",
     blackholed_at: "2021-04-05T01:00:00.000Z",
     begin_at: "2020-09-28T01:00:00.000Z",
@@ -204,5 +190,5 @@ export const get42User = async (user_name) => {
       name: "Seoul"
     }
   }*/
-  return { ...result, ...userInfo };
+  return { ...userCoaltion, ...userCrusus, ...userInfo };
 };
