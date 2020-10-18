@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 01:56:04 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 02:11:02 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 00:58:31 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ const Message = () => {
         </text>
         <text x="0" y="60">
           <a
-            href={"https://github.com/JaeSeoKim/42-readme-stats/issues"}
+            href={"https://github.com/JaeSeoKim/badge42/issues"}
             style={{
               fill: "#02BCBA",
             }}
           >
-            https://github.com/JaeSeoKim/42-readme-stats
+            https://github.com/JaeSeoKim/badge42
           </a>
         </text>
       </g>
