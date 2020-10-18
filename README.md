@@ -1,4 +1,4 @@
-# badge42
+# 📌badge42
 
 > 🚀 Dynamically generated 42 badge for your git readmes.
 
