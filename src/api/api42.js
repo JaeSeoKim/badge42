@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/17 20:58:50 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 01:46:50 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,12 +159,28 @@ export const get42UserCrusus = async (user_id, access_token) => {
   };
 };
 
-export const get42User = async (user_name) => {
-  const { access_token } = await get42Token();
+export const get42User = async (user_name, cacheStore) => {
+  let token = "";
+  let result = {};
 
-  const userInfo = await get42UserInfo(user_name, access_token);
-  const userCoaltion = await get42UserCoalition(user_name, access_token);
-  const userCrusus = await get42UserCrusus(userInfo.id, access_token);
+  if (cacheStore.has("token")) {
+    token = cacheStore.get("token");
+  } else {
+    const { access_token, expires_in } = await get42Token();
+    token = access_token;
+    cacheStore.set("token", token, expires_in);
+  }
+
+  if (cacheStore.has(user_name)) {
+    result = cacheStore.get(user_name);
+  } else {
+    const userInfo = await get42UserInfo(user_name, token);
+    const userCoaltion = await get42UserCoalition(user_name, token);
+    const userCrusus = await get42UserCrusus(userInfo.id, token);
+    result = { ...userInfo, ...userCoaltion, ...userCrusus };
+    // 12 hour
+    cacheStore.set(user_name, result, 43200);
+  }
 
   // Result Example
   /*{
@@ -190,5 +206,5 @@ export const get42User = async (user_name) => {
       name: "Seoul"
     }
   }*/
-  return { ...userCoaltion, ...userCrusus, ...userInfo };
+  return result;
 };

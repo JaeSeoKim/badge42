@@ -6,12 +6,13 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 04:00:16 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 04:00:40 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 01:30:05 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import express from "express";
 import next from "next";
+import NodeCache from "node-cache";
 
 import apiRouter from "./route/apiRouter";
 
@@ -27,6 +28,12 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
+  const cacheStore = new NodeCache();
+
+  server.use("*", (req, _res, next) => {
+    req.cacheStore = cacheStore;
+    next();
+  });
 
   server.use("/api", apiRouter);
 

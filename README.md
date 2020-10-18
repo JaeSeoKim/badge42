@@ -21,8 +21,8 @@ Change the `[user_name]` value to your 42 Intra username.
 - [x] Vercel -> Heroko로 이전하기!
 - [x] Next.js 에서 Express 또는 Koa를 이용하여 API 응답 처리 하도록 작동하기!
   - [x] express custom route 사용하도록 변경! 
-  - [ ] Memory Cache를 통한 토큰 관리
-  - [ ] 응답 Cache하여 사용하기!
+  - [x] Memory Cache를 통한 토큰 관리
+  - [x] 응답 Cache하여 사용하기!
 
 - [ ] 애니메이션 추가
 - [ ] 기타 예외 사항 추가하여 stats 완성 하기

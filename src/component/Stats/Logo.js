@@ -6,13 +6,15 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:52 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/17 19:00:59 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 01:19:42 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 
 const Logo = ({ color, logo }) => {
+  const url = logo.split("https://cdn.intra.42.fr/")[1];
+  
   return (
     <g transform="translate(10, 1)">
       <svg width="34px" height="52px">
@@ -40,7 +42,7 @@ const Logo = ({ color, logo }) => {
             y="0"
             width="30"
             height="30"
-            href={logo}
+            href={"/api/camo/" + url}
           />
         </g>
       </svg>
