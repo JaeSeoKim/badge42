@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 01:46:50 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 01:51:58 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,17 +163,16 @@ export const get42User = async (user_name, cacheStore) => {
   let token = "";
   let result = {};
 
-  if (cacheStore.has("token")) {
-    token = cacheStore.get("token");
-  } else {
-    const { access_token, expires_in } = await get42Token();
-    token = access_token;
-    cacheStore.set("token", token, expires_in);
-  }
-
   if (cacheStore.has(user_name)) {
     result = cacheStore.get(user_name);
   } else {
+    if (cacheStore.has("token")) {
+      token = cacheStore.get("token");
+    } else {
+      const { access_token, expires_in } = await get42Token();
+      token = access_token;
+      cacheStore.set("token", token, expires_in);
+    }
     const userInfo = await get42UserInfo(user_name, token);
     const userCoaltion = await get42UserCoalition(user_name, token);
     const userCrusus = await get42UserCrusus(userInfo.id, token);

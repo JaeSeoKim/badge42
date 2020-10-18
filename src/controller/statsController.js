@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 01:46:58 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 01:52:40 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ export const getUserStats = async (req, res) => {
       ReactDomServer.renderToStaticMarkup(<Stats userData={user_data} />)
     );
   } catch (error) {
+    cacheStore.del(user_name);
     res.send(ReactDomServer.renderToStaticMarkup(<Error />));
   }
 };
