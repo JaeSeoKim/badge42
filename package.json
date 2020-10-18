@@ -13,15 +13,26 @@
     "42Born2Code"
   ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "npm run build:next && npm run build:babel",
+    "build:next": "next build",
+    "build:babel": "babel src -d dist",
+    "start": "node dist/server.js"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.1",
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "next": "9.5.5",
+    "nodemon": "^2.0.5",
     "react": "16.14.0",
     "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1"
   }
 }
