@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 01:52:40 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 02:20:41 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ import ReactDomServer from "react-dom/server";
 
 import Stats from "../component/Stats";
 import Error from "../component/Error";
+import getImageToBase64 from "../util/getImageToBase64";
 
 export const getUserStats = async (req, res) => {
   const {
@@ -23,10 +24,18 @@ export const getUserStats = async (req, res) => {
   } = req;
 
   res.setHeader("Content-Type", "image/svg+xml");
-  // res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
+  res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
 
   try {
+    let logo = "";
     const user_data = await get42User(user_name, cacheStore);
+    if (cacheStore.has(user_data.image_url))
+      logo = cacheStore.get(user_data.image_url);
+    else {
+      logo = await getImageToBase64(user_data.image_url);
+      // Cache 5day!
+      cacheStore.set(user_data.image_url, logo, (86400 * 5));
+    }
 
     // Sample Data
     // const user_data = JSON.parse(
@@ -34,7 +43,9 @@ export const getUserStats = async (req, res) => {
     // );
 
     res.send(
-      ReactDomServer.renderToStaticMarkup(<Stats userData={user_data} />)
+      ReactDomServer.renderToStaticMarkup(
+        <Stats userData={user_data} logo={logo} />
+      )
     );
   } catch (error) {
     cacheStore.del(user_name);

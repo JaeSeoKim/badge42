@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 01:17:46 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/19 02:16:38 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ import Information from "./Information";
 import Level from "./Level";
 import Logo from "./Logo";
 
-export default ({ userData }) => {
+export default ({ userData, logo }) => {
   const {
     color: _color,
     login: name,
@@ -32,7 +32,6 @@ export default ({ userData }) => {
     grade,
     first_name,
     last_name,
-    image_url
   } = userData;
 
   const color =
@@ -63,7 +62,7 @@ export default ({ userData }) => {
         fill={color}
         strokeOpacity="1"
       />
-      <Logo color={color} logo={image_url} />
+      <Logo logo={logo} />
       <Header name={name} cpusName={capusName} />
       <Cursus cursusName={cursusName} />
       <Information
