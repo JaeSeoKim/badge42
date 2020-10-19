@@ -24,7 +24,7 @@ export const getUserStats = async (req, res) => {
   } = req;
 
   res.setHeader("Content-Type", "image/svg+xml");
-  res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
+  // res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
 
   try {
     let logo = "";
