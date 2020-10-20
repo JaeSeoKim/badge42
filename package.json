@@ -1,21 +1,21 @@
 {
-  "name": "42-readme-stats",
+  "name": "badge42",
   "version": "0.1.0",
-  "description": "🚀 Dynamically generated 42 stats for your git readmes.",
-  "author": "jaeskim <jaeskim@student.42seoul.kr>",
+  "description": "🚀 Dynamically generated 42 badge for your git readmes.",
+  "author": "JaeSeoKim(jaeskim) <jaeskim@student.42seoul.kr>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JaeSeoKim/42-readme-stats.git"
+    "url": "https://github.com/JaeSeoKim/badge42.git"
   },
   "keywords": [
     "42",
     "42Born2Code"
   ],
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/server.js",
     "dev:next": "next",
-    "build": "npm run build:next && npm run build:babel",
+    "build": "cross-env NODE_ENV=production npm run build:next && npm run build:babel",
     "build:next": "next build",
     "build:babel": "babel src -d dist",
     "start": "node dist/server.js"
@@ -27,7 +27,7 @@
     "express": "^4.17.1",
     "next": "9.5.5",
     "node-cache": "^5.1.2",
-    "nodemon": "^2.0.5",
+    "nodemon": "^2.0.6",
     "react": "16.14.0",
     "react-dom": "^16.14.0"
   },
@@ -35,6 +35,7 @@
     "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.1"
+    "@babel/preset-react": "^7.12.1",
+    "cross-env": "^7.0.2"
   }
 }
