@@ -48,7 +48,7 @@ export const getUserStats = async (req, res) => {
     );
   } catch (error) {
     cacheStore.del(user_name);
-    res.setHeader("Cache-Control", "max-age=0");
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.send(ReactDomServer.renderToStaticMarkup(<Error />));
   }
 };
