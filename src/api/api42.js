@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 01:51:58 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/31 21:12:09 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,25 +161,17 @@ export const get42UserCrusus = async (user_id, access_token) => {
 
 export const get42User = async (user_name, cacheStore) => {
   let token = "";
-  let result = {};
 
-  if (cacheStore.has(user_name)) {
-    result = cacheStore.get(user_name);
+  if (cacheStore.has("token")) {
+    token = cacheStore.get("token");
   } else {
-    if (cacheStore.has("token")) {
-      token = cacheStore.get("token");
-    } else {
-      const { access_token, expires_in } = await get42Token();
-      token = access_token;
-      cacheStore.set("token", token, expires_in);
-    }
-    const userInfo = await get42UserInfo(user_name, token);
-    const userCoaltion = await get42UserCoalition(user_name, token);
-    const userCrusus = await get42UserCrusus(userInfo.id, token);
-    result = { ...userInfo, ...userCoaltion, ...userCrusus };
-    // 12 hour
-    cacheStore.set(user_name, result, 43200);
+    const { access_token, expires_in } = await get42Token();
+    token = access_token;
+    cacheStore.set("token", token, expires_in);
   }
+  const userInfo = await get42UserInfo(user_name, token);
+  const userCoaltion = await get42UserCoalition(user_name, token);
+  const userCrusus = await get42UserCrusus(userInfo.id, token);
 
   // Result Example
   /*{
@@ -205,5 +197,5 @@ export const get42User = async (user_name, cacheStore) => {
       name: "Seoul"
     }
   }*/
-  return result;
+  return { ...userInfo, ...userCoaltion, ...userCrusus };
 };
