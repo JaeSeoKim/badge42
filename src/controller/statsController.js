@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 02:20:41 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/10/31 20:36:15 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ export const getUserStats = async (req, res) => {
   } = req;
 
   res.setHeader("Content-Type", "image/svg+xml");
-  res.setHeader("Cache-Control", "public, max-age=43200, stale-while-revalidate");
 
   try {
     let logo = "";
@@ -49,6 +48,7 @@ export const getUserStats = async (req, res) => {
     );
   } catch (error) {
     cacheStore.del(user_name);
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.send(ReactDomServer.renderToStaticMarkup(<Error />));
   }
 };

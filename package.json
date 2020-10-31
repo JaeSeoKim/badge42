@@ -27,7 +27,6 @@
     "express": "^4.17.1",
     "next": "9.5.5",
     "node-cache": "^5.1.2",
-    "nodemon": "^2.0.6",
     "react": "16.14.0",
     "react-dom": "^16.14.0"
   },
@@ -36,6 +35,7 @@
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.6"
   }
 }
