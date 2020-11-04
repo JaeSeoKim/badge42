@@ -6,12 +6,13 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/04 21:10:28 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:17:30 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import Axios from "axios";
 import NodeCache from "node-cache";
+import { string } from "prop-types";
 
 // for development
 const NODE_ENV = process.env.NODE_ENV;
@@ -21,16 +22,16 @@ if (NODE_ENV === "development") {
 
 const END_POINT_42API = "https://api.intra.42.fr";
 
+export interface get42TokenData {
+  access_token: string;
+  expires_in: number;
+  created_at: number;
+}
+
 export const get42Token = async () => {
   const {
-    // Result Example
-    /*{
-      access_token: "jaeskimjaeskimjaeskimjaeskimjaeskimjaeskim",
-      expires_in: 7020,
-      created_at: 1602765731
-    }*/
     data: { access_token, expires_in, created_at },
-  } = await Axios.post(`${END_POINT_42API}/oauth/token`, {
+  } = await Axios.post<get42TokenData>(`${END_POINT_42API}/oauth/token`, {
     grant_type: "client_credentials",
     client_id: process.env.CLIENT_ID_42,
     client_secret: process.env.CLIENT_SECRET_42,
@@ -43,122 +44,110 @@ export const get42Token = async () => {
   };
 };
 
-export const get42UserInfo = async (user_name, access_token) => {
-  const {
-    // Result Example
-    /*{      
-      login: "jaeskim",
-      first_name: "Kim",
-      last_name: "Jaeseo",
-      id: 74960,
-      email: "jaeskim@student.42seoul.kr",
-      capus: {
-        id: 29,
-        name: "Seoul"
-      }
-    }*/
-    data: {
-      login,
-      first_name,
-      last_name,
-      id,
-      email,
-      // Extract First campus!
-      campus: [{ id: campus_id, name: campus_name }],
-    },
-  } = await Axios.get(`${END_POINT_42API}/v2/users/${user_name}`, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+export interface get42UserInfoData {
+  id: number;
+  email: string;
+  login: string;
+  first_name: string;
+  last_name: string;
+  url: string;
+  phone: string;
+  displayname: string;
+  image_url: string;
+  "staff?": boolean;
+  correction_point: number;
+  pool_month: string;
+  pool_year: string;
+  location: string | null;
+  wallet: number;
+  anonymize_date: string | null;
+  campus: { id: number; name: string }[];
+  projects_users: {
+    id: number;
+    occurrence: number;
+    final_mark: number;
+    status: string;
+    "validated?": boolean;
+    current_team_id: number;
+    project: {
+      id: number;
+      name: string;
+      slug: string;
+      parent_id: number | null;
+    };
+    cursus_ids: number[];
+    marked_at: string;
+    maked: boolean;
+    retriable_at: string;
+  }[];
+}
 
-  return {
-    login,
-    first_name,
-    last_name,
-    id,
-    email,
-    capus: {
-      id: campus_id,
-      name: campus_name,
-    },
-  };
+export const get42UserInfo = async (
+  user_name: string,
+  access_token: string
+) => {
+  const { data } = await Axios.get<get42UserInfoData>(
+    `${END_POINT_42API}/v2/users/${user_name}`,
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  );
+
+  return data;
 };
+
+export interface get42UserCoalitionData {
+  name: string;
+  slug: string;
+  image_url: string;
+  cover_url: string;
+  color: string;
+}
 
 export const get42UserCoalition = async (user_name, access_token) => {
-  const {
-    // Extract First Coalition!
-    // Result Example
-    /*{
-      coalition_name: "Gun",
-      coalition_slug: "gun",
-      image_url: "https://cdn.intra.42.fr/coalition/image/85/gun-svg-svg.svg",
-      cover_url: "https://cdn.intra.42.fr/coalition/cover/85/gun_cover.jpg",
-      color: "#ffc221"
-    }*/
-    data: [
-      {
-        name: coalition_name,
-        slug: coalition_slug,
-        image_url,
-        cover_url,
-        color,
+  const { data } = await Axios.get<Array<get42UserCoalitionData>>(
+    `${END_POINT_42API}/v2/users/${user_name}/coalitions`,
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
       },
-    ],
-  } = await Axios.get(`${END_POINT_42API}/v2/users/${user_name}/coalitions`, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-
-  return {
-    coalition_name,
-    coalition_slug,
-    image_url,
-    cover_url,
-    color,
-  };
+    }
+  );
+  return data;
 };
+
+export interface get42UserCrususData {
+  level: number;
+  grade: string | null;
+  blackholed_at: string | null;
+  begin_at: string;
+  end_at: string | null;
+  cursus: {
+    name: string;
+    slug: string;
+  };
+}
 
 export const get42UserCrusus = async (user_id, access_token) => {
-  const {
-    // Extract First cursus!
-    // Result Example
-    /*{
-        level: 1.6600000000000001,
-        grade: "Learner",
-        blackholed_at: "2021-04-05T01:00:00.000Z",
-        begin_at: "2020-09-28T01:00:00.000Z",
-        end_at: null,
-        cursus_name: "42cursus",
-        cursus_slug: "42cursus"
-      }*/
-    data: [
-      {
-        level,
-        grade,
-        blackholed_at,
-        begin_at,
-        end_at,
-        cursus: { name: cursus_name, slug: cursus_slug },
+  const { data } = await Axios.get<Array<get42UserCrususData>>(
+    `${END_POINT_42API}/v2/users/${user_id}/cursus_users`,
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
       },
-    ],
-  } = await Axios.get(`${END_POINT_42API}/v2/users/${user_id}/cursus_users`, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    }
+  );
 
-  return {
-    level,
-    grade,
-    blackholed_at,
-    begin_at,
-    end_at,
-    cursus_name,
-    cursus_slug,
-  };
+  return data;
 };
+
+export interface get42UserData {
+  info: get42UserInfoData;
+  coalation: Array<get42UserCoalitionData>;
+  crusus: Array<get42UserCrususData>;
+}
 
 export const get42User = async (user_name: string, cacheStore: NodeCache) => {
   let token = "";
@@ -174,29 +163,5 @@ export const get42User = async (user_name: string, cacheStore: NodeCache) => {
   const userCoaltion = await get42UserCoalition(user_name, token);
   const userCrusus = await get42UserCrusus(userInfo.id, token);
 
-  // Result Example
-  /*{
-    login: "jaeskim",
-    first_name: "Kim",
-    last_name: "Jaeseo",
-    coalition_name: "Gun",
-    coalition_slug: "gun",
-    image_url: "https://cdn.intra.42.fr/coalition/image/85/gun-svg-svg.svg",
-    cover_url: "https://cdn.intra.42.fr/coalition/cover/85/gun_cover.jpg",
-    color: "#ffc221",
-    level: 1.6600000000000001,
-    grade: "Learner",
-    blackholed_at: "2021-04-05T01:00:00.000Z",
-    begin_at: "2020-09-28T01:00:00.000Z",
-    end_at: null,
-    cursus_name: "42cursus",
-    cursus_slug: "42cursus",
-    id: 74960,
-    email: "jaeskim@student.42seoul.kr",
-    capus: {
-      id: 29,
-      name: "Seoul"
-    }
-  }*/
-  return { ...userInfo, ...userCoaltion, ...userCrusus };
+  return { info: userInfo, coalation: userCoaltion, crusus: userCrusus };
 };

@@ -6,35 +6,39 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/04 20:49:51 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:13:02 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
+import { get42UserData } from "../../api/api42";
 import getRemainDay from "../../util/getRemainDay";
+import SvgContainer from "../SvgContainer";
 import Blackhole from "./Blackhole";
 import Cursus from "./Cursus";
 import Header from "./Header";
 import Information from "./Information";
 import Level from "./Level";
 import Logo from "./Logo";
+import GlobalStyle from "../GlobalStyle";
 
-const Stats: React.FC<{
-  userData: any;
+interface Props {
+  userData: get42UserData;
   logo: String;
-}> = ({ userData, logo }) => {
+}
+
+const Stats: React.FC<Props> = ({ userData, logo }) => {
   const {
-    color: _color,
-    login: name,
-    capus: { name: capusName },
-    cursus_name: cursusName,
-    blackholed_at,
-    level,
-    email,
-    coalition_name: coalitionName,
-    grade,
-    first_name,
-    last_name,
+    info: { login, email, campus, first_name, last_name },
+    coalation: [{ color: _color }],
+    crusus: [
+      {
+        blackholed_at,
+        cursus: { name: cursus_name },
+        grade,
+        level,
+      },
+    ],
   } = userData;
 
   const color =
@@ -48,26 +52,11 @@ const Stats: React.FC<{
   const blackholeRemain = getRemainDay(blackholed_at);
 
   return (
-    <svg
-      width="495"
-      height="195"
-      viewBox="0 0 495 195"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="0.5"
-        y="0.5"
-        rx="4.5"
-        height="99%"
-        stroke="#E4E2E2"
-        width="494"
-        fill={color}
-        strokeOpacity="1"
-      />
+    <SvgContainer color={color}>
+      <GlobalStyle />
       <Logo logo={logo} />
-      <Header name={name} cpusName={capusName} />
-      <Cursus cursusName={cursusName} />
+      <Header name={login} cpusName={campus[0].name} />
+      <Cursus cursusName={cursus_name} />
       <Information
         email={email}
         name={(first_name + " " + last_name).trim()}
@@ -75,7 +64,7 @@ const Stats: React.FC<{
       />
       <Blackhole blackholeRemain={blackholeRemain} />
       <Level level={level} color={color} />
-    </svg>
+    </SvgContainer>
   );
 };
 

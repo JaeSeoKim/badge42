@@ -6,11 +6,12 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/04 21:10:59 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:18:45 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import { Middleware } from "koa";
+import fs from "fs";
 import React from "react";
 import ReactDomServer from "react-dom/server";
 import { get42User } from "../../src/api/api42";
@@ -29,7 +30,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
   const ExpiresDate = new Date();
   ExpiresDate.setSeconds(ExpiresDate.getSeconds() + EXPIRE_TIME);
 
-  ctx.res.setHeader("Content-Type", "image/svg+xml");
+  // ctx.res.setHeader("Content-Type", "image/svg+xml");
   ctx.res.setHeader(
     "Cache-Control",
     `public, max-age=${EXPIRE_TIME}, stale-while-revalidate`
@@ -39,22 +40,27 @@ export const getUserStats: Middleware = async (ctx, next) => {
   try {
     let logo = "";
     const user_data = await get42User(intraId, cacheStore);
-    if (cacheStore.has(user_data.image_url))
-      logo = cacheStore.get(user_data.image_url);
-    else {
-      logo = await getImageToBase64(user_data.image_url);
-      // Cache 5day!
-      cacheStore.set(user_data.image_url, logo, 86400 * 14);
+    if (user_data.coalation.length) {
+      const { image_url } = user_data.coalation[0];
+      if (cacheStore.has(image_url)) logo = cacheStore.get(image_url);
+      else {
+        logo = await getImageToBase64(image_url);
+        // Cache 14day!
+        cacheStore.set(image_url, logo, 86400 * 14);
+      }
     }
-    // Sample Data
-    // const user_data = JSON.parse(
-    //   `{"coalition_name":"Gun","coalition_slug":"gun","image_url":"https://cdn.intra.42.fr/coalition/image/85/gun-svg-svg.svg","cover_url":"https://cdn.intra.42.fr/coalition/cover/85/gun_cover.jpg","color":"#ffc221","level":1.6600000000000001,"grade":"Learner","blackholed_at":"2021-04-05T01:00:00.000Z","begin_at":"2020-09-28T01:00:00.000Z","end_at":null,"cursus_name":"42cursus","cursus_slug":"42cursus","login":"jaeskim","first_name":"Jaeseo","last_name":"Kim","id":74960,"email":"jaeskim@student.42seoul.kr","capus":{"id":29,"name":"Seoul"}}`
-    // );
 
+    /* SAMPLE DATA */
+    // const user_data = await JSON.parse(
+    //   fs
+    //     .readFileSync("server/controller/sample-jeaskim-2020-11-05.json")
+    //     .toString()
+    // );
     ctx.body = ReactDomServer.renderToStaticMarkup(
       <Stats userData={user_data} logo={logo} />
     );
   } catch (error) {
+    console.warn("ERROR-getUserStats : ", error);
     ctx.res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     ctx.res.setHeader("Pragma", "no-cache");
     ctx.res.setHeader("Expires", "0");

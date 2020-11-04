@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Blackhole.js                                       :+:      :+:    :+:   */
+/*   Blackhole.tsx                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:13:40 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 01:33:46 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:17:02 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ const Blackhole = ({ blackholeRemain }) => {
         />
         <g transform="translate(80, 15)">
           <text
+            className={"fadeIn"}
             x="0"
             y="0"
             textAnchor="middle"
@@ -48,6 +49,7 @@ const Blackhole = ({ blackholeRemain }) => {
         </g>
         <g transform="translate(80, 37)">
           <text
+            className={"fadeIn"}
             x="0"
             y="0"
             textAnchor="middle"
