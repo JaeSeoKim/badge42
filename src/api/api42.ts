@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   api42.js                                           :+:      :+:    :+:   */
+/*   api42.ts                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 01:51:58 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:47:46 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import Axios from "axios";
+import NodeCache from "node-cache";
 
 // for development
 const NODE_ENV = process.env.NODE_ENV;
@@ -159,27 +160,19 @@ export const get42UserCrusus = async (user_id, access_token) => {
   };
 };
 
-export const get42User = async (user_name, cacheStore) => {
+export const get42User = async (user_name: string, cacheStore: NodeCache) => {
   let token = "";
-  let result = {};
 
-  if (cacheStore.has(user_name)) {
-    result = cacheStore.get(user_name);
+  if (cacheStore.has("token")) {
+    token = cacheStore.get("token");
   } else {
-    if (cacheStore.has("token")) {
-      token = cacheStore.get("token");
-    } else {
-      const { access_token, expires_in } = await get42Token();
-      token = access_token;
-      cacheStore.set("token", token, expires_in);
-    }
-    const userInfo = await get42UserInfo(user_name, token);
-    const userCoaltion = await get42UserCoalition(user_name, token);
-    const userCrusus = await get42UserCrusus(userInfo.id, token);
-    result = { ...userInfo, ...userCoaltion, ...userCrusus };
-    // 12 hour
-    cacheStore.set(user_name, result, 43200);
+    const { access_token, expires_in } = await get42Token();
+    token = access_token;
+    cacheStore.set("token", token, expires_in);
   }
+  const userInfo = await get42UserInfo(user_name, token);
+  const userCoaltion = await get42UserCoalition(user_name, token);
+  const userCrusus = await get42UserCrusus(userInfo.id, token);
 
   // Result Example
   /*{
@@ -205,5 +198,5 @@ export const get42User = async (user_name, cacheStore) => {
       name: "Seoul"
     }
   }*/
-  return result;
+  return { ...userInfo, ...userCoaltion, ...userCrusus };
 };

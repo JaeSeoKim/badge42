@@ -1,41 +1,45 @@
 {
   "name": "badge42",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "🚀 Dynamically generated 42 badge for your git readmes.",
-  "author": "JaeSeoKim(jaeskim) <jaeskim@student.42seoul.kr>",
+  "author": "JaeSeoKim <jaeskim@student.42seoul.kr> (jaeskim)",
+  "homepage": "https://github.com/JaeSeoKim/badge42#readme",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JaeSeoKim/badge42.git"
+    "url": "git+https://github.com/JaeSeoKim/badge42.git"
   },
-  "keywords": [
-    "42",
-    "42Born2Code"
-  ],
+  "bugs": {
+    "url": "https://github.com/JaeSeoKim/badge42/issues"
+  },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/server.js",
-    "dev:next": "next",
-    "build": "cross-env NODE_ENV=production npm run build:next && npm run build:babel",
-    "build:next": "next build",
-    "build:babel": "babel src -d dist",
-    "start": "node dist/server.js"
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "build": "tsc --project tsconfig.json",
+    "start": "cross-env NODE_ENV=production node dist/server/index.js"
   },
   "dependencies": {
-    "@babel/cli": "^7.12.1",
-    "axios": "^0.20.0",
+    "@types/node-cache": "^4.2.5",
+    "axios": "^0.21.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "next": "9.5.5",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-morgan": "^1.0.1",
+    "koa-router": "^10.0.0",
     "node-cache": "^5.1.2",
-    "nodemon": "^2.0.6",
-    "react": "16.14.0",
-    "react-dom": "^16.14.0"
+    "package.json": "^2.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.1",
-    "cross-env": "^7.0.2"
+    "@types/axios": "^0.14.0",
+    "@types/koa": "^2.11.6",
+    "@types/koa-morgan": "^1.0.4",
+    "@types/koa-router": "^7.4.1",
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
   }
 }

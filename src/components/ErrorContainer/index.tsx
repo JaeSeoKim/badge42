@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index.js                                           :+:      :+:    :+:   */
+/*   index.tsx                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 01:49:28 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 02:11:04 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/04 18:27:53 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 import Message from "./Message";
 
-export default () => {
+const ErrorContainer: React.FC = () => {
   return (
     <svg
       width="495"
@@ -36,3 +36,5 @@ export default () => {
     </svg>
   );
 };
+
+export default ErrorContainer;

@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getRemainDay.js                                    :+:      :+:    :+:   */
+/*   getImageToBase64.ts                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 19:16:05 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/17 19:17:00 by jaeskim          ###   ########.fr       */
+/*   Created: 2020/10/17 19:16:35 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/11/04 20:41:45 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-const getRemainDay = (end) => {
-  const startDate = new Date();
-  const endDate = new Date(end);
+import Axios, { AxiosResponse } from "axios";
 
-  const Difference_In_Time = endDate.getTime() - startDate.getTime();
-
-  return Math.floor(Difference_In_Time / (1000 * 3600 * 24));
+const base64encode = (res: AxiosResponse) => {
+  return `data:${res.headers["content-type"]};base64,${res.data.toString(
+    "base64"
+  )}`;
 };
 
-export default getRemainDay;
+const getImageToBase64 = async (url: string) => {
+  const response = await Axios.get(url, {
+    responseType: "arraybuffer",
+  });
+
+  return base64encode(response);
+};
+
+export default getImageToBase64;

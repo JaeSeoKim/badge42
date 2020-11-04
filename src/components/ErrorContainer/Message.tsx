@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Message.js                                         :+:      :+:    :+:   */
+/*   Message.tsx                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 01:56:04 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 00:58:31 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/04 18:26:52 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 
-const Message = () => {
+const Message: React.FC = () => {
   return (
     <g>
       <g transform="translate(247, 45)">

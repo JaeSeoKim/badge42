@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apiRouter.js                                       :+:      :+:    :+:   */
+/*   apiRouter.tsx                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/18 03:55:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 02:15:26 by jaeskim          ###   ########.fr       */
+/*   Created: 2020/11/04 17:47:48 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/11/04 20:36:05 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-import express from "express";
+import Router from "koa-router";
 import { getUserStats } from "../controller/statsController";
 
-const apiRouter = express.Router();
+const apiRouter = new Router();
 
-apiRouter.get("/stats/:user_name", getUserStats);
+apiRouter.get("/stats/:intraId", getUserStats);
 
 export default apiRouter;

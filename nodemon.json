@@ -1,6 +1,5 @@
 {
-  "verbose": true,
-  "ignore": ["node_modules", ".next", "dist"],
-  "watch": ["src/*"],
-  "ext": "js json"
+  "watch": ["server", "src"],
+  "exec": "ts-node --project tsconfig.json server/index.tsx",
+  "ext": "js ts tsx"
 }

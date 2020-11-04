@@ -8,21 +8,17 @@
 
 Copy-paste this into your markdown content, and that's it. Simple!
 
-Change the `[user_name]` value to your 42 Intra username.
+Change the `intra_id` value to your 42 Intra username.
 
 ```
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/[user_name])](https://github.com/JaeSeoKim/badge42)
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/intra_id)](https://github.com/JaeSeoKim/badge42)
 ```
 
 
 
 ### ✅ ToDo List - 머리속에서 떠오르는 작업 작성해둔 리스트...
 
-- [x] Vercel -> Heroko로 이전하기!
-- [x] Next.js 에서 Express 또는 Koa를 이용하여 API 응답 처리 하도록 작동하기!
-  - [x] express custom route 사용하도록 변경! 
-  - [x] Memory Cache를 통한 토큰 관리
-  - [x] 응답 Cache하여 사용하기!
+- [ ] TypeScript 이전!!! -- 작업중!
 
 - [ ] 애니메이션 추가
 - [ ] 기타 예외 사항 추가하여 stats 완성 하기
