@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 01:06:27 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:12:42 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:35:48 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ const GlobalStyle: React.FC = () => {
     <Global
       styles={css`
         .fadeIn {
+          opacity: 0;
           animation: ${fadeIn} 0.7s ease-in-out;
+          animation-fill-mode: forwards;
         }
         .scaleIn {
           animation: ${scaleIn} 0.7s ease-in-out;

@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:07:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:15:54 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:36:02 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ const Cursus = ({ cursusName }) => {
           y="0"
           textAnchor="end"
           style={{
+            animationDelay: "150ms",
             font:
               "600 14px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
             fill: "#fff",

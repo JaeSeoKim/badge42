@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:12:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:09:58 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:43:13 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ const Level = ({ level, color }: { level: number; color: string }) => {
       <Global
         styles={css`
           .progress_bar {
-            animation: ${expandWidth} 0.7s ease-in-out;
+            width: 0;
+            animation: ${expandWidth} 1s ease;
+            animation-fill-mode: forwards;
           }
         `}
       />
@@ -39,6 +41,7 @@ const Level = ({ level, color }: { level: number; color: string }) => {
           opacity="0.75"
         />
         <rect
+          style={{ animationDelay: "650ms" }}
           className={"progress_bar"}
           width={`${level_percentage}%`}
           height="100%"
@@ -52,6 +55,7 @@ const Level = ({ level, color }: { level: number; color: string }) => {
           y="22"
           textAnchor="middle"
           style={{
+            animationDelay: "650ms",
             font:
               "600 14px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
             fill: "#fff",

@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:21:34 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:31:36 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,24 @@ export const getUserStats: Middleware = async (ctx, next) => {
 
   try {
     let logo = "";
-    const user_data = await get42User(intraId, cacheStore);
-    if (user_data.coalation.length) {
-      const { image_url } = user_data.coalation[0];
-      if (cacheStore.has(image_url)) logo = cacheStore.get(image_url);
-      else {
-        logo = await getImageToBase64(image_url);
-        // Cache 14day!
-        cacheStore.set(image_url, logo, 86400 * 14);
-      }
-    }
+    // const user_data = await get42User(intraId, cacheStore);
+    // if (user_data.coalation.length) {
+    //   const { image_url } = user_data.coalation[0];
+    //   if (cacheStore.has(image_url)) logo = cacheStore.get(image_url);
+    //   else {
+    //     logo = await getImageToBase64(image_url);
+    //     // Cache 14day!
+    //     cacheStore.set(image_url, logo, 86400 * 14);
+    //   }
+    // }
 
     /* SAMPLE DATA */
-    // const user_data = await JSON.parse(
-    //   fs
-    //     .readFileSync("server/controller/sample-jeaskim-2020-11-05.json")
-    //     .toString()
-    // );
+    const user_data = await JSON.parse(
+      fs
+        .readFileSync("server/controller/sample-jeaskim-2020-11-05.json")
+        .toString()
+    );
+    
     ctx.body = ReactDomServer.renderToStaticMarkup(
       <Stats userData={user_data} logo={logo} />
     );
