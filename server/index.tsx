@@ -6,17 +6,17 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:47:12 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/04 20:06:45 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/04 21:33:59 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import Koa from "koa";
 import morgan from "koa-morgan";
 import Router from "koa-router";
+import bodyparser from "koa-body";
 import NodeCache from "node-cache";
 import React from "react";
 import ReactDomServer from "react-dom/server";
-import bodyparser from "../node_modules/koa-body/index";
 import apiRouter from "./route/apiRouter";
 
 const NODE_ENV = process.env.NODE_ENV;

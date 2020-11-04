@@ -5,6 +5,6 @@
     "target": "esnext",
     "module": "commonjs",
     "esModuleInterop": true,
-    "jsx": "react",
-  },
+    "jsx": "react"
+  }
 }
