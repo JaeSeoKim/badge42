@@ -18,6 +18,7 @@
     "start": "cross-env NODE_ENV=production node dist/server/index.js"
   },
   "dependencies": {
+    "@emotion/core": "^10.1.1",
     "@types/node-cache": "^4.2.5",
     "axios": "^0.21.0",
     "cross-env": "^7.0.2",

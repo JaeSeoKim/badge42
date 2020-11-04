@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:47:12 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/04 21:33:59 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 00:25:18 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@ import morgan from "koa-morgan";
 import Router from "koa-router";
 import bodyparser from "koa-body";
 import NodeCache from "node-cache";
-import React from "react";
-import ReactDomServer from "react-dom/server";
 import apiRouter from "./route/apiRouter";
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -31,6 +29,7 @@ const main = async () => {
   const cacheStore = new NodeCache();
   const router = new Router();
 
+  // TODO: Need Main Page!
   router.get("/", (ctx, next) => {
     ctx.redirect("https://github.com/JaeSeoKim/badge42#readme");
   });

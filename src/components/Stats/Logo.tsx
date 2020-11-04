@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:52 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/04 20:59:23 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:14:42 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,14 @@ const Logo = ({ logo }) => {
           </g>
         </svg>
         <g transform="translate(2, 12)">
-          <image x="0" y="0" width="30" height="30" href={logo} />
+          <image
+            className={"fadeIn"}
+            x="0"
+            y="0"
+            width="30"
+            height="30"
+            href={logo}
+          />
         </g>
       </svg>
     </g>

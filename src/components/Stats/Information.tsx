@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Information.js                                     :+:      :+:    :+:   */
+/*   Information.tsx                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 01:19:08 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 02:17:39 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:16:03 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ const Information = ({ email, name, grade }) => {
         font: "400 16px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
         fill: "#fff",
       }}
+      className={"fadeIn"}
     >
       <text x="0" y="0" style={subtitle}>
         Grade

@@ -6,17 +6,30 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:12:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/04 20:58:45 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:09:58 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
+import { css, keyframes, Global } from "@emotion/core";
 
 const Level = ({ level, color }: { level: number; color: string }) => {
   const level_percentage = parseFloat((level % 1).toFixed(2)) * 100;
 
+  const expandWidth = keyframes`
+    0% { width: 0; }
+    100% { width: ${level_percentage}%; }
+  `;
+
   return (
     <g transform="translate(10, 150)">
+      <Global
+        styles={css`
+          .progress_bar {
+            animation: ${expandWidth} 0.7s ease-in-out;
+          }
+        `}
+      />
       <svg width="474px" height="36px">
         <rect
           width="100%"
@@ -26,19 +39,15 @@ const Level = ({ level, color }: { level: number; color: string }) => {
           opacity="0.75"
         />
         <rect
-          width={`${level_percentage}%`}
-          height="100%"
-          rx="4.5"
-          fill={"#fff"}
-        />
-        <rect
+          className={"progress_bar"}
           width={`${level_percentage}%`}
           height="100%"
           rx="4.5"
           fill={color}
-          opacity="0.7"
+          opacity="0.8"
         />
         <text
+          className={"fadeIn"}
           x="239"
           y="22"
           textAnchor="middle"
