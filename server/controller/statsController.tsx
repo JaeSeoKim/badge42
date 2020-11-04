@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:18:45 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/05 01:21:34 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
   const ExpiresDate = new Date();
   ExpiresDate.setSeconds(ExpiresDate.getSeconds() + EXPIRE_TIME);
 
-  // ctx.res.setHeader("Content-Type", "image/svg+xml");
+  ctx.res.setHeader("Content-Type", "image/svg+xml");
   ctx.res.setHeader(
     "Cache-Control",
     `public, max-age=${EXPIRE_TIME}, stale-while-revalidate`
