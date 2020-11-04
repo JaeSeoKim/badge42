@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apiRouter.js                                       :+:      :+:    :+:   */
+/*   getImageToBase64.ts                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/18 03:55:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 02:15:26 by jaeskim          ###   ########.fr       */
+/*   Created: 2020/10/17 19:16:35 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/11/04 21:10:13 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-import express from "express";
-import { getUserStats } from "../controller/statsController";
+import Axios, { AxiosResponse } from "axios";
 
-const apiRouter = express.Router();
+const base64encode = (res: AxiosResponse) => {
+  return `data:${res.headers["content-type"]};base64,${res.data.toString(
+    "base64"
+  )}`;
+};
 
-apiRouter.get("/stats/:user_name", getUserStats);
+const getImageToBase64 = async (url: string) => {
+  const response = await Axios.get(url, {
+    responseType: "arraybuffer",
+  });
 
-export default apiRouter;
+  return base64encode(response);
+};
+
+export default getImageToBase64;

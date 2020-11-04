@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   api42.js                                           :+:      :+:    :+:   */
+/*   api42.ts                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/31 21:12:09 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/04 21:10:28 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import Axios from "axios";
+import NodeCache from "node-cache";
 
 // for development
 const NODE_ENV = process.env.NODE_ENV;
@@ -159,7 +160,7 @@ export const get42UserCrusus = async (user_id, access_token) => {
   };
 };
 
-export const get42User = async (user_name, cacheStore) => {
+export const get42User = async (user_name: string, cacheStore: NodeCache) => {
   let token = "";
 
   if (cacheStore.has("token")) {

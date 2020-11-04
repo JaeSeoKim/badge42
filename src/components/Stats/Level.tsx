@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Level.js                                           :+:      :+:    :+:   */
+/*   Level.tsx                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:12:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/18 01:17:06 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:58:45 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 
-const Level = ({ level, color }) => {
-  const level_percentage = (level % 1).toFixed(2) * 100;
+const Level = ({ level, color }: { level: number; color: string }) => {
+  const level_percentage = parseFloat((level % 1).toFixed(2)) * 100;
 
   return (
     <g transform="translate(10, 150)">

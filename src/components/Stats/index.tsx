@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index.js                                           :+:      :+:    :+:   */
+/*   index.tsx                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/10/19 02:16:38 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/04 20:49:51 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ import Information from "./Information";
 import Level from "./Level";
 import Logo from "./Logo";
 
-export default ({ userData, logo }) => {
+const Stats: React.FC<{
+  userData: any;
+  logo: String;
+}> = ({ userData, logo }) => {
   const {
     color: _color,
     login: name,
@@ -75,3 +78,5 @@ export default ({ userData, logo }) => {
     </svg>
   );
 };
+
+export default Stats;
