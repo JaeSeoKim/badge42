@@ -20,10 +20,10 @@ Change the `intra_id` value to your 42 Intra username.
 privacyEmail=true
 ```
 
-> #### example
->
-> ```
-> [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyEmail=true)](https://github.com/JaeSeoKim/badge42)
-> ```
->
-> [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyEmail=true)](https://github.com/JaeSeoKim/badge42)
+### example
+
+```
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyEmail=true)](https://github.com/JaeSeoKim/badge42)
+```
+
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyEmail=true)](https://github.com/JaeSeoKim/badge42)
