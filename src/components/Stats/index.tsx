@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:13:02 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/16 01:59:35 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ import GlobalStyle from "../GlobalStyle";
 interface Props {
   userData: get42UserData;
   logo: String;
+  privacyEmail: String | undefined;
 }
 
-const Stats: React.FC<Props> = ({ userData, logo }) => {
+const Stats: React.FC<Props> = ({ userData, logo, privacyEmail }) => {
   const {
     info: { login, email, campus, first_name, last_name },
     coalation: [{ color: _color }],
@@ -58,6 +59,7 @@ const Stats: React.FC<Props> = ({ userData, logo }) => {
       <Header name={login} cpusName={campus[0].name} />
       <Cursus cursusName={cursus_name} />
       <Information
+        privacyEmail={privacyEmail}
         email={email}
         name={(first_name + " " + last_name).trim()}
         grade={grade}

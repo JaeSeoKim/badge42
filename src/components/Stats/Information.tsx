@@ -6,13 +6,13 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 01:19:08 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:38:36 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/16 02:02:33 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 
-const Information = ({ email, name, grade }) => {
+const Information = ({ email, name, grade, privacyEmail }) => {
   const subtitle = {
     font: "600 16px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
   };
@@ -57,22 +57,26 @@ const Information = ({ email, name, grade }) => {
       >
         - {name}
       </text>
-      <text
-        x="0"
-        y="50"
-        className={"fadeIn"}
-        style={{ ...subtitle, animationDelay: "450ms" }}
-      >
-        Email
-      </text>
-      <text
-        x="50"
-        y="50"
-        className={"fadeIn"}
-        style={{ ...subtitle, animationDelay: "450ms" }}
-      >
-        - <a href={`mailto:${email}`}>{email}</a>
-      </text>
+      {privacyEmail != "true" && (
+        <>
+          <text
+            x="0"
+            y="50"
+            className={"fadeIn"}
+            style={{ ...subtitle, animationDelay: "450ms" }}
+          >
+            Email
+          </text>
+          <text
+            x="50"
+            y="50"
+            className={"fadeIn"}
+            style={{ ...subtitle, animationDelay: "450ms" }}
+          >
+            - <a href={`mailto:${email}`}>{email}</a>
+          </text>
+        </>
+      )}
     </g>
   );
 };
