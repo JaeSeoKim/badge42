@@ -6,15 +6,23 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:12:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/16 02:32:12 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/16 11:58:26 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 import { css, keyframes, Global } from "@emotion/core";
 
-const Level = ({ level, color }: { level: number; color: string }) => {
-  const level_percentage = (parseFloat((level % 1).toFixed(2)) * 100).toFixed(0);
+interface Props {
+  level: number;
+  color: string;
+  height: number;
+}
+
+const Level: React.FC<Props> = ({ level, color, height }) => {
+  const level_percentage = (parseFloat((level % 1).toFixed(2)) * 100).toFixed(
+    0
+  );
 
   const expandWidth = keyframes`
     0% { width: 0; }
@@ -22,7 +30,7 @@ const Level = ({ level, color }: { level: number; color: string }) => {
   `;
 
   return (
-    <g transform="translate(10, 150)">
+    <g transform={`translate(10, ${height - 45})`}>
       <Global
         styles={css`
           .progress_bar {
