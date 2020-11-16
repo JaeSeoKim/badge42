@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 23:11:26 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 00:24:32 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/16 11:50:28 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@ import React from "react";
 
 interface Props {
   color: string;
+  height: number;
 }
 
-const SvgContainer: React.FC<Props> = ({ color, children }) => {
+const SvgContainer: React.FC<Props> = ({ color, children, height }) => {
   return (
     <svg
       width="495"
-      height="195"
-      viewBox="0 0 495 195"
+      height={height}
+      viewBox={`0 0 495 ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

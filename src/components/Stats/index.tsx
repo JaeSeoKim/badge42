@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/16 01:59:35 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/16 11:55:37 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ interface Props {
 }
 
 const Stats: React.FC<Props> = ({ userData, logo, privacyEmail }) => {
+  var height = 195;
   const {
     info: { login, email, campus, first_name, last_name },
     coalation: [{ color: _color }],
@@ -52,8 +53,11 @@ const Stats: React.FC<Props> = ({ userData, logo, privacyEmail }) => {
   // TODO: end_at이 null이 아닌 경우 언제 종료 했는지 보여주어야 함.
   const blackholeRemain = getRemainDay(blackholed_at);
 
+  if (privacyEmail == "true")
+    height -= 25;
+  
   return (
-    <SvgContainer color={color}>
+    <SvgContainer color={color} height={height}>
       <GlobalStyle />
       <Logo logo={logo} />
       <Header name={login} cpusName={campus[0].name} />
@@ -65,7 +69,7 @@ const Stats: React.FC<Props> = ({ userData, logo, privacyEmail }) => {
         grade={grade}
       />
       <Blackhole blackholeRemain={blackholeRemain} />
-      <Level level={level} color={color} />
+      <Level level={level} color={color} height={height} />
     </SvgContainer>
   );
 };
