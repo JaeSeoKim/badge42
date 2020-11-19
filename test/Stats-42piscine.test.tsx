@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Stats-42cursus.test.tsx                            :+:      :+:    :+:   */
+/*   Stats-42piscine.test.tsx                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 01:46:11 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 02:41:16 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 03:46:47 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ import Stats from "../src/components/Stats";
 describe("sample-jeaskim-2020-11-05 Stats", () => {
   /* SAMPLE DATA */
   const userData = JSON.parse(
-    fs.readFileSync("test/sample-jeaskim-2020-11-05.json").toString()
+    fs.readFileSync("test/sample-jeaskim-piscine.json").toString()
   );
   const logo = "";
 
@@ -30,7 +30,7 @@ describe("sample-jeaskim-2020-11-05 Stats", () => {
         logo={logo}
         privacyEmail={privacyEmail}
         userData={userData}
-        cursusName={null}
+        cursusName={"c-piscine"}
       />
     );
 
@@ -39,16 +39,14 @@ describe("sample-jeaskim-2020-11-05 Stats", () => {
     );
 
     expect(container.querySelector("[data-testid='cursus']").textContent).toBe(
-      "42cursus!"
+      "C Piscine!"
     );
 
-    expect(
-      container.querySelector("[data-testid='logo']").getAttribute("href")
-    ).toBe(logo);
+    expect(container.querySelector("[data-testid='logo']")).toBeNull();
 
     expect(
       container.querySelector("[data-testid='information-grade']").textContent
-    ).toBe("Grade- Learner");
+    ).toBe("Grade- Novice");
 
     expect(
       container.querySelector("[data-testid='information-name']").textContent
@@ -66,16 +64,16 @@ describe("sample-jeaskim-2020-11-05 Stats", () => {
 
     expect(
       container.querySelector("[data-testid='blackhole']").textContent
-    ).toBe("136 days left!");
+    ).toBe("2020-06-29 ~ 2020-07-24");
 
     expect(container.querySelector("[data-testid='level']").textContent).toBe(
-      "level 1 - 66%"
+      "level 9 - 51%"
     );
 
     expect(
       container
         .querySelector("[data-testid='svg-container']")
         .getAttribute("fill")
-    ).toBe("#ffc221");
+    ).toBe("#00BABC");
   });
 });
