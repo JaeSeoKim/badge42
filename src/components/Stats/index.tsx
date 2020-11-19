@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 03:44:21 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 04:10:23 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ const Stats: React.FC<Props> = ({
   } = userData;
 
   var index = _.findIndex<get42UserCrususData>(crusus, {
-    cursus: { slug: cursusName },
+    cursus: { name: cursusName },
   });
   const {
     blackholed_at,
