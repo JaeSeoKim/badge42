@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:07:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:36:02 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/19 21:48:00 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ const Cursus = ({ cursusName }) => {
               "600 14px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
             fill: "#fff",
           }}
+          data-testid={"cursus"}
         >
           {cursusName}!
         </text>

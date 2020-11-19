@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/16 11:59:07 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/19 20:13:56 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
     /* SAMPLE DATA */
     // const user_data = await JSON.parse(
     //   fs
-    //     .readFileSync("server/controller/sample-jeaskim-2020-11-05.json")
+    //     .readFileSync("test/sample-jeaskim-2020-11-05.json")
     //     .toString()
     // );
     ctx.body = ReactDomServer.renderToStaticMarkup(
