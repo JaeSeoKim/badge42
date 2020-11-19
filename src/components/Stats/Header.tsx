@@ -6,15 +6,22 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:31 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/19 20:15:54 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 03:13:05 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 
-const Header = ({ name, cpusName }) => {
+interface Props {
+  name: string;
+  cpusName: string;
+  isPiscine: boolean;
+}
+
+const Header: React.FC<Props> = ({ name, cpusName, isPiscine }) => {
+  const x = isPiscine ? 15 : 55;
   return (
-    <g transform="translate(55, 35)">
+    <g transform={`translate(${x}, 35)`}>
       <g transform="translate(0, 0)">
         <text
           className={"fadeIn"}

@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 02:26:34 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 03:49:37 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ const EXPIRE_TIME = 43200;
 export const getUserStats: Middleware = async (ctx, next) => {
   const {
     params: { intraId },
-    query: { privacyEmail },
+    query: { privacyEmail, cursus },
     cacheStore,
   } = ctx;
 
@@ -34,7 +34,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
   ctx.res.setHeader("Content-Type", "image/svg+xml");
   ctx.res.setHeader(
     "Cache-Control",
-    `public, max-age=${EXPIRE_TIME}, stale-while-revalidate`
+    `public, max-age=${EXPIRE_TIME}`
   );
   ctx.res.setHeader("Expires", ExpiresDate.toISOString());
 
@@ -61,6 +61,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
     ctx.body = ReactDomServer.renderToStaticMarkup(
       <Stats
         userData={user_data}
+        cursusName={cursus}
         logo={logo}
         privacyEmail={privacyEmail == "true"}
       />

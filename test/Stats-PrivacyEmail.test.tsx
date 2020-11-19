@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 01:46:11 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 02:14:05 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 03:49:47 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ describe("sample-jeaskim-2020-11-05 Stats", () => {
 
   it("render Stats Container : ", () => {
     const { container } = render(
-      <Stats logo={logo} privacyEmail={privacyEmail} userData={userData} />
+      <Stats
+        logo={logo}
+        privacyEmail={privacyEmail}
+        userData={userData}
+        cursusName={null}
+      />
     );
 
     expect(container.querySelector("[data-testid='header']").textContent).toBe(
@@ -72,6 +77,5 @@ describe("sample-jeaskim-2020-11-05 Stats", () => {
         .querySelector("[data-testid='svg-container']")
         .getAttribute("fill")
     ).toBe("#ffc221");
-    
   });
 });
