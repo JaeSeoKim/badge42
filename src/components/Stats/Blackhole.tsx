@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:13:40 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:40:05 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 02:06:58 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ const Blackhole = ({ blackholeRemain }) => {
                 "400 20px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
               fill: fillColor,
             }}
+            data-testid={"blackhole"}
           >
             {blackholeRemain} days left!
           </text>

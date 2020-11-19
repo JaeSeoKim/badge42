@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:52 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:14:42 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 01:55:06 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ const Logo = ({ logo }) => {
             width="30"
             height="30"
             href={logo}
+            data-testid={'logo'}
           />
         </g>
       </svg>

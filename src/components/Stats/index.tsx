@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/16 11:55:37 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 02:05:46 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ import GlobalStyle from "../GlobalStyle";
 
 interface Props {
   userData: get42UserData;
-  logo: String;
-  privacyEmail: String | undefined;
+  logo: string;
+  privacyEmail: boolean;
 }
 
 const Stats: React.FC<Props> = ({ userData, logo, privacyEmail }) => {
@@ -53,7 +53,7 @@ const Stats: React.FC<Props> = ({ userData, logo, privacyEmail }) => {
   // TODO: end_at이 null이 아닌 경우 언제 종료 했는지 보여주어야 함.
   const blackholeRemain = getRemainDay(blackholed_at);
 
-  if (privacyEmail == "true")
+  if (privacyEmail == true)
     height -= 25;
   
   return (

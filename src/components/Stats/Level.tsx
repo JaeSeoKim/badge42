@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:12:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/16 11:58:26 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/20 02:10:34 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ const Level: React.FC<Props> = ({ level, color, height }) => {
               "600 14px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
             fill: "#fff",
           }}
+          data-testid={'level'}
         >
           level {Math.floor(level)} - {level_percentage}%
         </text>
