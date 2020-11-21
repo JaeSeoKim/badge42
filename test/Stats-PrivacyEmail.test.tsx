@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 01:46:11 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 03:49:47 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/21 10:27:18 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@ import React from "react";
 import { render } from "@testing-library/react";
 import fs from "fs";
 import Stats from "../src/components/Stats";
+import getRemainDay from "../src/util/getRemainDay";
+import { get42UserData } from "../src/api/api42";
 
 describe("sample-jeaskim-2020-11-05 Stats", () => {
   /* SAMPLE DATA */
-  const userData = JSON.parse(
+  const userData:get42UserData = JSON.parse(
     fs.readFileSync("test/sample-jeaskim-2020-11-05.json").toString()
   );
   const logo = "";
@@ -66,7 +68,7 @@ describe("sample-jeaskim-2020-11-05 Stats", () => {
 
     expect(
       container.querySelector("[data-testid='blackhole']").textContent
-    ).toBe("136 days left!");
+    ).toBe(`${getRemainDay(userData.crusus[0].blackholed_at)} days left!`);
 
     expect(container.querySelector("[data-testid='level']").textContent).toBe(
       "level 1 - 66%"

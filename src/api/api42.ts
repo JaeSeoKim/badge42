@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 01:29:26 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/21 10:23:33 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ export const get42UserCrusus = async (user_id, access_token) => {
 
 export interface get42UserData {
   info: get42UserInfoData;
-  coalation: Array<get42UserCoalitionData>;
+  coalition: Array<get42UserCoalitionData>;
   crusus: Array<get42UserCrususData>;
 }
 
@@ -163,5 +163,5 @@ export const get42User = async (user_name: string, cacheStore: NodeCache) => {
   const userCoaltion = await get42UserCoalition(user_name, token);
   const userCrusus = await get42UserCrusus(userInfo.id, token);
 
-  return { info: userInfo, coalation: userCoaltion, crusus: userCrusus };
+  return { info: userInfo, coalition: userCoaltion, crusus: userCrusus };
 };

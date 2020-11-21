@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 04:21:16 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/21 10:35:14 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ const Stats: React.FC<Props> = ({
   var height = 195;
   const {
     info: { login, email, campus, first_name, last_name },
-    coalation,
+    coalition,
     crusus,
   } = userData;
 
@@ -56,7 +56,7 @@ const Stats: React.FC<Props> = ({
   } = crusus[index == -1 ? 0 : index];
   const isPiscine = cursusSlug.includes("piscine");
 
-  const _color = isPiscine ? null : coalation[0].color;
+  const _color = isPiscine ? null : coalition[0].color;
   const color =
     _color != null
       ? _color.substring(0, 1) == "#"

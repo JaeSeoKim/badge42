@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 03:49:37 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/21 10:24:32 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ export const getUserStats: Middleware = async (ctx, next) => {
   try {
     let logo = "";
     const user_data = await get42User(intraId, cacheStore);
-    if (user_data.coalation.length) {
-      const { image_url } = user_data.coalation[0];
+    if (user_data.coalition.length) {
+      const { image_url } = user_data.coalition[0];
       if (cacheStore.has(image_url)) logo = cacheStore.get(image_url);
       else {
         logo = await getImageToBase64(image_url);
