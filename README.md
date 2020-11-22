@@ -47,7 +47,7 @@ cursus=cursus_name
 
 # ✅ 42 ProjectScore Badge!
 
-**jaeskim's 42 ft_printf Score** - ![jaeskim's 42 ft_printf Score](http://localhost:3000/api/project/jaeskim/ft_printf)
+**jaeskim's 42 ft_printf Score** - ![jaeskim's 42 ft_printf Score](https://badge42.herokuapp.com/api/project/jaeskim/ft_printf)
 
 Copy-paste this into your markdown content, and that's it. Simple!
 
