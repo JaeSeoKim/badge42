@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SvgContainer.tsx                                   :+:      :+:    :+:   */
+/*   Icon.tsx                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 23:11:26 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/22 17:48:39 by jaeskim          ###   ########.fr       */
+/*   Created: 2020/11/22 07:53:20 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/11/22 17:30:21 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 
 interface Props {
-  color: string;
-  width: number;
-  height: number;
+  type: "Succes" | "Subscribed" | "Fail";
 }
 
-const SvgContainer: React.FC<Props> = ({ color, children, width, height }) => {
+const Icon: React.FC<Props> = ({ type }) => {
   return (
     <svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      width="280"
+      height="280"
+      viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect
-        x="0.5"
-        y="0.5"
-        rx="4.5"
-        height="99%"
-        stroke="#E4E2E2"
-        width={width - 1}
-        fill={color}
-        strokeOpacity="1"
-        data-testid={"svg-container"}
-      />
-      {children}
+      {type == "Subscribed" && (
+        <path d="M16 2.5L7.5 13.5H20L10 25" stroke="white" strokeWidth="5" />
+      )}
+      {type == "Succes" && (
+        <path d="M4 15L11.5 22L24 7" stroke="white" strokeWidth="5" />
+      )}
+      {type == "Fail" && (
+        <path d="M5 5L24 24M23.5682 5L5 24" stroke="white" strokeWidth="5" />
+      )}
     </svg>
   );
 };
 
-export default SvgContainer;
+export default Icon;

@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/21 10:23:33 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/22 18:19:14 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,24 @@ export const get42Token = async () => {
   };
 };
 
+export interface projects_users {
+  id: number;
+  occurrence: number;
+  final_mark: number;
+  status: string;
+  "validated?": boolean | null;
+  current_team_id: number;
+  project: {
+    id: number;
+    name: string;
+    slug: string;
+    parent_id: any;
+  };
+  cursus_ids: number[];
+  marked_at: string;
+  marked: boolean;
+  retriable_at: string | null;
+}
 export interface get42UserInfoData {
   id: number;
   email: string;
@@ -62,24 +80,7 @@ export interface get42UserInfoData {
   wallet: number;
   anonymize_date: string | null;
   campus: { id: number; name: string }[];
-  projects_users: {
-    id: number;
-    occurrence: number;
-    final_mark: number;
-    status: string;
-    "validated?": boolean;
-    current_team_id: number;
-    project: {
-      id: number;
-      name: string;
-      slug: string;
-      parent_id: number | null;
-    };
-    cursus_ids: number[];
-    marked_at: string;
-    maked: boolean;
-    retriable_at: string;
-  }[];
+  projects_users: projects_users[];
 }
 
 export const get42UserInfo = async (
@@ -118,7 +119,7 @@ export const get42UserCoalition = async (user_name, access_token) => {
   return data;
 };
 
-export interface get42UserCrususData {
+export interface get42UserCursusData {
   level: number;
   grade: string | null;
   blackholed_at: string | null;
@@ -130,8 +131,8 @@ export interface get42UserCrususData {
   };
 }
 
-export const get42UserCrusus = async (user_id, access_token) => {
-  const { data } = await Axios.get<Array<get42UserCrususData>>(
+export const get42UserCursus = async (user_id, access_token) => {
+  const { data } = await Axios.get<Array<get42UserCursusData>>(
     `${END_POINT_42API}/v2/users/${user_id}/cursus_users`,
     {
       headers: {
@@ -146,11 +147,15 @@ export const get42UserCrusus = async (user_id, access_token) => {
 export interface get42UserData {
   info: get42UserInfoData;
   coalition: Array<get42UserCoalitionData>;
-  crusus: Array<get42UserCrususData>;
+  cursus: Array<get42UserCursusData>;
 }
 
 export const get42User = async (user_name: string, cacheStore: NodeCache) => {
+  const EXPIRE = 43200;
   let token = "";
+  let userInfo: get42UserInfoData;
+  let userCoalition: Array<get42UserCoalitionData>;
+  let userCursus: Array<get42UserCursusData>;
 
   if (cacheStore.has("token")) {
     token = cacheStore.get("token");
@@ -159,9 +164,25 @@ export const get42User = async (user_name: string, cacheStore: NodeCache) => {
     token = access_token;
     cacheStore.set("token", token, expires_in);
   }
-  const userInfo = await get42UserInfo(user_name, token);
-  const userCoaltion = await get42UserCoalition(user_name, token);
-  const userCrusus = await get42UserCrusus(userInfo.id, token);
 
-  return { info: userInfo, coalition: userCoaltion, crusus: userCrusus };
+  if (cacheStore.has(`${user_name}_info`))
+    userInfo = cacheStore.get(`${user_name}_info`);
+  else {
+    userInfo = await get42UserInfo(user_name, token);
+    cacheStore.set(`${user_name}_info`, userInfo, EXPIRE);
+  }
+  if (cacheStore.has(`${user_name}_coalition`))
+    userCoalition = cacheStore.get(`${user_name}_coalition`);
+  else {
+    userCoalition = await get42UserCoalition(user_name, token);
+    cacheStore.set(`${user_name}_coalition`, userCoalition, EXPIRE);
+  }
+  if (cacheStore.has(`${user_name}_cursus`))
+    userCoalition = cacheStore.get(`${user_name}_cursus`);
+  else {
+    userCursus = await get42UserCursus(userInfo.id, token);
+    cacheStore.set(`${user_name}_cursus`, userCoalition, EXPIRE);
+  }
+  
+  return { info: userInfo, coalition: userCoalition, cursus: userCursus };
 };

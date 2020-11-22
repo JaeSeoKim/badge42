@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:13:40 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/21 10:33:18 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/22 02:52:37 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ const Blackhole: React.FC<Props> = ({ blackholeRemain, beginAt, endAt }) => {
                   fill: "#ffc221",
                 }}
               >
-                day in 42!
+                Period learned in 42!
               </text>
             </g>
             <g transform="translate(80, 35)">

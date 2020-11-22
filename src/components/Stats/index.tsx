@@ -6,13 +6,13 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/21 10:35:14 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/22 18:15:28 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
 import _ from "lodash";
-import { get42UserData, get42UserCrususData } from "../../api/api42";
+import { get42UserData, get42UserCursusData } from "../../api/api42";
 import getRemainDay from "../../util/getRemainDay";
 import SvgContainer from "../SvgContainer";
 import Blackhole from "./Blackhole";
@@ -40,10 +40,10 @@ const Stats: React.FC<Props> = ({
   const {
     info: { login, email, campus, first_name, last_name },
     coalition,
-    crusus,
+    cursus,
   } = userData;
 
-  var index = _.findIndex<get42UserCrususData>(crusus, {
+  var index = _.findIndex<get42UserCursusData>(cursus, {
     cursus: { name: cursusName },
   });
   const {
@@ -53,7 +53,7 @@ const Stats: React.FC<Props> = ({
     cursus: { name: cursus_name, slug: cursusSlug },
     grade,
     level,
-  } = crusus[index == -1 ? 0 : index];
+  } = cursus[index == -1 ? 0 : index];
   const isPiscine = cursusSlug.includes("piscine");
 
   const _color = isPiscine ? null : coalition[0].color;
@@ -70,7 +70,7 @@ const Stats: React.FC<Props> = ({
   if (privacyEmail == true) height -= 25;
 
   return (
-    <SvgContainer color={color} height={height}>
+    <SvgContainer color={color} width={495} height={height}>
       <GlobalStyle />
       {!isPiscine && <Logo logo={logo} />}
       <Header name={login} cpusName={campus[0].name} isPiscine={isPiscine} />
@@ -81,7 +81,11 @@ const Stats: React.FC<Props> = ({
         name={(first_name + " " + last_name).trim()}
         grade={isPiscine ? "Novice" : grade}
       />
-      <Blackhole blackholeRemain={blackholeRemain} beginAt={begin_at} endAt={end_at}/>
+      <Blackhole
+        blackholeRemain={blackholeRemain}
+        beginAt={begin_at}
+        endAt={end_at}
+      />
       <Level level={level} color={color} height={height} />
     </SvgContainer>
   );

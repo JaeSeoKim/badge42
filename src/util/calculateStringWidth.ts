@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apiRouter.tsx                                      :+:      :+:    :+:   */
+/*   calculateStringWidth.ts                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 17:47:48 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/22 10:38:48 by jaeskim          ###   ########.fr       */
+/*   Created: 2020/11/22 07:50:22 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/11/22 17:58:18 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-import Router from "koa-router";
-import { getUserStats } from "../controller/statsController";
-import { getUserProjectScore } from "../controller/projectController";
+import pixelWidth from "string-pixel-width";
 
-const apiRouter = new Router();
+const calculateStringWidth = (str: string, fontsize: number) => {
+  const size = pixelWidth(str, {
+    font: "verdana",
+    size: fontsize,
+  });
 
-apiRouter.get("/project/:intraId/:project", getUserProjectScore);
-apiRouter.get("/stats/:intraId", getUserStats);
+  return parseInt(size.toFixed(0));
+};
 
-export default apiRouter;
+export default calculateStringWidth;
