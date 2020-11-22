@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/21 10:24:32 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/22 18:27:55 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
   ExpiresDate.setSeconds(ExpiresDate.getSeconds() + EXPIRE_TIME);
 
   ctx.res.setHeader("Content-Type", "image/svg+xml");
-  ctx.res.setHeader(
-    "Cache-Control",
-    `public, max-age=${EXPIRE_TIME}`
-  );
+  ctx.res.setHeader("Cache-Control", `public, max-age=${EXPIRE_TIME}`);
   ctx.res.setHeader("Expires", ExpiresDate.toISOString());
 
   try {
@@ -71,7 +68,9 @@ export const getUserStats: Middleware = async (ctx, next) => {
     ctx.res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     ctx.res.setHeader("Pragma", "no-cache");
     ctx.res.setHeader("Expires", "0");
-    ctx.body = ReactDomServer.renderToStaticMarkup(<ErrorContainer />);
+    ctx.body = ReactDomServer.renderToStaticMarkup(
+      <ErrorContainer smallBadge={false} message={null} />
+    );
   }
 
   await next();
