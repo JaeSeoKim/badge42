@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:47:12 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/05 00:25:18 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/23 13:58:57 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ const main = async () => {
   router.use("/api", apiRouter.routes());
 
   app.use(bodyparser());
-  app.use(morgan(dev ? "dev" : "combined"));
+  app.use(morgan(dev ? "dev" : "short"));
   app.use(async (ctx, next) => {
     ctx.cacheStore = cacheStore;
     await next();

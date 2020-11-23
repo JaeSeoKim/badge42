@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/23 10:31:57 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/11/23 13:58:07 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,11 +178,11 @@ export const get42User = async (user_name: string, cacheStore: NodeCache) => {
     cacheStore.set(`${user_name}_coalition`, userCoalition, EXPIRE);
   }
   if (cacheStore.has(`${user_name}_cursus`))
-    userCoalition = cacheStore.get(`${user_name}_cursus`);
+    userCursus = cacheStore.get(`${user_name}_cursus`);
   else {
     userCursus = await get42UserCursus(userInfo.id, token);
     cacheStore.set(`${user_name}_cursus`, userCursus, EXPIRE);
   }
-  
+
   return { info: userInfo, coalition: userCoalition, cursus: userCursus };
 };
