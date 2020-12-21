@@ -17,7 +17,8 @@
     "build": "tsc --project tsconfig.json",
     "start": "cross-env NODE_ENV=production node dist/server/index.js",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "downloadImg": "ts-node --project tsconfig.json src/util/downloadImg.ts"
   },
   "husky": {
     "hooks": {

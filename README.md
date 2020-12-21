@@ -45,6 +45,20 @@ cursus=cursus_name
 
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cursus=C%20Piscine)](https://github.com/JaeSeoKim/badge42)
 
+### 🏙 If you want to disable the background, please add the options below!
+
+```
+cover=false
+```
+
+#### example
+
+```****
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cover=false)](https://github.com/JaeSeoKim/badge42)
+```
+
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cover=false)](https://github.com/JaeSeoKim/badge42)
+
 # ✅ 42 ProjectScore Badge!
 
 **jaeskim's 42 ft_printf Score** - ![jaeskim's 42 ft_printf Score](https://badge42.herokuapp.com/api/project/jaeskim/ft_printf)
@@ -53,9 +67,8 @@ Copy-paste this into your markdown content, and that's it. Simple!
 
 Change the `intra_id` value to your 42 Intra username.
 
-Change the `project_name` value to the project_name you want to mark! 
+Change the `project_name` value to the project_name you want to mark!
 
 ```
 [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/intra_id/project_name)](https://github.com/JaeSeoKim/badge42)
 ```
-
