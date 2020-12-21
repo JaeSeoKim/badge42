@@ -6,11 +6,12 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/22 18:15:28 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/22 01:21:58 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import React from "react";
+import fs from "fs";
 import _ from "lodash";
 import { get42UserData, get42UserCursusData } from "../../api/api42";
 import getRemainDay from "../../util/getRemainDay";
@@ -28,6 +29,7 @@ interface Props {
   logo: string | null;
   privacyEmail: boolean;
   cursusName: string | null;
+  cover?: string | null;
 }
 
 const Stats: React.FC<Props> = ({
@@ -35,6 +37,7 @@ const Stats: React.FC<Props> = ({
   logo,
   privacyEmail,
   cursusName,
+  cover,
 }) => {
   var height = 195;
   const {
@@ -70,7 +73,7 @@ const Stats: React.FC<Props> = ({
   if (privacyEmail == true) height -= 25;
 
   return (
-    <SvgContainer color={color} width={495} height={height}>
+    <SvgContainer cover={cover} color={color} width={495} height={height}>
       <GlobalStyle />
       {!isPiscine && <Logo logo={logo} />}
       <Header name={login} cpusName={campus[0].name} isPiscine={isPiscine} />
@@ -79,7 +82,7 @@ const Stats: React.FC<Props> = ({
         privacyEmail={privacyEmail}
         email={email}
         name={(first_name + " " + last_name).trim()}
-        grade={isPiscine ? "Novice" : grade}
+        grade={isPiscine || !grade ? "Novice" : grade}
       />
       <Blackhole
         blackholeRemain={blackholeRemain}

@@ -53,7 +53,7 @@ Copy-paste this into your markdown content, and that's it. Simple!
 
 Change the `intra_id` value to your 42 Intra username.
 
-Change the `project_name` value to the project_name you want to mark! 
+Change the `project_name` value to the project_name you want to mark!
 
 ```
 [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/intra_id/project_name)](https://github.com/JaeSeoKim/badge42)

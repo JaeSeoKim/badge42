@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 01:46:11 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/22 18:15:52 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/22 00:16:26 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ describe("test sample-jeaskim-2020-11-05 Stats", () => {
       "level 1 - 66%"
     );
 
-    expect(
-      container
-        .querySelector("[data-testid='svg-container']")
-        .getAttribute("fill")
-    ).toBe("#ffc221");
   });
 
   it("render cursusName C Piscine : ", () => {
@@ -162,10 +157,5 @@ describe("test sample-jeaskim-2020-11-05 Stats", () => {
       "level 1 - 66%"
     );
 
-    expect(
-      container
-        .querySelector("[data-testid='svg-container']")
-        .getAttribute("fill")
-    ).toBe("#ffc221");
   });
 });
