@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 20:12:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 02:10:34 by jaeskim          ###   ########.fr       */
+/*   Created: 2020/12/22 21:18:25 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/12/23 01:42:29 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+import { css, Global, keyframes } from "@emotion/core";
 import React from "react";
-import { css, keyframes, Global } from "@emotion/core";
 
 interface Props {
-  level: number;
+  darkmode: boolean;
   color: string;
-  height: number;
+  level: number;
 }
 
-const Level: React.FC<Props> = ({ level, color, height }) => {
+const Level: React.FC<Props> = ({ darkmode, level, color }) => {
   const level_percentage = (parseFloat((level % 1).toFixed(2)) * 100).toFixed(
     0
   );
@@ -28,9 +28,8 @@ const Level: React.FC<Props> = ({ level, color, height }) => {
     0% { width: 0; }
     100% { width: ${level_percentage}%; }
   `;
-
   return (
-    <g transform={`translate(10, ${height - 45})`}>
+    <div style={{ marginTop: "10px", width: "100%", height: "36px" }}>
       <Global
         styles={css`
           .progress_bar {
@@ -40,40 +39,41 @@ const Level: React.FC<Props> = ({ level, color, height }) => {
           }
         `}
       />
-      <svg width="474px" height="36px">
-        <rect
-          width="100%"
-          height="100%"
-          rx="4.5"
-          fill="rgba(32,32,38,0.85)"
-          opacity="0.75"
-        />
-        <rect
-          style={{ animationDelay: "650ms" }}
-          className={"progress_bar"}
-          width={`${level_percentage}%`}
-          height="100%"
-          rx="4.5"
-          fill={color}
-          opacity="0.8"
-        />
-        <text
-          className={"fadeIn"}
-          x="239"
-          y="22"
-          textAnchor="middle"
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          borderRadius: "4.5px",
+          backgroundColor: "rgba(32,32,38,0.5)",
+        }}
+      >
+        <div
+          className={`progress_bar`}
           style={{
-            animationDelay: "650ms",
+            width: `${level_percentage}%`,
+            height: "100%",
+            borderRadius: "4.5px",
+            backgroundColor: color,
+            opacity: darkmode ? "0.3" : "0.7",
+          }}
+        />
+        <p
+          className={"fadeIn"}
+          style={{
+            position: "relative",
             font:
               "600 14px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
-            fill: "#fff",
+            color: "#ffffff",
+            textAlign: "center",
+            top: "-26px",
+            animationDelay: "150ms",
           }}
-          data-testid={'level'}
+          data-testid={"level"}
         >
           level {Math.floor(level)} - {level_percentage}%
-        </text>
-      </svg>
-    </g>
+        </p>
+      </div>
+    </div>
   );
 };
 

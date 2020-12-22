@@ -1,94 +1,45 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Information.tsx                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/18 01:19:08 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/20 02:05:13 by jaeskim          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 import React from "react";
 
 interface Props {
-  email: string;
-  name: string;
   grade: string;
-  privacyEmail: boolean;
+  name: string;
+  email: string | null;
 }
 
-const Information: React.FC<Props> = ({ email, name, grade, privacyEmail }) => {
-  const subtitle = {
-    font: "600 16px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
-  };
-
+const Container: React.FC<{
+  title: string;
+  value: string;
+  animationDelay: string;
+}> = ({ title, value, animationDelay }) => {
   return (
-    <g
-      transform="translate(18, 80)"
+    <div
+      className={"fadeIn"}
       style={{
-        font: "400 16px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
-        fill: "#fff",
+        display: "flex",
+        marginTop: "8px",
+        font: "600 14px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
+        color: "#FFF",
+        animationDelay: animationDelay,
       }}
     >
-      <g data-testid={"information-grade"}>
-        <text
-          x="0"
-          y="0"
-          className={"fadeIn"}
-          style={{ ...subtitle, animationDelay: "250ms" }}
-        >
-          Grade
-        </text>
-        <text
-          x="50"
-          y="0"
-          className={"fadeIn"}
-          style={{ ...subtitle, animationDelay: "250ms" }}
-        >
-          - {grade}
-        </text>
-      </g>
-      <g data-testid={"information-name"}>
-        <text
-          x="0"
-          y="25"
-          className={"fadeIn"}
-          style={{ ...subtitle, animationDelay: "350ms" }}
-        >
-          Name
-        </text>
-        <text
-          x="50"
-          y="25"
-          className={"fadeIn"}
-          style={{ ...subtitle, animationDelay: "350ms" }}
-        >
-          - {name}
-        </text>
-      </g>
-      {privacyEmail != true && (
-        <g data-testid={"information-email"}>
-          <text
-            x="0"
-            y="50"
-            className={"fadeIn"}
-            style={{ ...subtitle, animationDelay: "450ms" }}
-          >
-            Email
-          </text>
-          <text
-            x="50"
-            y="50"
-            className={"fadeIn"}
-            style={{ ...subtitle, animationDelay: "450ms" }}
-          >
-            - <a href={`mailto:${email}`}>{email}</a>
-          </text>
-        </g>
+      <h3 style={{ width: "50px" }}>{title}</h3>
+      <h3>
+        -{" "}
+        <span data-testid={`information-${title.toLowerCase()}`}>{value}</span>
+      </h3>
+    </div>
+  );
+};
+
+const Information: React.FC<Props> = ({ grade, name, email }) => {
+  return (
+    <div style={{ marginLeft: "8px" }}>
+      <Container title={"Grade"} value={grade} animationDelay={"75ms"} />
+      <Container title={"Name"} value={name} animationDelay={"100ms"} />
+      {email && (
+        <Container title={"Email"} value={email} animationDelay={"125ms"} />
       )}
-    </g>
+    </div>
   );
 };
 

@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 01:46:11 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/22 01:26:16 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 01:48:59 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,140 +14,185 @@ import React from "react";
 import { render } from "@testing-library/react";
 import fs from "fs";
 import Stats from "../src/components/Stats";
-import getRemainDay from "../src/util/getRemainDay";
-import { get42UserData } from "../src/api/api42";
 
-describe("test sample-jeaskim-2020-11-05 Stats", () => {
-  /* SAMPLE DATA */
-  const userData: get42UserData = JSON.parse(
-    fs.readFileSync("test/sample-jeaskim-2020-11-05.json").toString()
-  );
-  const logo = "";
+describe("test StatsComponents!", () => {
+  it("normal data", () => {
+    const logo = `data:image/svg+xml;base64,${fs
+      .readFileSync(`src/img/logo/piscine.svg`)
+      .toString("base64")}`;
+    const cover = `data:image/jpeg;base64,${fs
+      .readFileSync(`src/img/cover/piscine.jpg`)
+      .toString("base64")}`;
 
-  it("render cursusName null : ", () => {
+    const color = "#424242";
+    const data = {
+      campus: "seoul",
+      cursus: "42cursus",
+      email: "jaeskim@student.42seou.kr",
+      grade: "Learner",
+      id: "jaeskim",
+      name: "Jaeseo Kim",
+      level: 42.42,
+    };
+
     const { container } = render(
       <Stats
+        data={data}
+        color={color}
+        darkmode={false}
         logo={logo}
-        privacyEmail={false}
-        userData={userData}
-        cursusName={null}
+        cover={cover}
       />
     );
 
     expect(container.querySelector("[data-testid='header']").textContent).toBe(
-      "jaeskim's 42Seoul Stats"
+      `${data.id}'s${data.campus} Stats`
     );
 
     expect(container.querySelector("[data-testid='cursus']").textContent).toBe(
-      "42cursus!"
+      `${data.cursus}!`
     );
 
     expect(
       container.querySelector("[data-testid='logo']").getAttribute("href")
-    ).toBe(logo);
+    ).toBe(logo.replace("ZmlsbD0iIzAwMDAwMCI", "ZmlsbD0iI0ZGRkZGRiI"));
 
     expect(
       container.querySelector("[data-testid='information-grade']").textContent
-    ).toBe("Grade- Learner");
+    ).toBe(data.grade);
 
     expect(
       container.querySelector("[data-testid='information-name']").textContent
-    ).toBe("Name- Jaeseo Kim");
+    ).toBe(data.name);
 
     expect(
       container.querySelector("[data-testid='information-email']").textContent
-    ).toBe("Email- jaeskim@student.42seoul.kr");
-
-    expect(
-      container.querySelector("[data-testid='blackhole']").textContent
-    ).toBe(`${getRemainDay(userData.cursus[0].blackholed_at)} days left!`);
+    ).toBe(data.email);
 
     expect(container.querySelector("[data-testid='level']").textContent).toBe(
-      "level 1 - 66%"
+      `level ${Math.floor(data.level)} - ${(
+        parseFloat((data.level % 1).toFixed(2)) * 100
+      ).toFixed(0)}%`
     );
   });
 
-  it("render cursusName C Piscine : ", () => {
+  it("disable email", () => {
+    const logo = `data:image/svg+xml;base64,${fs
+      .readFileSync(`src/img/logo/piscine.svg`)
+      .toString("base64")}`;
+    const cover = `data:image/jpeg;base64,${fs
+      .readFileSync(`src/img/cover/piscine.jpg`)
+      .toString("base64")}`;
+
+    const color = "#424242";
+    const data = {
+      campus: "seoul",
+      cursus: "42cursus",
+      email: null,
+      grade: "Learner",
+      id: "jaeskim",
+      name: "Jaeseo Kim",
+      level: 42.42,
+    };
+
     const { container } = render(
       <Stats
+        data={data}
+        color={color}
+        darkmode={false}
         logo={logo}
-        privacyEmail={true}
-        userData={userData}
-        cursusName={"C Piscine"}
+        cover={cover}
       />
     );
 
     expect(container.querySelector("[data-testid='header']").textContent).toBe(
-      "jaeskim's 42Seoul Stats"
+      `${data.id}'s${data.campus} Stats`
     );
 
     expect(container.querySelector("[data-testid='cursus']").textContent).toBe(
-      "C Piscine!"
-    );
-
-    expect(container.querySelector("[data-testid='logo']")).toBeNull();
-
-    expect(
-      container.querySelector("[data-testid='information-grade']").textContent
-    ).toBe("Grade- Novice");
-
-    expect(
-      container.querySelector("[data-testid='information-name']").textContent
-    ).toBe("Name- Jaeseo Kim");
-
-    expect(
-      container.querySelector("[data-testid='information-email']")
-    ).toBeNull();
-
-    expect(
-      container.querySelector("[data-testid='blackhole']").textContent
-    ).toBe("2020-06-29 ~ 2020-07-24");
-
-    expect(container.querySelector("[data-testid='level']").textContent).toBe(
-      "level 9 - 51%"
-    );
-  });
-
-  it("render PrivacyEmail true : ", () => {
-    const { container } = render(
-      <Stats
-        logo={logo}
-        privacyEmail={true}
-        userData={userData}
-        cursusName={null}
-      />
-    );
-
-    expect(container.querySelector("[data-testid='header']").textContent).toBe(
-      "jaeskim's 42Seoul Stats"
-    );
-
-    expect(container.querySelector("[data-testid='cursus']").textContent).toBe(
-      "42cursus!"
+      `${data.cursus}!`
     );
 
     expect(
       container.querySelector("[data-testid='logo']").getAttribute("href")
-    ).toBe(logo);
+    ).toBe(logo.replace("ZmlsbD0iIzAwMDAwMCI", "ZmlsbD0iI0ZGRkZGRiI"));
 
     expect(
       container.querySelector("[data-testid='information-grade']").textContent
-    ).toBe("Grade- Learner");
+    ).toBe(data.grade);
 
     expect(
       container.querySelector("[data-testid='information-name']").textContent
-    ).toBe("Name- Jaeseo Kim");
+    ).toBe(data.name);
 
     expect(
       container.querySelector("[data-testid='information-email']")
     ).toBeNull();
 
+    expect(container.querySelector("[data-testid='level']").textContent).toBe(
+      `level ${Math.floor(data.level)} - ${(
+        parseFloat((data.level % 1).toFixed(2)) * 100
+      ).toFixed(0)}%`
+    );
+  });
+
+  it("darkmode test", () => {
+    const logo = `data:image/svg+xml;base64,${fs
+      .readFileSync(`src/img/logo/piscine.svg`)
+      .toString("base64")}`;
+    const cover = `data:image/jpeg;base64,${fs
+      .readFileSync(`src/img/cover/piscine.jpg`)
+      .toString("base64")}`;
+
+    const color = "#424242";
+    const data = {
+      campus: "seoul",
+      cursus: "42cursus",
+      email: null,
+      grade: "Learner",
+      id: "jaeskim",
+      name: "Jaeseo Kim",
+      level: 42.42,
+    };
+
+    const { container } = render(
+      <Stats
+        data={data}
+        color={color}
+        darkmode={true}
+        logo={logo}
+        cover={cover}
+      />
+    );
+
+    expect(container.querySelector("[data-testid='header']").textContent).toBe(
+      `${data.id}'s${data.campus} Stats`
+    );
+
+    expect(container.querySelector("[data-testid='cursus']").textContent).toBe(
+      `${data.cursus}!`
+    );
+
     expect(
-      container.querySelector("[data-testid='blackhole']").textContent
-    ).toBe(`${getRemainDay(userData.cursus[0].blackholed_at)} days left!`);
+      container.querySelector("[data-testid='logo']").getAttribute("href")
+    ).toBe(logo.replace("ZmlsbD0iIzAwMDAwMCI", "ZmlsbD0iI0ZGRkZGRiI"));
+
+    expect(
+      container.querySelector("[data-testid='information-grade']").textContent
+    ).toBe(data.grade);
+
+    expect(
+      container.querySelector("[data-testid='information-name']").textContent
+    ).toBe(data.name);
+
+    expect(
+      container.querySelector("[data-testid='information-email']")
+    ).toBeNull();
 
     expect(container.querySelector("[data-testid='level']").textContent).toBe(
-      "level 1 - 66%"
+      `level ${Math.floor(data.level)} - ${(
+        parseFloat((data.level % 1).toFixed(2)) * 100
+      ).toFixed(0)}%`
     );
   });
 });

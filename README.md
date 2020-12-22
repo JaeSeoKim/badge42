@@ -45,19 +45,19 @@ cursus=cursus_name
 
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cursus=C%20Piscine)](https://github.com/JaeSeoKim/badge42)
 
-### 🏙 If you want to disable the background, please add the options below!
+### 🌌 Now Support DarkMode!
 
 ```
-cover=false
+darkmode=true
 ```
 
 #### example
 
 ```****
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cover=false)](https://github.com/JaeSeoKim/badge42)
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?darkmode=true)](https://github.com/JaeSeoKim/badge42)
 ```
 
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cover=false)](https://github.com/JaeSeoKim/badge42)
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?darkmode=true)](https://github.com/JaeSeoKim/badge42)
 
 # ✅ 42 ProjectScore Badge!
 

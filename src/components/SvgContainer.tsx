@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 23:11:26 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/22 00:04:37 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 00:23:08 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,30 @@ const SvgContainer: React.FC<Props> = ({
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       data-testid={"svg-container"}
     >
       {cover ? (
-        <svg
-          x="0.5"
-          y="0.5"
-          rx="4.5"
-          height="99%"
-          width={width - 1}
-          patternContentUnits="objectBoundingBox"
-          viewBox={`0 0 ${width} ${height}`}
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
-          <image
-            x="0.5"
-            y="0.5"
-            rx="4.5"
-            width={width - 1}
-            height={"99%"}
-            preserveAspectRatio="xMidYMid slice"
-            xlinkHref={cover}
-          />
-        </svg>
+        <foreignObject width={"100%"} height={"100%"}>
+          <div
+            // @ts-ignore
+            xmlns="http://www.w3.org/1999/xhtml"
+            style={{
+              fontWeight: "bold",
+              boxSizing: "border-box",
+              padding: 20,
+              width: width,
+              height: height,
+              borderRadius: 10,
+
+              backgroundColor: "white",
+              backgroundImage: `url(${cover})`,
+              backgroundSize: "cover",
+            }}
+          >
+            <h1>test</h1>
+          </div>
+        </foreignObject>
       ) : (
         <rect
           x="0.5"
@@ -71,7 +68,7 @@ const SvgContainer: React.FC<Props> = ({
           strokeOpacity="1"
         />
       )}
-      {children}
+      {/* {children} */}
     </svg>
   );
 };
