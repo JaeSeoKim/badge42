@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 01:48:57 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 01:59:55 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
             ].level,
         }}
         darkmode={darkmode == "true"}
-        color={color}
+        color={color.includes("#") ? color : `#${color}`}
         cover={cover}
         logo={logo}
       />
