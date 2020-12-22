@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/21 23:10:17 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 01:29:01 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ export interface get42UserInfoData {
   anonymize_date: string | null;
   campus: { id: number; name: string }[];
   projects_users: projects_users[];
+  cursus_users: get42UserCursusData[];
 }
 
 export const get42UserInfo = async (name: string, access_token: string) => {
@@ -147,7 +148,7 @@ export const get42UserCoalitionCache = async (
     return cacheStore.get<get42UserCoalitionData[]>(`${name}_coalition`);
   const token = await get42TokenCache(cacheStore);
   const userCoalition = await get42UserCoalition(name, token);
-  cacheStore.set(`${name}_coalition`, userCoalition, EXPIRE);
+  cacheStore.set(`${name}_coalition`, userCoalition, EXPIRE * 48);
   return userCoalition;
 };
 

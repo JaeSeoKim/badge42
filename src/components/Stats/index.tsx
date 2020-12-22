@@ -5,92 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 19:00:33 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/22 01:21:58 by jaeskim          ###   ########.fr       */
+/*   Created: 2020/12/22 18:41:01 by jaeskim           #+#    #+#             */
+/*   Updated: 2020/12/23 01:48:42 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+import { css, Global, keyframes } from "@emotion/core";
 import React from "react";
-import fs from "fs";
-import _ from "lodash";
-import { get42UserData, get42UserCursusData } from "../../api/api42";
-import getRemainDay from "../../util/getRemainDay";
-import SvgContainer from "../SvgContainer";
-import Blackhole from "./Blackhole";
 import Cursus from "./Cursus";
-import Header from "./Header";
+import Container from "./Container";
 import Information from "./Information";
 import Level from "./Level";
 import Logo from "./Logo";
-import GlobalStyle from "../GlobalStyle";
+import Header from "./Header";
 
 interface Props {
-  userData: get42UserData;
-  logo: string | null;
-  privacyEmail: boolean;
-  cursusName: string | null;
-  cover?: string | null;
+  data: {
+    id: string;
+    name: string;
+    grade: string;
+    email: string | null;
+    level: number;
+    cursus: string;
+    campus: string;
+  };
+  darkmode: boolean;
+  color: string;
+  logo: string;
+  cover: string;
 }
 
-const Stats: React.FC<Props> = ({
-  userData,
-  logo,
-  privacyEmail,
-  cursusName,
-  cover,
-}) => {
-  var height = 195;
-  const {
-    info: { login, email, campus, first_name, last_name },
-    coalition,
-    cursus,
-  } = userData;
+const FlexContainer: React.FC<{ width: number }> = ({ width, children }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        width: width - 30,
+        marginLeft: "15px",
+        marginRight: "15px",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
-  var index = _.findIndex<get42UserCursusData>(cursus, {
-    cursus: { name: cursusName },
-  });
-  const {
-    blackholed_at,
-    begin_at,
-    end_at,
-    cursus: { name: cursus_name, slug: cursusSlug },
-    grade,
-    level,
-  } = cursus[index == -1 ? 0 : index];
-  const isPiscine = cursusSlug.includes("piscine");
+const Stats: React.FC<Props> = ({ data, color, cover, darkmode, logo }) => {
+  const width = 495;
+  const height = 195 - (data.email == null ? 25 : 0);
 
-  const _color = isPiscine ? null : coalition[0].color;
-  const color =
-    _color != null
-      ? _color.substring(0, 1) == "#"
-        ? _color
-        : "#" + _color
-      : "#00BABC";
-
-  // TODO: end_at이 null이 아닌 경우 언제 종료 했는지 보여주어야 함.
-  const blackholeRemain = getRemainDay(blackholed_at);
-
-  if (privacyEmail == true) height -= 25;
+  const fadeIn = keyframes`
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  `;
+  const scaleIn = keyframes`
+    0%{ translate(-5px, 5px) sacle(0) }
+    100%{ translate(-5px, 5px) sacle(1) }
+  `;
 
   return (
-    <SvgContainer cover={cover} color={color} width={495} height={height}>
-      <GlobalStyle />
-      {!isPiscine && <Logo logo={logo} />}
-      <Header name={login} cpusName={campus[0].name} isPiscine={isPiscine} />
-      <Cursus cursusName={cursus_name} />
-      <Information
-        privacyEmail={privacyEmail}
-        email={email}
-        name={(first_name + " " + last_name).trim()}
-        grade={isPiscine || !grade ? "Novice" : grade}
+    <Container
+      width={width}
+      height={height}
+      darkmode={darkmode}
+      color={color}
+      backgroundImage={`url(${cover})`}
+    >
+      <Global
+        styles={css`
+          .fadeIn {
+            opacity: 0;
+            animation: ${fadeIn} 0.7s ease-in-out;
+            animation-fill-mode: forwards;
+          }
+          .scaleIn {
+            animation: ${scaleIn} 0.7s ease-in-out;
+          }
+        `}
       />
-      <Blackhole
-        blackholeRemain={blackholeRemain}
-        beginAt={begin_at}
-        endAt={end_at}
-      />
-      <Level level={level} color={color} height={height} />
-    </SvgContainer>
+      <FlexContainer width={width}>
+        <Logo darkmode={darkmode} color={color} logo={logo} />
+        <Header darkmode={darkmode} name={data.id} campus={data.campus} />
+        <Cursus cursus={data.cursus} />
+      </FlexContainer>
+      <FlexContainer width={width}>
+        <Information name={data.name} grade={data.grade} email={data.email} />
+      </FlexContainer>
+      <FlexContainer width={width}>
+        <Level darkmode={darkmode} level={data.level} color={color} />
+      </FlexContainer>
+    </Container>
   );
 };
 
