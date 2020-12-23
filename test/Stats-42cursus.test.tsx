@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 01:46:11 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 01:48:59 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 13:11:38 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ describe("test StatsComponents!", () => {
       id: "jaeskim",
       name: "Jaeseo Kim",
       level: 42.42,
+      blackhole: {
+        begin_at: "2020-09-28T01:00:00.000Z",
+        blackholed_at: "2021-04-30T01:00:00.000Z",
+        end_at: null,
+      },
     };
 
     const { container } = render(
@@ -93,6 +98,11 @@ describe("test StatsComponents!", () => {
       id: "jaeskim",
       name: "Jaeseo Kim",
       level: 42.42,
+      blackhole: {
+        begin_at: "2020-09-28T01:00:00.000Z",
+        blackholed_at: "2021-04-30T01:00:00.000Z",
+        end_at: null,
+      },
     };
 
     const { container } = render(
@@ -153,6 +163,11 @@ describe("test StatsComponents!", () => {
       id: "jaeskim",
       name: "Jaeseo Kim",
       level: 42.42,
+      blackhole: {
+        begin_at: "2020-09-28T01:00:00.000Z",
+        blackholed_at: "2020-10-30T01:00:00.000Z",
+        end_at: null,
+      },
     };
 
     const { container } = render(

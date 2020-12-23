@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:41:01 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 10:35:15 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 12:49:42 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ import Information from "./Information";
 import Level from "./Level";
 import Logo from "./Logo";
 import Header from "./Header";
+import Blackhole from "./Blackhole";
 
 interface Props {
   data: {
@@ -28,6 +29,11 @@ interface Props {
     level: number;
     cursus: string;
     campus: string;
+    blackhole: {
+      blackholed_at: string | null;
+      begin_at: string;
+      end_at: string | null;
+    };
   };
   darkmode: boolean;
   color: string;
@@ -39,10 +45,11 @@ const FlexContainer: React.FC<{ width: number }> = ({ width, children }) => {
   return (
     <div
       style={{
+        position: "relative",
         display: "flex",
-        width: width - 30,
-        marginLeft: "15px",
-        marginRight: "15px",
+        width: width - 20,
+        marginLeft: "10px",
+        marginRight: "10px",
       }}
     >
       {children}
@@ -90,6 +97,7 @@ const Stats: React.FC<Props> = ({ data, color, cover, darkmode, logo }) => {
       </FlexContainer>
       <FlexContainer width={width}>
         <Information name={data.name} grade={data.grade} email={data.email} />
+        <Blackhole darkmode={darkmode} data={data.blackhole} />
       </FlexContainer>
       <FlexContainer width={width}>
         <Level darkmode={darkmode} level={data.level} color={color} />
