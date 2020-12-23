@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 10:30:31 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 12:19:45 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
     // );
 
     const index = cursus
-      ? _.findIndex(cursus, {
+      ? _.findIndex(user_data.info.cursus_users, {
           cursus: { name: cursus },
         })
       : user_data.info.cursus_users.length - 1;
@@ -96,7 +96,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
           grade:
             user_data.info.cursus_users[
               index != -1 ? index : user_data.info.cursus_users.length - 1
-            ].grade,
+            ].grade || "Novice",
           level:
             user_data.info.cursus_users[
               index != -1 ? index : user_data.info.cursus_users.length - 1
