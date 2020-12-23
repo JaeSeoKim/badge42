@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 19:22:02 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 10:30:07 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 12:15:51 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const Logo: React.FC<Props> = ({ logo, color, darkmode }) => {
         y="0px"
         viewBox="0 0 68 104"
         fill={color}
-        fillOpacity={darkmode && "0.2"}
+        fillOpacity={darkmode ? "0.2" : undefined}
       >
         <g>
           <g transform="translate(-96.000000, -60.000000)">

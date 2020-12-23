@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 21:18:25 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 10:29:50 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 10:35:14 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ const Level: React.FC<Props> = ({ darkmode, level, color }) => {
     100% { width: ${level_percentage}%; }
   `;
   return (
-    <div style={{ marginTop: "10px", width: "100%", height: "36px" }}>
+    <div style={{ marginTop: "15px", width: "100%", height: "36px" }}>
       <Global
         styles={css`
           .progress_bar {
