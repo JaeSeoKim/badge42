@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 12:19:45 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 12:27:32 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,17 @@ export const getUserStats: Middleware = async (ctx, next) => {
             user_data.info.cursus_users[
               index != -1 ? index : user_data.info.cursus_users.length - 1
             ].level,
+          blackhole: {
+            begin_at : user_data.info.cursus_users[
+              index != -1 ? index : user_data.info.cursus_users.length - 1
+            ].begin_at,
+            blackholed_at : user_data.info.cursus_users[
+              index != -1 ? index : user_data.info.cursus_users.length - 1
+            ].blackholed_at,
+            end_at : user_data.info.cursus_users[
+              index != -1 ? index : user_data.info.cursus_users.length - 1
+            ].end_at,
+          }
         }}
         darkmode={darkmode == "true"}
         color={color.includes("#") ? color : `#${color}`}
