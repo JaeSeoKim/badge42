@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 09:15:46 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 10:30:31 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ export const getUserStats: Middleware = async (ctx, next) => {
     let cover = "";
     let color = "#00BABC"; // Default Color
 
-    // const user_data = {
-    //   info: await get42UserInfoCache(intraId, cacheStore),
-    //   coalition: await get42UserCoalitionCache(intraId, cacheStore),
-    // };
+    const user_data = {
+      info: await get42UserInfoCache(intraId, cacheStore),
+      coalition: await get42UserCoalitionCache(intraId, cacheStore),
+    };
 
     /* SAMPLE DATA */
-    const user_data: get42UserData = await JSON.parse(
-      fs.readFileSync("test/sample-jeaskim-2020-11-05.json").toString()
-    );
+    // const user_data: get42UserData = await JSON.parse(
+    //   fs.readFileSync("test/sample-jeaskim-2020-11-05.json").toString()
+    // );
 
     const index = cursus
       ? _.findIndex(cursus, {
