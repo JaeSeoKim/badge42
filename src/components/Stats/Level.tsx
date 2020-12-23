@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 21:18:25 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 01:42:29 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 10:19:58 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ const Level: React.FC<Props> = ({ darkmode, level, color }) => {
           width: "100%",
           height: "100%",
           borderRadius: "4.5px",
-          backgroundColor: "rgba(32,32,38,0.5)",
+          backgroundColor: "rgba(32,32,38,0.7)",
         }}
       >
         <div
