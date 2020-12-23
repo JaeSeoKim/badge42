@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 23:11:26 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 00:23:08 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 09:14:33 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ const SvgContainer: React.FC<Props> = ({
           strokeOpacity="1"
         />
       )}
-      {/* {children} */}
+      {children}
     </svg>
   );
 };

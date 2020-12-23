@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 19:22:02 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 01:39:25 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 10:20:24 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const Logo: React.FC<Props> = ({ logo, color, darkmode }) => {
         y="0px"
         viewBox="0 0 68 104"
         fill={darkmode ? color : color}
-        fillOpacity={darkmode ? "0.3" : "0.5"}
+        fillOpacity={darkmode ? "0.3" : "0.7"}
       >
         <g>
           <g transform="translate(-96.000000, -60.000000)">
@@ -42,7 +42,7 @@ const Logo: React.FC<Props> = ({ logo, color, darkmode }) => {
         y="12"
         width="30"
         height="30"
-        href={logo.replace("ZmlsbD0iIzAwMDAwMCI", "ZmlsbD0iI0ZGRkZGRiI")}
+        href={logo}
         data-testid={"logo"}
       />
     </svg>
