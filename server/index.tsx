@@ -6,11 +6,12 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:47:12 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/23 13:58:57 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 14:07:24 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import Koa from "koa";
+import serve from "koa-static";
 import morgan from "koa-morgan";
 import Router from "koa-router";
 import bodyparser from "koa-body";
@@ -44,6 +45,7 @@ const main = async () => {
 
   app.use(router.routes());
   app.use(router.allowedMethods());
+  app.use(serve("public"));
   app.listen(port, () => {
     console.log(
       `> ✨Ready on ${
