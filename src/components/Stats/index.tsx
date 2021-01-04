@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:41:01 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 12:49:42 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/01/04 15:33:34 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ const Stats: React.FC<Props> = ({ data, color, cover, darkmode, logo }) => {
     >
       <Global
         styles={css`
+          * {
+            filter: none;
+          }
           .fadeIn {
             opacity: 0;
             animation: ${fadeIn} 0.7s ease-in-out;
