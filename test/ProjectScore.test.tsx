@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 03:06:26 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/22 17:34:36 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/01/04 14:07:04 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ import fs from "fs";
 import ProjectScore from "../src/components/ProjectScore";
 
 describe("test ProjectScore", () => {
-  it("render Succes : ", () => {
+  it("render Success : ", () => {
     const data = {
       id: 2004626,
       occurrence: 1,
@@ -39,7 +39,7 @@ describe("test ProjectScore", () => {
     const { container } = render(<ProjectScore data={data} />);
 
     expect(container.querySelector("[data-testid='type']").textContent).toBe(
-      "Succes"
+      "Success"
     );
     expect(
       container.querySelector("[data-testid='final_mark']").textContent
