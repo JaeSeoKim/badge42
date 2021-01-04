@@ -6,12 +6,13 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:44:19 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 20:40:00 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/01/04 15:29:16 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import { Global, css } from "@emotion/core";
 import React from "react";
+import fs from "fs";
 
 interface Props {
   width: number;
@@ -29,6 +30,18 @@ const Container: React.FC<Props> = ({
   backgroundImage,
   children,
 }) => {
+  let rgba = `0, 0, 0, ${darkmode ? "0.7" : "0.1"}`;
+  if (backgroundImage == "url()") {
+    backgroundImage = `url(data:image/jpeg;base64,${fs
+      .readFileSync(`src/img/cover/none.jpg`)
+      .toString("base64")})`;
+
+    let r = parseInt(color.slice(1, 3), 16);
+    let g = parseInt(color.slice(3, 5), 16);
+    let b = parseInt(color.slice(5, 7), 16);
+    darkmode = !darkmode;
+    rgba = `${r}, ${g}, ${b}, 0.5`;
+  }
   return (
     <svg
       width={width}
@@ -56,8 +69,8 @@ const Container: React.FC<Props> = ({
             margin: 0,
             backgroundColor: color,
             backgroundImage: darkmode
-              ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), ${backgroundImage}`
-              : backgroundImage,
+              ? `linear-gradient(rgba(${rgba}), rgba(${rgba}) ), ${backgroundImage}`
+              : `linear-gradient(rgba(${rgba}), rgba(${rgba}) ), ${backgroundImage}`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
