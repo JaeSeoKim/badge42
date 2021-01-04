@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:44:19 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 12:23:00 by jaeskim          ###   ########.fr       */
+/*   Updated: 2020/12/23 20:40:00 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ const Container: React.FC<Props> = ({
             backgroundColor: color,
             backgroundImage: darkmode
               ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), ${backgroundImage}`
-              : `linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0) ), ${backgroundImage}`,
+              : backgroundImage,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",

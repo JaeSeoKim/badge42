@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 03:04:45 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/11/22 17:30:51 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/01/04 14:06:23 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const ProjectScore: React.FC<Props> = ({ data }) => {
   const type =
     data["validated?"] != null
       ? data["validated?"] == true
-        ? "Succes"
+        ? "Success"
         : "Fail"
       : "Subscribed";
 
