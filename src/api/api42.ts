@@ -6,15 +6,12 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 21:20:41 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 01:29:01 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/02/20 21:00:35 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import Axios from "axios";
-import { token } from "koa-morgan";
-import { chain } from "lodash";
 import NodeCache from "node-cache";
-import { string } from "prop-types";
 
 // for development
 const NODE_ENV = process.env.NODE_ENV;
@@ -90,6 +87,12 @@ export interface get42UserInfoData {
   wallet: number;
   anonymize_date: string | null;
   campus: { id: number; name: string }[];
+  campus_users: {
+    id: number;
+    user_id: number;
+    campus_id: number;
+    is_primary: boolean;
+  }[];
   projects_users: projects_users[];
   cursus_users: get42UserCursusData[];
 }
@@ -191,8 +194,7 @@ export const get42UserCursusCache = async (
 
 export interface get42UserData {
   info: get42UserInfoData;
-  coalition: Array<get42UserCoalitionData>;
-  cursus: Array<get42UserCursusData>;
+  coalition: get42UserCoalitionData[];
 }
 
 export const get42API = async (path: string) => {
