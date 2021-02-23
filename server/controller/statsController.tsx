@@ -142,7 +142,6 @@ export const getUserStats: Middleware = async (ctx, next) => {
       />
     );
   } catch (error) {
-    console.log(error);
     ctx.res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     ctx.res.setHeader("Pragma", "no-cache");
     ctx.res.setHeader("Expires", "0");
