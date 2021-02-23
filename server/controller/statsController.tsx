@@ -24,6 +24,11 @@ import ErrorContainer from "../../src/components/ErrorContainer";
 
 const EXPIRE_TIME = 43200;
 
+function loadImage(path: string, defaultPath: string, type: string = 'image/jpeg'): string {
+  const workingPath: string = fs.existsSync(path) ? path : defaultPath;
+  return `data:${type};base64,${fs.readFileSync(workingPath).toString("base64")}`;
+}
+
 export const getUserStats: Middleware = async (ctx, next) => {
   let {
     params: { intraId },
@@ -72,12 +77,8 @@ export const getUserStats: Middleware = async (ctx, next) => {
       user_data.coalition.length > 0
     ) {
       if (user_data.coalition[0].cover_url)
-        cover = `data:image/jpeg;base64,${fs
-          .readFileSync(`src/img/cover/${user_data.coalition[0].id}.jpeg`)
-          .toString("base64")}`;
-      logo = `data:image/svg+xml;base64,${fs
-        .readFileSync(`src/img/logo/${user_data.coalition[0].id}.svg`)
-        .toString("base64")}`;
+        cover = loadImage(`src/img/cover/${user_data.coalition[0].id}.jpeg`, 'src/img/cover/1.jpeg');
+      logo = loadImage(`src/img/logo/${user_data.coalition[0].id}.svg`, 'src/img/logo/unknown.svg', 'image/svg+xml');
       color = user_data.coalition[0].color;
     } else {
       cover = `data:image/jpeg;base64,${fs
@@ -141,6 +142,7 @@ export const getUserStats: Middleware = async (ctx, next) => {
       />
     );
   } catch (error) {
+    console.log(error);
     ctx.res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     ctx.res.setHeader("Pragma", "no-cache");
     ctx.res.setHeader("Expires", "0");
