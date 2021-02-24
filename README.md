@@ -83,6 +83,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://sungwoo.dev"><img src="https://avatars.githubusercontent.com/u/33975709?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sungwoo Park</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Acos18" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/pde-bakk"><img src="https://avatars.githubusercontent.com/u/36886300?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Peer de Bakker</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Apde-bakk" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
