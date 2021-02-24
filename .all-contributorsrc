@@ -9,6 +9,17 @@
   "imageSize": 100,
   "commit": false,
   "commitConvention": "gitmoji",
-  "contributors": [],
-  "contributorsPerLine": 7
+  "contributors": [
+    {
+      "login": "d-r-e",
+      "name": "David Rodríguez Elipe",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9976038?v=4",
+      "profile": "https://www.linkedin.com/in/drelipe/",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
