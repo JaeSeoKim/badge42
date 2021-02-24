@@ -54,6 +54,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "aabajyan",
+      "name": "Arsen Abajyan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62068860?v=4",
+      "profile": "https://github.com/aabajyan",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
