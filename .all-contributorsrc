@@ -45,6 +45,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "jkctech",
+      "name": "JKCTech",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2072890?v=4",
+      "profile": "https://jkctech.nl",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
