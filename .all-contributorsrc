@@ -11,6 +11,24 @@
   "commitConvention": "gitmoji",
   "contributors": [
     {
+      "login": "cos18",
+      "name": "Sungwoo Park",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33975709?v=4",
+      "profile": "http://sungwoo.dev",
+      "contributions": [
+        "bug"
+      ]
+    },
+    { 
+      "login": "pde-bakk",
+      "name": "Peer de Bakker",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36886300?v=4",
+      "profile": "https://github.com/pde-bakk",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
       "login": "d-r-e",
       "name": "David Rodríguez Elipe",
       "avatar_url": "https://avatars.githubusercontent.com/u/9976038?v=4",
