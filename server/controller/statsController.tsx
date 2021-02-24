@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2021/02/20 21:04:23 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/02/24 14:26:30 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,9 @@ import {
 } from "../../src/api/api42";
 import Stats from "../../src/components/Stats";
 import ErrorContainer from "../../src/components/ErrorContainer";
+import { loadImage } from "../../src/util/loadImage";
 
 const EXPIRE_TIME = 43200;
-
-function loadImage(path: string, defaultPath: string, type: string = 'image/jpeg'): string {
-  const workingPath: string = fs.existsSync(path) ? path : defaultPath;
-  return `data:${type};base64,${fs.readFileSync(workingPath).toString("base64")}`;
-}
 
 export const getUserStats: Middleware = async (ctx, next) => {
   let {
@@ -77,8 +73,15 @@ export const getUserStats: Middleware = async (ctx, next) => {
       user_data.coalition.length > 0
     ) {
       if (user_data.coalition[0].cover_url)
-        cover = loadImage(`src/img/cover/${user_data.coalition[0].id}.jpeg`, 'src/img/cover/1.jpeg');
-      logo = loadImage(`src/img/logo/${user_data.coalition[0].id}.svg`, 'src/img/logo/unknown.svg', 'image/svg+xml');
+        cover = loadImage(
+          `src/img/cover/${user_data.coalition[0].id}.jpeg`,
+          "src/img/cover/1.jpeg"
+        );
+      logo = loadImage(
+        `src/img/logo/${user_data.coalition[0].id}.svg`,
+        "src/img/logo/unknown.svg",
+        "image/svg+xml"
+      );
       color = user_data.coalition[0].color;
     } else {
       cover = `data:image/jpeg;base64,${fs
