@@ -19,7 +19,7 @@
         "bug"
       ]
     },
-    { 
+    {
       "login": "pde-bakk",
       "name": "Peer de Bakker",
       "avatar_url": "https://avatars.githubusercontent.com/u/36886300?v=4",
@@ -35,6 +35,15 @@
       "profile": "https://www.linkedin.com/in/drelipe/",
       "contributions": [
         "ideas"
+      ]
+    },
+    {
+      "login": "olesgedz",
+      "name": "Oles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8808075?v=4",
+      "profile": "http://olesgedz.github.io",
+      "contributions": [
+        "bug"
       ]
     }
   ],
