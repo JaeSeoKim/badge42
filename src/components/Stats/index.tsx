@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:41:01 by jaeskim           #+#    #+#             */
-/*   Updated: 2021/03/21 00:54:42 by aabajyan         ###   ########.fr       */
+/*   Updated: 2021/03/21 12:43:18 by aabajyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ const Stats: React.FC<Props> = ({ data, color, cover, darkmode, logo }) => {
       </FlexContainer>
       <FlexContainer width={width}>
         <Information name={data.name} grade={data.grade} email={data.email} />
-        { data.grade === "Learner" && <Blackhole darkmode={darkmode} data={data.blackhole} /> }
+        {(data.grade !== "Member") && 
+           <Blackhole darkmode={darkmode} data={data.blackhole} />}
       </FlexContainer>
       <FlexContainer width={width}>
         <Level darkmode={darkmode} level={data.level} color={color} />
