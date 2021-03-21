@@ -100,7 +100,8 @@ const Stats: React.FC<Props> = ({ data, color, cover, darkmode, logo }) => {
       </FlexContainer>
       <FlexContainer width={width}>
         <Information name={data.name} grade={data.grade} email={data.email} />
-        { (data.cursus !== "42cursus" || data.grade === "Learner") && <Blackhole darkmode={darkmode} data={data.blackhole} /> }
+        {(data.grade !== "Member") && 
+           <Blackhole darkmode={darkmode} data={data.blackhole} />}
       </FlexContainer>
       <FlexContainer width={width}>
         <Level darkmode={darkmode} level={data.level} color={color} />
