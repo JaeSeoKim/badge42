@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2021/02/24 14:26:30 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/04/03 03:45:41 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ const EXPIRE_TIME = 43200;
 export const getUserStats: Middleware = async (ctx, next) => {
   let {
     params: { intraId },
-    query: { privacyEmail, cursus, darkmode },
+    query: { privacyEmail, cursus, darkmode, privacyName },
     cacheStore,
   } = ctx;
 
@@ -96,7 +96,10 @@ export const getUserStats: Middleware = async (ctx, next) => {
       <Stats
         data={{
           id: intraId,
-          name: user_data.info.first_name + " " + user_data.info.last_name,
+          name:
+            privacyName == "true"
+              ? null
+              : user_data.info.first_name + " " + user_data.info.last_name,
           campus: user_data.info.campus[campus_index].name,
           cursus:
             user_data.info.cursus_users[
