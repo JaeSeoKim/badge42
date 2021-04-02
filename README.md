@@ -17,10 +17,11 @@ Change the `intra_id` value to your 42 Intra username.
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/intra_id)](https://github.com/JaeSeoKim/badge42)
 ```
 
-### 🔒 If you want to protect your **email privacy**, please add the options below!
+### 🔒 If you want to protect your **email, name privacy**, please add the options below!
 
 ```
 privacyEmail=true
+privacyName=true
 ```
 
 #### example
@@ -30,6 +31,12 @@ privacyEmail=true
 ```
 
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyEmail=true)](https://github.com/JaeSeoKim/badge42)
+
+```
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyName=true)](https://github.com/JaeSeoKim/badge42)
+```
+
+[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyName=true)](https://github.com/JaeSeoKim/badge42)
 
 ### ⚓️ Now you can choose **cursus**!
 

@@ -33,9 +33,11 @@ const Container: React.FC<{
 
 const Information: React.FC<Props> = ({ grade, name, email }) => {
   return (
-    <div style={{ marginLeft: "8px" }}>
+    <div style={{ marginLeft: "8px", minHeight: "54px" }}>
       <Container title={"Grade"} value={grade} animationDelay={"75ms"} />
-      <Container title={"Name"} value={name} animationDelay={"100ms"} />
+      {name && (
+        <Container title={"Name"} value={name} animationDelay={"100ms"} />
+      )}
       {email && (
         <Container title={"Email"} value={email} animationDelay={"125ms"} />
       )}
