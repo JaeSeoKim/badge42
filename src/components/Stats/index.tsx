@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:41:01 by jaeskim           #+#    #+#             */
-/*   Updated: 2021/04/03 03:45:39 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/04/06 10:38:28 by jaeskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ const FlexContainer: React.FC<{ width: number }> = ({ width, children }) => {
 
 const Stats: React.FC<Props> = ({ data, color, cover, darkmode, logo }) => {
   const width = 495;
-  const height = 195 - (data.email || data.name == null ? 25 : 0);
+  const height = 195 - (data.email == null || data.name == null ? 25 : 0);
 
   const fadeIn = keyframes`
     0% { opacity: 0; }
