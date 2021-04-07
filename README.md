@@ -95,6 +95,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://olesgedz.github.io"><img src="https://avatars.githubusercontent.com/u/8808075?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Oles</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Aolesgedz" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://jkctech.nl"><img src="https://avatars.githubusercontent.com/u/2072890?v=4?s=100" width="100px;" alt=""/><br /><sub><b>JKCTech</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Ajkctech" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/aabajyan"><img src="https://avatars.githubusercontent.com/u/62068860?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arsen Abajyan</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/commits?author=aabajyan" title="Code">💻</a> <a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Aaabajyan" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/leeoocca"><img src="https://avatars.githubusercontent.com/u/36135198?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leeoocca</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/commits?author=leeoocca" title="Code">💻</a> <a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Aleeoocca" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

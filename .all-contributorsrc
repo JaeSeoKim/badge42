@@ -64,6 +64,16 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "leeoocca",
+      "name": "leeoocca",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36135198?v=4",
+      "profile": "https://github.com/leeoocca",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
