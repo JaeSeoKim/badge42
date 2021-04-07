@@ -24,7 +24,7 @@ const downloadImg = async () => {
           );
         if (data.cover_url)
           fs.writeFileSync(
-            `src/img/cover/${data.id}.jpeg`,
+            `src/img/cover/${data.id}.jpg`,
             (
               await Axios.get(encodeURI(data.cover_url), {
                 responseType: "arraybuffer",

@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
-/*   Updated: 2021/04/03 03:45:41 by jaeskim          ###   ########.fr       */
+/*   Updated: 2021/04/07 04:38:59 by lrocca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ export const getUserStats: Middleware = async (ctx, next) => {
     ) {
       if (user_data.coalition[0].cover_url)
         cover = loadImage(
-          `src/img/cover/${user_data.coalition[0].id}.jpeg`,
-          "src/img/cover/1.jpeg"
+          `src/img/cover/${user_data.coalition[0].id}.jpg`,
+          "src/img/cover/1.jpg"
         );
       logo = loadImage(
         `src/img/logo/${user_data.coalition[0].id}.svg`,
