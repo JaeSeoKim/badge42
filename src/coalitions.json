@@ -1158,5 +1158,45 @@
 		"color": "#FFC508",
 		"score": 47505,
 		"user_id": 78694
+	},
+	"122": {
+		"id": 122,
+		"name": "Corrino",
+		"slug": "42cursus-nice-corrino",
+		"image_url": "https://cdn.intra.42.fr/coalition/image/122/dune_logo_cor_2.svg",
+		"cover_url": "https://cdn.intra.42.fr/coalition/cover/122/bg_classic_corrino.jpg",
+		"color": "#A061D1",
+		"score": 199,
+		"user_id": 74543
+	},
+	"124": {
+		"id": 124,
+		"name": "Sith",
+		"slug": "sith",
+		"image_url": "https://cdn.intra.42.fr/coalition/image/124/sith.svg",
+		"cover_url": "https://cdn.intra.42.fr/coalition/cover/124/federation_background.jpg",
+		"color": "#FF4A29",
+		"score": 8507,
+		"user_id": 74829
+	},
+	"125": {
+		"id": 125,
+		"name": "Saiyan",
+		"slug": "saiyajin",
+		"image_url": "https://cdn.intra.42.fr/coalition/image/125/saiyan.svg",
+		"cover_url": "https://cdn.intra.42.fr/coalition/cover/125/order_background.jpg",
+		"color": "#FFBF5E",
+		"score": 7170,
+		"user_id": 80948
+	},
+	"126": {
+		"id": 126,
+		"name": "Void",
+		"slug": "void",
+		"image_url": "https://cdn.intra.42.fr/coalition/image/126/void.svg",
+		"cover_url": "https://cdn.intra.42.fr/coalition/cover/126/void_background.jpg",
+		"color": "#A245FF",
+		"score": 7312,
+		"user_id": 80355
 	}
 }
