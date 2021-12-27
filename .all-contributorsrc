@@ -74,6 +74,16 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "ricardoreves",
+      "name": "ricardoreves",
+      "avatar_url": "https://avatars.githubusercontent.com/u/89393929?v=4",
+      "profile": "https://github.com/ricardoreves",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
