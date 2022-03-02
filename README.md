@@ -3,6 +3,10 @@
 
 [![github-action](https://github.com/JaeSeoKim/badge42/workflows/test/badge.svg)](https://github.com/JaeSeoKim/badge42/actions) [![codecov](https://codecov.io/gh/JaeSeoKim/badge42/branch/master/graph/badge.svg?token=D5PPJZKDUY)](https://codecov.io/gh/JaeSeoKim/badge42)
 
+> # ⚠️ The service will be suspended for a while until the issue is resolved.
+>
+> [Addition of certification procedures to satisfy the EU GDPR policy. #66](https://github.com/JaeSeoKim/badge42/issues/66)
+
 > 🚀 Dynamically generated 42 badge for your git readmes.
 
 ![jaeskim's stats](https://badge42.herokuapp.com/api/stats/jaeskim)
