@@ -43,34 +43,33 @@ const imageProcess = async (
 };
 
 const main = async () => {
-  const coalitions = await prisma.coalition.findMany();
-  const achievements = await prisma.achievement.findMany();
-
-  await Promise.all([
-    ...coalitions.map(async (coalition) => {
-      await imageProcess(
-        coalition.image_url,
-        path.join(process.cwd(), `public/assets/logo/${coalition.id}.svg`)
-      );
-      coalition.cover_url &&
-        (await imageProcess(
-          coalition.cover_url,
-          path.join(process.cwd(), `public/assets/cover/${coalition.id}.jpg`),
-          true
-        ));
-    }),
-    ...achievements.map(async (achievement) => {
-      if (achievement.image) {
-        await imageProcess(
-          `${END_POINT_42API}${achievement.image}`,
-          path.join(
-            process.cwd(),
-            `public/assets/achievement/${achievement.id}.svg`
-          )
-        );
-      }
-    }),
-  ]);
+  // const coalitions = await prisma.coalition.findMany();
+  // const achievements = await prisma.achievement.findMany();
+  // await Promise.all([
+  //   ...coalitions.map(async (coalition) => {
+  //     await imageProcess(
+  //       coalition.image_url,
+  //       path.join(process.cwd(), `public/assets/logo/${coalition.id}.svg`)
+  //     );
+  //     coalition.cover_url &&
+  //       (await imageProcess(
+  //         coalition.cover_url,
+  //         path.join(process.cwd(), `public/assets/cover/${coalition.id}.jpg`),
+  //         true
+  //       ));
+  //   }),
+  //   ...achievements.map(async (achievement) => {
+  //     if (achievement.image) {
+  //       await imageProcess(
+  //         `${END_POINT_42API}${achievement.image}`,
+  //         path.join(
+  //           process.cwd(),
+  //           `public/assets/achievement/${achievement.id}.svg`
+  //         )
+  //       );
+  //     }
+  //   }),
+  // ]);
 };
 
 main()
