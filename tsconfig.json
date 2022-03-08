@@ -16,6 +16,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["process.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "types/process.d.ts",
+    "types/next-env.d.ts",
+    "types/next-auth.d.tsd.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }

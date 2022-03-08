@@ -294,6 +294,10 @@ export const get42Achievements = (params?: Partial<PageParams>) => {
 
 export const get42Coalitions = (params?: Partial<PageParams>) => {
   return queue.add(() =>
-    axiosClientFor42Pagenation<Coalition[]>("/v2/coalitions", params)
+    axiosClientFor42Pagenation<Coalition[]>(`/v2/coalitions`, params)
   );
+};
+
+export const get42UsersById = (id: string | number) => {
+  return queue.add(() => axiosClientFor42Pagenation<User>(`/v2/users/${id}`));
 };

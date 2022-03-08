@@ -9,9 +9,10 @@ export type LoginButtonProps = {
     logo?: Icon;
   };
   onClick: () => {};
+  disable?: boolean;
 };
 
-const LoginButton = ({ provider, onClick }: LoginButtonProps) => {
+const LoginButton = ({ provider, onClick, disable }: LoginButtonProps) => {
   const { name, background, color, logo: Logo } = provider;
   return (
     <div>
@@ -20,11 +21,15 @@ const LoginButton = ({ provider, onClick }: LoginButtonProps) => {
           background: background,
           color: color,
         }}
-        className={`w-full h-12 rounded text-xl flex gap-2 justify-center items-center`}
+        className={`w-full h-12 rounded text-xl flex gap-2 justify-center items-center disabled:opacity-75 disabled:cursor-not-allowed`}
         onClick={onClick}
+        disabled={disable}
       >
         {Logo && <Logo fontSizeAdjust={"14px"} />}
-        {`Sign in with ${name}`}
+        <p>
+          {`Sign in with `}
+          {name}
+        </p>
       </button>
     </div>
   );
