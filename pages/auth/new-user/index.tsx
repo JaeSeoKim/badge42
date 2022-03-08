@@ -16,7 +16,9 @@ import Link from "next/link";
 const NewUserPage: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ accounts }) => {
-  const { data: session } = useSession();
+  useSession({
+    required: true,
+  });
   const [callbackUrl, setCallBackUrl] = useState("/");
 
   const accountsObj = collection.keyBy(accounts, "provider");
