@@ -15,7 +15,15 @@ export function PrismaAdapter(p: PrismaClient): Adapter {
     },
     updateUser: ({ id, ...data }) => p.user.update({ where: { id }, data }),
     deleteUser: (id) => p.user.delete({ where: { id } }),
-    linkAccount: (data) => p.account.create({ data }) as any,
+    linkAccount: (data) =>
+      p.account.create({
+        data: {
+          provider: data.provider,
+          providerAccountId: data.providerAccountId,
+          type: data.type,
+          userId: data.userId,
+        },
+      }) as any,
     unlinkAccount: (provider_providerAccountId) =>
       p.account.delete({ where: { provider_providerAccountId } }) as any,
     async getSessionAndUser(sessionToken) {
