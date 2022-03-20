@@ -189,13 +189,13 @@ const Home = () => {
       <label>
         <p className="text-neutral-600">*markdown</p>{" "}
         <Code
-          code={`![${data.extended42Data.login}'s 42 stats](https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}}`}
+          code={`[![${data.extended42Data.login}'s 42 stats](https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId})](https://github.com/JaeSeoKim/badge42)`}
         />
       </label>
       <label>
         <p className="text-neutral-600">*html</p>{" "}
         <Code
-          code={`<img src="https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}}" alt="${data.extended42Data.login}'s 42 stats" />`}
+          code={`<a herf="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}}" alt="${data.extended42Data.login}'s 42 stats" /></a>`}
         />
       </label>
     </Layout>
