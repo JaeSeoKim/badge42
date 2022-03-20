@@ -1,6 +1,6 @@
 import axios from "axios";
 import collection from "lodash-es/collection";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import Loading from "../../components/Loading";
@@ -69,6 +69,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             });
         }
       } else {
+        signOut();
         console.error(error);
       }
     }
