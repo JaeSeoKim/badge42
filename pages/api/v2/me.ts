@@ -1,9 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
-import { getSession } from "next-auth/react";
 import prisma from "../../../db";
 import {
-  FTAccountNotLinked,
   updateUserExtends42Data,
 } from "../../../lib/updateUserExtends42Data";
 
@@ -26,17 +24,12 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(200).json(user);
   } catch (error) {
-    console.error(error);
     if (error instanceof AuthError) {
       return res.status(401).json({
         message: error.message,
       });
     }
-    if (error instanceof FTAccountNotLinked) {
-      return res.status(403).json({
-        message: error.message,
-      });
-    }
+    console.error(error);
     throw error;
   }
 };
@@ -54,12 +47,12 @@ const DeleteHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       message: "success",
     });
   } catch (error) {
-    console.error(error);
     if (error instanceof AuthError) {
       return res.status(401).json({
         message: error.message,
       });
     }
+    console.error(error);
     throw error;
   }
 };
@@ -103,7 +96,6 @@ const PatchHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       message: "success",
     });
   } catch (error) {
-    console.error(error);
     if (error instanceof ValidateError) {
       return res.status(400).json({
         message: error.message,
@@ -114,6 +106,7 @@ const PatchHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         message: error.message,
       });
     }
+    console.error(error);
     throw error;
   }
 };

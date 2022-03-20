@@ -17,14 +17,6 @@ export class UserNotFound extends Error {
   }
 }
 
-export class FTAccountNotLinked extends Error {
-  constructor() {
-    super();
-    this.name = "FTAccountNotLinked";
-    this.message = "42School Account Not Linked";
-  }
-}
-
 const getUser = async (where: { id: string } | { email: string }) =>
   await prisma.user.findUnique({
     where,
@@ -45,7 +37,7 @@ export const updateUserExtends42Data: (
   if (!user) throw new UserNotFound();
 
   const accounts = collection.keyBy(user.accounts, "provider");
-  if (!accounts["42-school"]) throw new FTAccountNotLinked();
+  if (!accounts["42-school"]) return user;
 
   // if (process.env.NODE_ENV === "production") {
   const ExpiresDate = new Date();

@@ -14,6 +14,14 @@ const EXPIRE_TIME = 12 * 60 * 60;
 
 const BASE_URL = process.env.NEXTAUTH_URL ?? process.env.VERCEL_URL;
 
+class FTAccountNotLinked extends Error {
+  constructor() {
+    super();
+    this.name = "FTAccountNotLinked";
+    this.message = "42School Account Not Linked";
+  }
+}
+
 const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { user_id, cursusId } = req.query as {
@@ -24,6 +32,9 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     const user = await updateUserExtends42Data({
       id: user_id,
     });
+
+    const accounts = collection.keyBy(user.accounts, "provider");
+    if (!accounts["42-school"]) throw new FTAccountNotLinked();
 
     const cursus_users = collection.keyBy(
       user.extended42Data.cursus_users,
