@@ -13,7 +13,6 @@ const Infomation = ({ data }: InfomationProps) => {
     <>
       {data.map(([key, value], i) => (
         <g
-          filter="url(#filter_shadow)"
           key={`${key}-${value}`}
           className="fadeIn"
           style={{

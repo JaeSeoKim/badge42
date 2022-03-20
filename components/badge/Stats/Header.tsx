@@ -11,7 +11,7 @@ export type HeaderProps = {
 const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
   return (
     <>
-      <g id="logo" className="fadeIn" filter="url(#filter_shadow)">
+      <g id="logo" className="fadeIn">
         <path d="M14 49.5455V5H50V49.5455L32 61L14 49.5455Z" fill={color} />
         <image
           x="16"
@@ -28,7 +28,6 @@ const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
         style={{
           animationDelay: "0.25s",
         }}
-        filter="url(#filter_shadow)"
       >
         <text
           fill="white"
@@ -52,7 +51,6 @@ const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
         style={{
           animationDelay: "0.5s",
         }}
-        filter="url(#filter_shadow)"
       >
         <text
           fill="white"
@@ -75,7 +73,6 @@ const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
         style={{
           animationDelay: "0.75s",
         }}
-        filter="url(#filter_shadow)"
       >
         <path
           d="M442 38.7359H457.473V46.4891H465.194V32.4781H449.748L465.194 17H457.473L442 32.4781V38.7359Z"
