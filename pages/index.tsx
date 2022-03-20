@@ -1,11 +1,36 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Layout from "../components/Layout";
-import Stats from "../components/badge/Stats";
+import Stats, { StatsProps } from "../components/badge/Stats";
 import Code from "../components/Code";
 import collection from "lodash-es/collection";
 import { AuthContext, withAuth } from "../lib/auth/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
+
+const StatsWrapper = ({ data }: StatsProps) => {
+  const [isShow, setIsShow] = useState(false);
+
+  useEffect(() => {
+    setIsShow(false);
+    const timer = setTimeout(() => {
+      setIsShow(true);
+    });
+
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [...Object.values(data)]);
+
+  return (
+    <div
+      style={{
+        width: "500px",
+        height: "200px",
+      }}
+    >
+      {isShow && <Stats data={data} />}
+    </div>
+  );
+};
 
 type StatsOptionsProps = {
   isDisplayName: boolean;
@@ -143,7 +168,7 @@ const Home = () => {
         Stats
       </h2>
       <div className="mx-auto max-w-full overflow-y-auto">
-        <Stats
+        <StatsWrapper
           data={{
             login: data.extended42Data.login,
             name: isDisplayName && data.extended42Data.displayname,
