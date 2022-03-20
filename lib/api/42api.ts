@@ -5,7 +5,9 @@ import NodeCache from "node-cache";
 export const END_POINT_42API = "https://api.intra.42.fr";
 
 const apiCache = new NodeCache();
-const queue = new PQueue({ concurrency: 4 });
+const queue = new PQueue({
+  concurrency: process.env.NODE_ENV === "production" ? 8 : 2,
+});
 
 export const axiosClientFor42 = axios.create({
   baseURL: END_POINT_42API,
@@ -298,6 +300,12 @@ export const get42Coalitions = (params?: Partial<PageParams>) => {
   );
 };
 
-export const get42UsersById = (id: string | number) => {
+export const get42User = (id: string | number) => {
   return queue.add(() => axiosClientFor42Pagenation<User>(`/v2/users/${id}`));
+};
+
+export const get42UserCoalition = async (id: string | number) => {
+  return queue.add(() =>
+    axiosClientFor42Pagenation<Coalition[]>(`/v2/users/${id}/coalitions`)
+  );
 };

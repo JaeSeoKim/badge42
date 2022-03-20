@@ -60,7 +60,7 @@ const SignInPage: NextPage = () => {
             </a>
           </Link>
         </div>
-        <h1 className="text-3xl font-bold"># Sign In</h1>
+        <h1 className="text-3xl font-bold">#Sign In</h1>
         <hr className="border-neutral-300" />
         {error && (
           <div className="border-2 border-red-300 bg-red-100 rounded p-2 text-base">

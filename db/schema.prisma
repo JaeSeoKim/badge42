@@ -38,7 +38,11 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  intraUser IntraUser?
+  ftSchoolVerified Boolean @default(false)
+  extended42Data   Json?
+
+  isDisplayEmail Boolean @default(true)
+  isDisplayName  Boolean @default(true)
 }
 
 model VerificationToken {
@@ -47,70 +51,4 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-model IntraUser {
-  user    User   @relation(fields: [user_id], references: [id])
-  user_id String @unique
-
-  id        Int      @unique
-  synced_at DateTime @updatedAt
-
-  created_at DateTime
-  update_at  DateTime
-
-  login          String
-  email          String
-  displayname    String
-  isStaff        Boolean
-  pool_year      String
-  pool_month     String
-  anonymize_date DateTime
-  alumni         Boolean
-  cursus_users   CursusUser[]
-  // project_users  ProjectUser[]
-  // title_users    TitleUser[]
-  // campus_users   CampusUser[]
-  // achievements   AchievementesOnUsers[]
-  // coalitions     CoalitionsOnUsers[]
-}
-
-model CursusUser {
-  id Int @id
-
-  user    IntraUser @relation(fields: [user_id], references: [id])
-  user_id Int
-
-  cursus    Cursus @relation(fields: [cursus_id], references: [id])
-  cursus_id Int
-
-  grade         String?
-  level         Float
-  // skills        Skill[]
-  begin_at      DateTime
-  end_at        DateTime?
-  blackholed_at DateTime?
-
-  created_at DateTime
-  updated_at DateTime
-}
-
-// model Skill {
-//   id Int @id @default(autoincrement())
-
-//   cursus_user    CursusUser @relation(fields: [cursus_user_id], references: [id])
-//   cursus_user_id Int
-
-//   name  String
-//   level Float
-// }
-
-model Cursus {
-  id         Int      @id
-  created_at DateTime
-  name       String
-  slug       String
-
-  cursus_users CursusUser[]
-  // projects     CursusOnProjects[]
 }

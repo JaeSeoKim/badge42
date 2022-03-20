@@ -15,15 +15,29 @@ export function PrismaAdapter(p: PrismaClient): Adapter {
     },
     updateUser: ({ id, ...data }) => p.user.update({ where: { id }, data }),
     deleteUser: (id) => p.user.delete({ where: { id } }),
-    linkAccount: (data) =>
-      p.account.create({
+    linkAccount: async (data) => {
+      const account = await p.account.create({
         data: {
           provider: data.provider,
           providerAccountId: data.providerAccountId,
           type: data.type,
           userId: data.userId,
         },
-      }) as any,
+      }) as any;
+
+      if (data.provider === "42-school") {
+        await p.user.update({
+          where: {
+            id: data.userId,
+          },
+          data: {
+            ftSchoolVerified: true,
+          },
+        });
+      }
+
+      return account;
+    },
     unlinkAccount: (provider_providerAccountId) =>
       p.account.delete({ where: { provider_providerAccountId } }) as any,
     async getSessionAndUser(sessionToken) {

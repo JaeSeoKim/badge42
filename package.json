@@ -20,6 +20,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} db/seed.ts"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.1",
     "@icons-pack/react-simple-icons": "^4.6.1",
     "@prisma/client": "^3.10.0",
     "axios": "^0.26.0",
@@ -28,14 +29,18 @@
     "next-auth": "^4.2.1",
     "node-cache": "^5.1.2",
     "p-queue": "6.6.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react": "^17.0.2",
+    "react-copy-to-clipboard": "^5.0.4",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
-    "@svgr/webpack": "^6.2.1",
+    "@rvxlab/tailwind-plugin-ios-full-height": "^1.1.0",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
+    "@types/react-copy-to-clipboard": "^5.0.2",
+    "@types/react-dom": "^17.0.13",
     "@types/sharp": "^0.29.5",
     "autoprefixer": "^10.4.2",
     "eslint": "8.10.0",

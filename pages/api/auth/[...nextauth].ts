@@ -20,16 +20,16 @@ export default NextAuth({
     signIn: async ({ user, account, profile }) => {
       return true;
     },
-    jwt: async ({ token, user, account, profile, isNewUser }) => {
-      return token;
-    },
     redirect: async ({ url, baseUrl }) => {
       if (url.startsWith(baseUrl)) return url;
       else if (url.startsWith("/")) return new URL(url, baseUrl).toString();
       return baseUrl;
     },
-    session: async ({ session, token, user }) => {
+    session: async ({ session, token }) => {
       return session;
+    },
+    jwt: async ({ user, token, account, profile }) => {
+      return token;
     },
   },
   session: {
@@ -39,6 +39,5 @@ export default NextAuth({
   },
   pages: {
     signIn: "/auth/signin",
-    newUser: "/auth/new-user",
   },
 });

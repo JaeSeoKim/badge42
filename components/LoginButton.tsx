@@ -21,7 +21,7 @@ const LoginButton = ({ provider, onClick, disable }: LoginButtonProps) => {
           background: background,
           color: color,
         }}
-        className={`w-full h-12 rounded text-xl flex gap-2 justify-center items-center disabled:opacity-75 disabled:cursor-not-allowed`}
+        className={`w-full h-12 rounded text-xl flex gap-2 justify-center items-center disabled:opacity-30 disabled:cursor-not-allowed`}
         onClick={onClick}
         disabled={disable}
       >

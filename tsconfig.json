@@ -18,8 +18,8 @@
   },
   "include": [
     "types/process.d.ts",
-    "types/next-env.d.ts",
-    "types/next-auth.d.tsd.ts",
+    "types/next-auth.d.ts",
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
