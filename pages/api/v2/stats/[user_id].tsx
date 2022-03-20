@@ -4,7 +4,6 @@ import ReactDomServer from "react-dom/server";
 import Stats from "../../../../components/badge/Stats";
 import { getBase64ImageFromUrl } from "../../../../lib/getBase64ImageFromUrl";
 import {
-  FTAccountNotLinked,
   updateUserExtends42Data,
   UserNotFound,
 } from "../../../../lib/updateUserExtends42Data";
