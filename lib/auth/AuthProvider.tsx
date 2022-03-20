@@ -1,6 +1,6 @@
 import axios from "axios";
 import collection from "lodash-es/collection";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import Loading from "../../components/Loading";
@@ -9,14 +9,14 @@ import { UserType } from "../updateUserExtends42Data";
 export const AuthContext = React.createContext<
   | {
       status: "loading" | "unauthenticated";
-      me: null;
+      data: null;
     }
   | {
       status: "authenticated" | "link42accountrequired" | "loading";
-      me: UserType;
+      data: UserType;
     }
 >({
-  me: null,
+  data: null,
   status: "loading",
 });
 
@@ -27,14 +27,14 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [auth, setAuth] = useState<
     | {
         status: "loading" | "unauthenticated";
-        me: null;
+        data: null;
       }
     | {
         status: "authenticated" | "link42accountrequired" | "loading";
-        me: UserType;
+        data: UserType;
       }
   >({
-    me: null,
+    data: null,
     status: "loading",
   });
 
@@ -49,12 +49,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const accounts = collection.keyBy(data.accounts, "provider");
       if (!accounts["42-school"]) {
         setAuth({
-          me: data,
+          data: data,
           status: "link42accountrequired",
         });
       } else {
         setAuth({
-          me: data,
+          data: data,
           status: "authenticated",
         });
       }
@@ -64,11 +64,15 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           case 401:
           default:
             setAuth({
-              me: null,
+              data: null,
               status: "unauthenticated",
             });
         }
       } else {
+        setAuth({
+          data: null,
+          status: "unauthenticated",
+        });
         signOut();
         console.error(error);
       }
@@ -98,13 +102,19 @@ export const withAuth = (
     const { status } = useContext(AuthContext);
 
     useEffect(() => {
-      if (option?.required42account && status === "link42accountrequired") {
+      if (status === "unauthenticated") {
+        signIn();
+      } else if (
+        option?.required42account &&
+        status === "link42accountrequired"
+      ) {
         router.push("/me");
       }
     }, [status, router]);
 
     if (
       status === "loading" ||
+      status === "unauthenticated" ||
       (option?.required42account && status === "link42accountrequired")
     ) {
       return (

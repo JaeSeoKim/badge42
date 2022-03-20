@@ -10,8 +10,8 @@ import axios from "axios";
 type StatsOptionsProps = {
   isDisplayName: boolean;
   isDisplayEmail: boolean;
-  setIsDisplayName: (boolean) => void;
-  setIsDisplayEmail: (boolean) => void;
+  setIsDisplayName: (value: boolean) => void;
+  setIsDisplayEmail: (value: boolean) => void;
 };
 
 const StatsOptions = ({
@@ -86,7 +86,7 @@ const StatsOptions = ({
 };
 
 const Home = () => {
-  const { me: data } = useContext(AuthContext);
+  const { data } = useContext(AuthContext);
 
   const [cursusId, setCursusId] = useState(
     data.extended42Data.cursus_users[

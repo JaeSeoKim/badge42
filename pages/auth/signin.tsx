@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
 import LoginButtonGithub from "../../components/LoginButtonGithub";
 import LoginButton42School from "../../components/LoginButton42School";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Badge42Logo from "../../components/Badge42Logo";
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export type SignInErrorTypes =
   | "Signin"
@@ -39,6 +40,8 @@ const errors: Record<SignInErrorTypes, string> = {
 const SignInPage: NextPage = () => {
   const [callbackUrl, setCallBackUrl] = useState("/");
   const [error, setError] = useState(null);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -49,6 +52,12 @@ const SignInPage: NextPage = () => {
     if (callbackUrl) setCallBackUrl(callbackUrl);
     setError(error);
   }, []);
+
+  useEffect(() => {
+    if (session) {
+      router.push(callbackUrl);
+    }
+  }, [session, router, callbackUrl]);
 
   return (
     <Layout>
