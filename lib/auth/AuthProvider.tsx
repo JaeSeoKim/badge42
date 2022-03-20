@@ -69,11 +69,11 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             });
         }
       } else {
+        signOut();
         setAuth({
           data: null,
           status: "unauthenticated",
         });
-        signOut();
         console.error(error);
       }
     }
@@ -103,6 +103,7 @@ export const withAuth = (
 
     useEffect(() => {
       if (status === "unauthenticated") {
+        signOut();
         signIn();
       } else if (
         option?.required42account &&

@@ -3,6 +3,7 @@ import { getToken } from "next-auth/jwt";
 import prisma from "../../../db";
 import {
   updateUserExtends42Data,
+  UserNotFound,
 } from "../../../lib/updateUserExtends42Data";
 
 class AuthError extends Error {
@@ -24,7 +25,7 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(200).json(user);
   } catch (error) {
-    if (error instanceof AuthError) {
+    if (error instanceof AuthError || error instanceof UserNotFound) {
       return res.status(401).json({
         message: error.message,
       });
