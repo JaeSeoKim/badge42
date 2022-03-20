@@ -24,10 +24,23 @@ export type StatsProps = {
 
 const Stats = ({ data }: StatsProps) => {
   const height = 190 - (!data.name || !data.email ? 25 : 0);
+  const fgColor = (function() {
+
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(data.color);
+
+    const r = parseInt(result[1], 16);
+    const g = parseInt(result[2], 16);
+    const b = parseInt(result[3], 16);
+
+    const luminance = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    return luminance < 0.5 ? 'black' : 'white';
+  })();
 
   return (
     <Container height={height} color={data.color} cover_url={data.cover}>
       <Header
+        fg={fgColor}
         color={data.color}
         campus={data.campus}
         cursus={data.cursus}
@@ -35,6 +48,7 @@ const Stats = ({ data }: StatsProps) => {
         logo_url={data.logo}
       />
       <Infomation
+        fg={fgColor}
         data={
           [
             ["Grade", data.grade],

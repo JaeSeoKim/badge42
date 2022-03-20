@@ -1,10 +1,11 @@
 import React from "react";
 
 export type InfomationProps = {
+  fg: string;
   data: [key: string, value: string][];
 };
 
-const Infomation = ({ data }: InfomationProps) => {
+const Infomation = ({ fg, data }: InfomationProps) => {
   const startY = 83.83;
   const startDelay = 0.5;
   const distance = 24;
@@ -20,7 +21,7 @@ const Infomation = ({ data }: InfomationProps) => {
           }}
         >
           <text
-            fill="white"
+            fill={fg}
             xmlSpace="preserve"
             style={{
               whiteSpace: "nowrap",
@@ -35,7 +36,7 @@ const Infomation = ({ data }: InfomationProps) => {
             </tspan>
           </text>
           <text
-            fill="white"
+            fill={fg}
             xmlSpace="preserve"
             style={{
               whiteSpace: "nowrap",
@@ -50,7 +51,7 @@ const Infomation = ({ data }: InfomationProps) => {
             </tspan>
           </text>
           <text
-            fill="white"
+            fill={fg}
             xmlSpace="preserve"
             style={{
               whiteSpace: "nowrap",

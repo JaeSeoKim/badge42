@@ -1,6 +1,7 @@
 import React from "react";
 
 export type HeaderProps = {
+  fg: string;
   color: string;
   login: string;
   campus: string;
@@ -8,7 +9,7 @@ export type HeaderProps = {
   logo_url: string;
 };
 
-const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
+const Header = ({ fg, color, login, campus, cursus, logo_url }: HeaderProps) => {
   return (
     <>
       <g id="logo" className="fadeIn">
@@ -30,7 +31,7 @@ const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
         }}
       >
         <text
-          fill="white"
+          fill={fg}
           xmlSpace="preserve"
           style={{
             whiteSpace: "nowrap",
@@ -53,7 +54,7 @@ const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
         }}
       >
         <text
-          fill="white"
+          fill={fg}
           xmlSpace="preserve"
           style={{
             whiteSpace: "nowrap",
@@ -76,14 +77,14 @@ const Header = ({ color, login, campus, cursus, logo_url }: HeaderProps) => {
       >
         <path
           d="M442 38.7359H457.473V46.4891H465.194V32.4781H449.748L465.194 17H457.473L442 32.4781V38.7359Z"
-          fill="white"
+          fill={fg}
         />
-        <path d="M468.527 24.7484L476.252 17H468.527V24.7484Z" fill="white" />
+        <path d="M468.527 24.7484L476.252 17H468.527V24.7484Z" fill={fg} />
         <path
           d="M476.252 24.7484L468.527 32.4781V40.2031H476.252V32.4781L484 24.7484V17H476.252V24.7484Z"
-          fill="white"
+          fill={fg}
         />
-        <path d="M484 32.4781L476.252 40.2031H484V32.4781Z" fill="white" />
+        <path d="M484 32.4781L476.252 40.2031H484V32.4781Z" fill={fg} />
       </g>
     </>
   );
