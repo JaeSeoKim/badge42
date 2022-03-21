@@ -24,6 +24,7 @@
     "@icons-pack/react-simple-icons": "^4.6.1",
     "@prisma/client": "^3.11.0",
     "axios": "^0.26.0",
+    "font-color-contrast": "11.1.0",
     "lodash-es": "^4.17.21",
     "next": "12.1.0",
     "next-auth": "^4.2.1",

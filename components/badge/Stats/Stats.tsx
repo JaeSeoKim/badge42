@@ -1,4 +1,5 @@
 import React from "react";
+import fontColorContrast from "font-color-contrast";
 import BlackHole from "./BlackHole";
 import Container from "./Container";
 import Header from "./Header";
@@ -24,18 +25,7 @@ export type StatsProps = {
 
 const Stats = ({ data }: StatsProps) => {
   const height = 190 - (!data.name || !data.email ? 25 : 0);
-  const fgColor = (function() {
-
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(data.color);
-
-    const r = parseInt(result[1], 16);
-    const g = parseInt(result[2], 16);
-    const b = parseInt(result[3], 16);
-
-    const luminance = 1 - (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
-    return luminance < 0.5 ? 'black' : 'white';
-  })();
+  const fgColor = fontColorContrast(data.color, 0.7);
 
   return (
     <Container height={height} color={data.color} cover_url={data.cover}>
