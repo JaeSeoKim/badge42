@@ -53,6 +53,26 @@ const Level = ({ color, level, height }: LevelProps) => {
         rx="5"
         fill={color}
       />
+      <g filter="url(#shadow)">
+        <text
+          fill="black"
+          fillOpacity="0.6"
+          xmlSpace="preserve"
+          className={`fadeIn`}
+          style={{
+            animationDelay: "1.5s",
+            whiteSpace: "nowrap",
+          }}
+          fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+          fontSize="14"
+          fontWeight="bold"
+          letterSpacing="0em"
+        >
+          <tspan x="209" y={height - 16}>
+            level {level.toFixed(0)} - {level_percentage}%
+          </tspan>
+        </text>
+      </g>
       <text
         fill="white"
         xmlSpace="preserve"

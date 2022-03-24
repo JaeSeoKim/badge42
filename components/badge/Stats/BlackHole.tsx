@@ -51,6 +51,26 @@ const BlackHole = ({ data }: BlackHoleProps) => {
           fill="black"
           fillOpacity="0.4"
         />
+        <g filter="url(#shadow)">
+          <text
+            fill="black"
+            fillOpacity="0.6"
+            xmlSpace="preserve"
+            className="fadeIn"
+            style={{
+              animationDelay: `1.25s`,
+              whiteSpace: "nowrap",
+            }}
+            fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+            fontSize="8"
+            fontWeight="bold"
+            letterSpacing="0em"
+          >
+            <tspan x="367.344" y="86">
+              Period learned in 42!
+            </tspan>
+          </text>
+        </g>
         <text
           fill="#ffc221"
           xmlSpace="preserve"
@@ -68,6 +88,28 @@ const BlackHole = ({ data }: BlackHoleProps) => {
             Period learned in 42!
           </tspan>
         </text>
+        <g filter="url(#shadow)">
+          <text
+            fill="black"
+            fillOpacity="0.6"
+            xmlSpace="preserve"
+            className="fadeIn"
+            style={{
+              animationDelay: `1.5s`,
+              whiteSpace: "nowrap",
+            }}
+            fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+            fontSize="10"
+            fontWeight="bold"
+            letterSpacing="0em"
+          >
+            <tspan x="351.916" y="106">
+              {new Date(data.begin_at).toISOString().substring(0, 10)} ~{" "}
+              {data.end_at &&
+                new Date(data.end_at).toISOString().substring(0, 10)}{" "}
+            </tspan>
+          </text>
+        </g>
         <text
           fill={`rgb(83, 210, 122)`}
           xmlSpace="preserve"
@@ -106,6 +148,26 @@ const BlackHole = ({ data }: BlackHoleProps) => {
         fill="black"
         fillOpacity="0.4"
       />
+      <g filter="url(#shadow)">
+        <text
+          fill="black"
+          fillOpacity="0.6"
+          xmlSpace="preserve"
+          className="fadeIn"
+          style={{
+            animationDelay: `1.25s`,
+            whiteSpace: "nowrap",
+          }}
+          fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+          fontSize="8"
+          fontWeight="bold"
+          letterSpacing="0em"
+        >
+          <tspan x="367.344" y="86">
+            BlackHole absorption
+          </tspan>
+        </text>
+      </g>
       <text
         fill="#ffc221"
         xmlSpace="preserve"
@@ -123,6 +185,26 @@ const BlackHole = ({ data }: BlackHoleProps) => {
           BlackHole absorption
         </tspan>
       </text>
+      <g filter="url(#shadow)">
+        <text
+          fill="black"
+          fillOpacity="0.6"
+          xmlSpace="preserve"
+          className="fadeIn"
+          style={{
+            animationDelay: `1.5s`,
+            whiteSpace: "nowrap",
+          }}
+          fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+          fontSize="18"
+          fontWeight="bold"
+          letterSpacing="0em"
+        >
+          <tspan x="351.916" y="110">
+            {reaminDay <= 1 ? `few hour left!` : `${reaminDay} days left!`}
+          </tspan>
+        </text>
+      </g>
       <text
         fill={getDayColor(reaminDay)}
         xmlSpace="preserve"

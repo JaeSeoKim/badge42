@@ -11,7 +11,12 @@ import {
 // 12hour
 const EXPIRE_TIME = 12 * 60 * 60;
 
-const BASE_URL = process.env.NEXTAUTH_URL ?? process.env.VERCEL_URL;
+const BASE_URL =
+  process.env.NEXTAUTH_URL ??
+  process.env.VERCEL_URL ??
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://badge42.vercel.app";
 
 class FTAccountNotLinked extends Error {
   constructor() {
@@ -77,7 +82,7 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       };
     })();
 
-    const [logo, cover] = await Promise.allSettled([
+    const [logo, cover] = await Promise.all([
       getBase64ImageFromUrl(coalition.image_url),
       getBase64ImageFromUrl(coalition.cover_url),
     ]);
@@ -102,8 +107,8 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             blackholed_at: cursus_user.blackholed_at,
             cursus: cursus_user.cursus.name,
             grade: cursus_user.grade ?? "Pisciner",
-            logo: logo.status === "fulfilled" ? logo.value : "",
-            cover: cover.status === "fulfilled" ? cover.value : "",
+            logo: logo,
+            cover: cover,
             color: coalition.color,
             email: user.isDisplayEmail && user.extended42Data.email,
           }}

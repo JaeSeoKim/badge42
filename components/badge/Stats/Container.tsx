@@ -44,7 +44,17 @@ const Container: React.FC<ContainerProps> = ({
           width="490"
           height={height}
           rx="5"
-          fill="url(#cover)"
+          fill="black"
+          fillOpacity="0.2"
+        />
+        <image
+          x="5"
+          y="5"
+          width="490"
+          height={height}
+          rx="5"
+          xlinkHref={cover_url}
+          preserveAspectRatio="xMinYMin slice"
         />
         <rect
           x="4.5"
@@ -57,6 +67,23 @@ const Container: React.FC<ContainerProps> = ({
       </g>
       {children}
       <defs>
+        <filter
+          id="shadow"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="2"
+            result="effect1_foregroundBlur_101_3"
+          />
+        </filter>
         <filter
           id="container_filter"
           x="4"
@@ -92,18 +119,6 @@ const Container: React.FC<ContainerProps> = ({
             result="shape"
           />
         </filter>
-        <pattern
-          id="cover"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
-          <use
-            href="#cover_image"
-            transform="translate(0 -0.225329) scale(0.00078125 0.0020148)"
-          />
-        </pattern>
-        <image id="cover_image" xlinkHref={cover_url} />
       </defs>
     </svg>
   );
