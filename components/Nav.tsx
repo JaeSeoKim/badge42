@@ -1,13 +1,13 @@
-import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import React from "react";
+import React, { useContext } from "react";
 import Badge42Logo from "./Badge42Logo";
+import { AuthContext } from "../lib/auth/AuthProvider";
 
 export type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
-  const { data } = useSession();
+  const { data } = useContext(AuthContext);
 
   return (
     <header className="fixed z-10 top-0 border-b bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-70 w-full shadow-sm">
@@ -20,7 +20,7 @@ const Nav: React.FC<NavProps> = () => {
         <div className="flex gap-2 font-bold text-neutral-700">
           {data && (
             <Link href={"/me"}>
-              <a>{data.user.name}</a>
+              <a>{data.name}</a>
             </Link>
           )}
           {data ? (

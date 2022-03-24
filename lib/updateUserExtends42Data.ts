@@ -68,6 +68,9 @@ export const updateUserExtends42Data: (
         synced_at: Date.now(),
       },
     },
+    include: {
+      accounts: true,
+    },
   })) as unknown as UserType;
 
   return user;

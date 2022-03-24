@@ -19,6 +19,57 @@ const Infomation = ({ data }: InfomationProps) => {
             animationDelay: `${startDelay + i * 0.25}s`,
           }}
         >
+          <g filter="url(#shadow)">
+            <text
+              fill="black"
+              fillOpacity="0.6"
+              xmlSpace="preserve"
+              style={{
+                whiteSpace: "nowrap",
+              }}
+              fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+              fontSize="14"
+              fontWeight="bold"
+              letterSpacing="0em"
+            >
+              <tspan x="19" y={startY + i * distance + 2}>
+                {key}
+              </tspan>
+            </text>
+            <text
+              fill="black"
+              fillOpacity="0.6"
+              xmlSpace="preserve"
+              style={{
+                whiteSpace: "nowrap",
+              }}
+              fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+              fontSize="14"
+              fontWeight="bold"
+              letterSpacing="0em"
+            >
+              <tspan x="65" y={startY + i * distance + 2}>
+                -
+              </tspan>
+            </text>
+            <text
+              fill="black"
+              fillOpacity="0.6"
+              xmlSpace="preserve"
+              style={{
+                whiteSpace: "nowrap",
+              }}
+              fontFamily="'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu"
+              fontSize="14"
+              fontWeight="bold"
+              letterSpacing="0em"
+            >
+              <tspan x="75" y={startY + i * distance + 2}>
+                {value}
+              </tspan>
+            </text>
+          </g>
+
           <text
             fill="white"
             xmlSpace="preserve"
