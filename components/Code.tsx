@@ -8,22 +8,19 @@ export type CodeProps = {
 };
 
 const Code: React.FC<CodeProps> = ({ code }) => {
-  const [copy, setCopy] = useState({
-    value: code,
-    copied: false,
-  });
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (copy.copied) {
+    if (copied) {
       const timeout = setTimeout(() => {
-        setCopy((prev) => ({ ...prev, copied: false }));
+        setCopied(false);
       }, 1000);
 
       return () => {
         clearTimeout(timeout);
       };
     }
-  }, [copy.copied]);
+  }, [copied]);
 
   return (
     <div className="relative group">
@@ -31,13 +28,8 @@ const Code: React.FC<CodeProps> = ({ code }) => {
         <code className="font-mono text-xs whitespace-nowrap">{code}</code>
       </div>
       <button className="hidden group-hover:block transition-colors absolute right-2 top-2 p-2 border shadow rounded bg-neutral-100 hover:bg-neutral-50">
-        <CopyToClipboard
-          text={copy.value}
-          onCopy={() => {
-            setCopy((prev) => ({ ...prev, copied: true }));
-          }}
-        >
-          {copy.copied ? <FiCheck className="text-green-500" /> : <FiCopy />}
+        <CopyToClipboard text={code} onCopy={() => setCopied(true)}>
+          {copied ? <FiCheck className="text-green-500" /> : <FiCopy />}
         </CopyToClipboard>
       </button>
     </div>

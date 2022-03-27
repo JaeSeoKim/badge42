@@ -53,6 +53,7 @@ const Container: React.FC<ContainerProps> = ({
           width="490"
           height={height}
           rx="5"
+          radius="5"
           xlinkHref={cover_url}
           preserveAspectRatio="xMinYMin slice"
         />
@@ -119,6 +120,15 @@ const Container: React.FC<ContainerProps> = ({
             result="shape"
           />
         </filter>
+        {/* <pattern
+          id="cover"
+          patternContentUnits="objectBoundingBox"
+          width="1"
+          height="1"
+        >
+          <use href="#cover_image" transform="scale(0.000333333 0.000859649)" />
+        </pattern>
+        <image id="cover_image" xlinkHref={cover_url} /> */}
       </defs>
     </svg>
   );
