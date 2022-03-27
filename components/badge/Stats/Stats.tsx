@@ -19,6 +19,7 @@ export type StatsProps = {
     color: string;
     cover: string;
     logo: string;
+    level: number;
   };
 };
 
@@ -52,7 +53,7 @@ const Stats = ({ data }: StatsProps) => {
           }}
         />
       )}
-      <Level height={height} color={data.color} level={5.17} />
+      <Level height={height} color={data.color} level={data.level} />
     </Container>
   );
 };

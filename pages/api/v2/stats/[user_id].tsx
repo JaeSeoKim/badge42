@@ -111,6 +111,7 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             cover: cover,
             color: coalition.color,
             email: user.isDisplayEmail && user.extended42Data.email,
+            level: cursus_user.level,
           }}
         />
       )

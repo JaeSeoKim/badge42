@@ -182,6 +182,7 @@ const Home = () => {
             cover: coalition.cover_url,
             color: coalition.color,
             email: isDisplayEmail && data.extended42Data.email,
+            level: selectedCursus.level,
           }}
         />
       </div>
