@@ -11,12 +11,9 @@ import {
 // 12hour
 const EXPIRE_TIME = 12 * 60 * 60;
 
-const BASE_URL =
-  process.env.NEXTAUTH_URL ??
-  process.env.VERCEL_URL ??
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
-    : "https://badge42.vercel.app";
+const BASE_URL = process.env.VERCEL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 class FTAccountNotLinked extends Error {
   constructor() {
