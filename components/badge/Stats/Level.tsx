@@ -8,6 +8,7 @@ export type LevelProps = {
 };
 
 const Level = ({ color, level, height }: LevelProps) => {
+  const level_integer = Math.floor(level);
   const level_percentage = (parseFloat((level % 1).toFixed(2)) * 100).toFixed(
     0
   );
@@ -69,7 +70,7 @@ const Level = ({ color, level, height }: LevelProps) => {
           letterSpacing="0em"
         >
           <tspan x="209" y={height - 16}>
-            level {level.toFixed(0)} - {level_percentage}%
+            level {level_integer} - {level_percentage}%
           </tspan>
         </text>
       </g>
@@ -87,7 +88,7 @@ const Level = ({ color, level, height }: LevelProps) => {
         letterSpacing="0em"
       >
         <tspan x="207" y={height - 18}>
-          level {level.toFixed(0)} - {level_percentage}%
+          level {level_integer} - {level_percentage}%
         </tspan>
       </text>
     </>
