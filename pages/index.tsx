@@ -221,7 +221,7 @@ const Home = () => {
       <label>
         <p className="text-neutral-600">*html</p>{" "}
         <Code
-          code={`<a herf="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}}" alt="${data.extended42Data.login}'s 42 stats" /></a>`}
+          code={`<a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}}" alt="${data.extended42Data.login}'s 42 stats" /></a>`}
         />
       </label>
     </Layout>
