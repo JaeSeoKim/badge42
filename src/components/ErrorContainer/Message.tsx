@@ -6,7 +6,7 @@
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 01:56:04 by jaeskim           #+#    #+#             */
-/*   Updated: 2020/12/23 09:13:51 by jaeskim          ###   ########.fr       */
+/*   Updated: 2022/04/05 00:45:47 by jaeskim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ const Message: React.FC = () => {
           y="0"
           textAnchor="middle"
           style={{
-            font:
-              "600 25px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
+            font: "600 25px 'Noto Sans', Arial, Helvetica, 'Sans serif', Ubuntu",
             fill: "#02BABC",
           }}
         >
-          Something went wrong!
+          This EndPoint is deprecated!
         </text>
       </g>
       <g
@@ -37,14 +36,14 @@ const Message: React.FC = () => {
         }}
       >
         <text x="0" y="0">
-          This service is beta.
+          Login is required due to GDPR-related issues.
         </text>
         <text x="0" y="30">
-          Please leave the error as Github issue.
+          Please check and use the new service method.
         </text>
         <text x="0" y="60">
           <a
-            href={"https://github.com/JaeSeoKim/badge42/issues"}
+            href={"https://github.com/JaeSeoKim/badge42"}
             style={{
               fill: "#02BCBA",
             }}

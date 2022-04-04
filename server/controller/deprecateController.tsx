@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index.tsx                                          :+:      :+:    :+:   */
+/*   deprecateController.tsx                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/18 01:49:28 by jaeskim           #+#    #+#             */
-/*   Updated: 2022/04/05 00:45:48 by jaeskim          ###   ########seoul.kr  */
+/*   Created: 2020/10/15 22:00:30 by jaeskim           #+#    #+#             */
+/*   Updated: 2022/04/05 00:42:01 by jaeskim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+import { Middleware } from "koa";
 import React from "react";
-import Message from "./Message";
-import SvgContainer from "../SvgContainer";
+import ReactDomServer from "react-dom/server";
+import ErrorContainer from "../../src/components/ErrorContainer";
 
-const ErrorContainer = () => (
-  <SvgContainer color={"#FAFAFA"} width={495} height={195}>
-    <Message />
-  </SvgContainer>
-);
-
-export default ErrorContainer;
+export const deprecateController: Middleware = async (ctx, next) => {
+  ctx.res.setHeader("Cache-Control", "public, immutable");
+  ctx.body = ReactDomServer.renderToStaticMarkup(<ErrorContainer />);
+  await next();
+};
