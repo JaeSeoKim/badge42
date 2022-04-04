@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Layout from "../components/Layout";
 import Stats, { StatsProps } from "../components/badge/Stats";
 import Code from "../components/Code";
@@ -6,6 +6,7 @@ import collection from "lodash-es/collection";
 import { AuthContext, withAuth } from "../lib/auth/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
+import getCoalitions from "../lib/getCoalitions";
 
 const StatsWrapper = ({ data }: StatsProps) => {
   const [isShow, setIsShow] = useState(false);
@@ -118,10 +119,6 @@ const Home = () => {
       data.extended42Data.cursus_users.length - 1
     ].cursus_id.toString()
   );
-
-  const [isDisplayName, setIsDisplayName] = useState(data.isDisplayName);
-  const [isDisplayEmail, setIsDisplayEmail] = useState(data.isDisplayEmail);
-
   const cursus_users = collection.keyBy(
     data.extended42Data.cursus_users,
     "cursus_id"
@@ -130,33 +127,27 @@ const Home = () => {
   const selectedCursus =
     cursus_users[cursusId] ?? data.extended42Data.cursus_users[0];
 
-  const coalition = (() => {
+  const [coalitionId, setCoalitionId] = useState(
+    data.extended42Data.coalitions[
+      data.extended42Data.coalitions.length - 1
+    ].id.toString()
+  );
+
+  const [isDisplayName, setIsDisplayName] = useState(data.isDisplayName);
+  const [isDisplayEmail, setIsDisplayEmail] = useState(data.isDisplayEmail);
+
+  const coalition = useMemo(
+    () => getCoalitions(coalitionId, data.extended42Data.coalitions),
+    [coalitionId, data.extended42Data.coalitions]
+  );
+
+  useEffect(() => {
     if (selectedCursus.cursus.slug.includes("piscine")) {
-      return {
-        image_url: `/assets/logo/piscine.svg`,
-        cover_url: `/assets/cover/default.jpg`,
-        color: "#00babc",
-      };
+      setCoalitionId("piscine");
     }
+  }, [selectedCursus]);
 
-    if (!data.extended42Data.coalitions.length) {
-      return {
-        image_url: `/assets/logo/unknown.svg`,
-        cover_url: `/assets/cover/default.jpg`,
-        color: "#00babc",
-      };
-    }
-    const coalition =
-      data.extended42Data.coalitions[data.extended42Data.coalitions.length - 1];
-
-    return {
-      image_url: coalition.image_url ?? `/assets/logo/unknown.svg`,
-      cover_url: coalition.cover_url ?? `/assets/cover/default.jpg`,
-      color: coalition.color.trim().startsWith("#")
-        ? coalition.color.trim()
-        : `#${coalition.color.trim()}`,
-    };
-  })();
+  const url = `https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}&coalitionId=${coalitionId}`;
 
   return (
     <Layout>
@@ -200,6 +191,21 @@ const Home = () => {
           ))}
         </select>
       </label>
+      <label className="flex gap-2">
+        <p className="flex flex-0 font-bold text-base">Coalition</p>
+        <select
+          className="flex flex-1 text-base border rounded appearance-none px-1"
+          value={coalitionId}
+          onChange={(option) => setCoalitionId(option.target.value)}
+        >
+          <option value={"piscine"}>Piscine</option>
+          {data.extended42Data.coalitions.map((colation) => (
+            <option key={colation.id} value={colation.id}>
+              {colation.name}
+            </option>
+          ))}
+        </select>
+      </label>
       <StatsOptions
         isDisplayEmail={isDisplayEmail}
         isDisplayName={isDisplayName}
@@ -207,21 +213,18 @@ const Home = () => {
         setIsDisplayName={setIsDisplayName}
       />
       <label>
-        <p className="text-neutral-600">*url</p>{" "}
-        <Code
-          code={`https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}`}
-        />
+        <p className="text-neutral-600">*url</p> <Code code={url} />
       </label>
       <label>
         <p className="text-neutral-600">*markdown</p>{" "}
         <Code
-          code={`[![${data.extended42Data.login}'s 42 stats](https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId})](https://github.com/JaeSeoKim/badge42)`}
+          code={`[![${data.extended42Data.login}'s 42 stats](${url})](https://github.com/JaeSeoKim/badge42)`}
         />
       </label>
       <label>
         <p className="text-neutral-600">*html</p>{" "}
         <Code
-          code={`<a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}}" alt="${data.extended42Data.login}'s 42 stats" /></a>`}
+          code={`<a href="https://github.com/JaeSeoKim/badge42"><img src="${url}" alt="${data.extended42Data.login}'s 42 stats" /></a>`}
         />
       </label>
     </Layout>

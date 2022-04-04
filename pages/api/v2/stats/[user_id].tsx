@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import ReactDomServer from "react-dom/server";
 import Stats from "../../../../components/badge/Stats";
 import { getBase64ImageFromUrl } from "../../../../lib/getBase64ImageFromUrl";
+import getCoalitions from "../../../../lib/getCoalitions";
 import {
   updateUserExtends42Data,
   UserNotFound,
@@ -25,9 +26,10 @@ class FTAccountNotLinked extends Error {
 
 const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { user_id, cursusId } = req.query as {
+    const { user_id, cursusId, coalitionId } = req.query as {
       user_id: string;
       cursusId?: string;
+      coalitionId?: string;
     };
 
     const user = await updateUserExtends42Data({
@@ -48,36 +50,17 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           user.extended42Data.cursus_users.length - 1
         ];
 
-    const coalition = (() => {
-      if (cursus_user.cursus.slug.includes("piscine")) {
-        return {
-          image_url: `${BASE_URL}/assets/logo/piscine.svg`,
-          cover_url: `${BASE_URL}/assets/cover/default.jpg`,
-          color: "#00babc",
-        };
-      }
-
-      if (!user.extended42Data.coalitions.length) {
-        return {
-          image_url: `${BASE_URL}/assets/logo/unknown.svg`,
-          cover_url: `${BASE_URL}/assets/cover/default.jpg`,
-          color: "#00babc",
-        };
-      }
-      const coalition =
-        user.extended42Data.coalitions[
-          user.extended42Data.coalitions.length - 1
-        ];
-
-      return {
-        image_url: coalition.image_url ?? `${BASE_URL}/assets/logo/unknown.svg`,
-        cover_url:
-          coalition.cover_url ?? `${BASE_URL}/assets/cover/default.jpg`,
-        color: coalition.color.trim().startsWith("#")
-          ? coalition.color.trim()
-          : `#${coalition.color.trim()}`,
-      };
-    })();
+    const coalition = getCoalitions(
+      coalitionId ?? cursus_user.cursus.slug.includes("piscine")
+        ? "piscine"
+        : user.extended42Data.coalitions.length
+        ? user.extended42Data.coalitions[
+            user.extended42Data.coalitions.length - 1
+          ].id.toString()
+        : "undefined",
+      user.extended42Data.coalitions,
+      BASE_URL
+    );
 
     const [logo, cover] = await Promise.all([
       getBase64ImageFromUrl(coalition.image_url),
