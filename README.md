@@ -38,7 +38,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/ricardoreves"><img src="https://avatars.githubusercontent.com/u/89393929?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ricardoreves</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/commits?author=ricardoreves" title="Code">💻</a> <a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Aricardoreves" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/Nimon77"><img src="https://avatars.githubusercontent.com/u/11821952?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nicolas Simon</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3ANimon77" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/raccoman"><img src="https://avatars.githubusercontent.com/u/48388138?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Riccardo Accomando</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/pulls?q=is%3Apr+reviewed-by%3Araccoman" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/raccoman"><img src="https://avatars.githubusercontent.com/u/48388138?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Riccardo Accomando</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/pulls?q=is%3Apr+reviewed-by%3Araccoman" title="Reviewed Pull Requests">👀</a> <a href="#ideas-raccoman" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
