@@ -4,7 +4,7 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { userId } = req.query as {
     userId: string;
   };
-  res.redirect(307, `/api/v2/${userId}/stats`);
+  res.redirect(307, `/api/v2/${userId}/stats${req.url.split(userId)[1]}`);
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
