@@ -7,6 +7,7 @@ import { AuthContext, withAuth } from "../lib/auth/AuthProvider";
 import { useContext } from "react";
 import axios from "axios";
 import getCoalitions from "../lib/getCoalitions";
+import ProjectScore from "../components/badge/ProjectScore";
 
 const StatsWrapper = ({ data }: StatsProps) => {
   const [isShow, setIsShow] = useState(false);
@@ -147,7 +148,18 @@ const Home = () => {
     }
   }, [selectedCursus]);
 
-  const url = `https://badge42.vercel.app/api/v2/stats/${data.id}?cursusId=${cursusId}&coalitionId=${coalitionId}`;
+  const statsUrl = `https://badge42.vercel.app/api/v2/${data.id}/stats?cursusId=${cursusId}&coalitionId=${coalitionId}`;
+  const projectUrl = `https://badge42.vercel.app/api/v2/${data.id}/project`;
+
+  const projectList = useMemo(
+    () =>
+      collection
+        .filter(data.extended42Data.projects_users, (o) =>
+          o.cursus_ids.includes(parseInt(cursusId))
+        )
+        .sort((a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)),
+    [cursusId, data.extended42Data.projects_users]
+  );
 
   return (
     <Layout>
@@ -156,8 +168,11 @@ const Home = () => {
       </h1>
       <p>🚀 Dynamically generated 42 badge for your git readmes.</p>
       <h2 id="stats" className="text-2xl font-bold">
-        Stats
+        💡 42 Stats Card!
       </h2>
+      <p>
+        Copy-paste this into your markdown content, and that&aposs it. Simple!
+      </p>
       <div className="mx-auto max-w-full overflow-y-auto">
         <StatsWrapper
           data={{
@@ -213,20 +228,53 @@ const Home = () => {
         setIsDisplayName={setIsDisplayName}
       />
       <label>
-        <p className="text-neutral-600">*url</p> <Code code={url} />
+        <p className="text-neutral-600">*url</p> <Code code={statsUrl} />
       </label>
       <label>
         <p className="text-neutral-600">*markdown</p>{" "}
         <Code
-          code={`[![${data.extended42Data.login}'s 42 stats](${url})](https://github.com/JaeSeoKim/badge42)`}
+          code={`[![${data.extended42Data.login}'s 42 stats](${statsUrl})](https://github.com/JaeSeoKim/badge42)`}
         />
       </label>
       <label>
         <p className="text-neutral-600">*html</p>{" "}
         <Code
-          code={`<a href="https://github.com/JaeSeoKim/badge42"><img src="${url}" alt="${data.extended42Data.login}'s 42 stats" /></a>`}
+          code={`<a href="https://github.com/JaeSeoKim/badge42"><img src="${statsUrl}" alt="${data.extended42Data.login}'s 42 stats" /></a>`}
         />
       </label>
+      <hr />
+      <h2 id="stats" className="text-2xl font-bold">
+        ✅ 42 ProjectScore Badge!
+      </h2>
+      <p>
+        Copy-paste this into your markdown content, and that&aposs it. Simple!
+      </p>
+      {projectList.map((project) => (
+        <details key={project.id}>
+          <summary>
+            <div className="inline-flex gap-2">
+              <h3 className="text-lg font-semibold">{project.project.name}</h3>
+              <ProjectScore data={project} />
+            </div>
+          </summary>
+          <label>
+            <p className="text-neutral-600">*url</p>{" "}
+            <Code code={`${projectUrl}/${project.id}`} />
+          </label>
+          <label>
+            <p className="text-neutral-600">*markdown</p>{" "}
+            <Code
+              code={`[![${data.extended42Data.login}'s 42 ${project.project.name} Score](${projectUrl}/${project.id})](https://github.com/JaeSeoKim/badge42)`}
+            />
+          </label>
+          <label>
+            <p className="text-neutral-600">*html</p>{" "}
+            <Code
+              code={`<a href="https://github.com/JaeSeoKim/badge42"><img src="${projectUrl}/${project.id}" alt="${data.extended42Data.login}'s 42 ${project.project.name} Score" /></a>`}
+            />
+          </label>
+        </details>
+      ))}
     </Layout>
   );
 };

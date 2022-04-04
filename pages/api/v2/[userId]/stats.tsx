@@ -26,15 +26,14 @@ class FTAccountNotLinked extends Error {
 
 const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { user_id, cursusId, coalitionId } = req.query as {
-      user_id: string;
+    const { userId, cursusId, coalitionId } = req.query as {
+      userId: string;
       cursusId?: string;
       coalitionId?: string;
     };
-    console.log(coalitionId);
 
     const user = await updateUserExtends42Data({
-      id: user_id,
+      id: userId,
     });
 
     const accounts = collection.keyBy(user.accounts, "provider");

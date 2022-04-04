@@ -4,9 +4,19 @@
   <p>🚀 Dynamically generated 42 badge for your git readmes.</p>
 </div>
 
-> ### [WIP] ⚠️ The service will be suspended for a while until the issue is resolved.
->
-> [Addition of certification procedures to satisfy the EU GDPR policy. #66](https://github.com/JaeSeoKim/badge42/issues/66)
+## 👀 Preview
+
+[![jaeskim's 42 stats](https://badge42.vercel.app/api/v2/cl0yx1v0j0158ns5shlllmdvb/stats?cursusId=21&coalitionId=85)](https://github.com/JaeSeoKim/badge42)
+
+[![jaeskim's 42 stats](https://badge42.vercel.app/api/v2/cl0yx1v0j0158ns5shlllmdvb/stats?cursusId=9&coalitionId=piscine)](https://github.com/JaeSeoKim/badge42)
+
+jaeskim's 42 ft_printf Score - [![jaeskim's 42 ft_printf Score](https://badge42.vercel.app/api/v2/cl0yx1v0j0158ns5shlllmdvb/project/2004625)](https://github.com/JaeSeoKim/badge42)
+
+## 🤓 Usage
+
+1. Go to <https://badge42.vercel.app/> and sign in!
+2. generat code snippet for your profile card
+3. Copy-paste this into your markdown content, and that's it. Simple 🥳
 
 ## Contributors ✨
 

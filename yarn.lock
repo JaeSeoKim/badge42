@@ -404,6 +404,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/string-pixel-width@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@types/string-pixel-width/-/string-pixel-width-1.7.2.tgz#76b73c4cf497e8dcd9542e9961731ed3f7eea275"
+  integrity sha512-E3geahr5MB1r1WPVEfpKMC7fCEO9XV3Hbt9CeUip2jNZgTtvzeQAVRmJagJnSeDx/uIsAbk+Ri/smq3yE3CYVw==
+
 "@typescript-eslint/parser@^5.0.0":
   version "5.13.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-5.13.0.tgz"
@@ -1824,6 +1829,11 @@ lodash-es@^4.17.21:
   resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
+lodash.deburr@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/lodash.deburr/-/lodash.deburr-4.1.0.tgz#ddb1bbb3ef07458c0177ba07de14422cb033ff9b"
+  integrity sha1-3bG7s+8HRYwBd7oH3hRCLLAz/5s=
+
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
@@ -2576,6 +2586,13 @@ source-map@^0.5.7:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
+
+string-pixel-width@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/string-pixel-width/-/string-pixel-width-1.10.0.tgz#aff215aaa7a65627f937d70fcc88d83ae1bc5657"
+  integrity sha512-cOMpkH+CpxWAnrPsWUvPWhZxh25CzUukweT+6WF+Kwx6+G2ksg8flvELZusLyWiZzfFCjj1+QRRGwcPWZlwVYA==
+  dependencies:
+    lodash.deburr "^4.1.0"
 
 string-width@^1.0.1:
   version "1.0.2"

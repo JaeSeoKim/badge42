@@ -32,7 +32,8 @@
     "react": "^17.0.2",
     "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "string-pixel-width": "^1.10.0"
   },
   "devDependencies": {
     "@rvxlab/tailwind-plugin-ios-full-height": "^1.1.0",
@@ -42,6 +43,7 @@
     "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/react-dom": "^17.0.13",
     "@types/sharp": "^0.29.5",
+    "@types/string-pixel-width": "^1.7.2",
     "autoprefixer": "^10.4.2",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
