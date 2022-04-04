@@ -1,84 +1,22 @@
-# 📌 badge42
+<div align="center">
+  <img src="/public/badge42_logo.svg" height="128px" alt="badge42 logo" >
+  <h1>Badge42</h1>
+  <p>🚀 Dynamically generated 42 badge for your git readmes.</p>
+</div>
 
+## 👀 Preview
 
-[![github-action](https://github.com/JaeSeoKim/badge42/workflows/test/badge.svg)](https://github.com/JaeSeoKim/badge42/actions) [![codecov](https://codecov.io/gh/JaeSeoKim/badge42/branch/master/graph/badge.svg?token=D5PPJZKDUY)](https://codecov.io/gh/JaeSeoKim/badge42)
+[![jaeskim's 42 stats](https://badge42.vercel.app/api/v2/cl0yx1v0j0158ns5shlllmdvb/stats?cursusId=21&coalitionId=85)](https://github.com/JaeSeoKim/badge42)
 
-> 🚀 Dynamically generated 42 badge for your git readmes.
+[![jaeskim's 42 stats](https://badge42.vercel.app/api/v2/cl0yx1v0j0158ns5shlllmdvb/stats?cursusId=9&coalitionId=piscine)](https://github.com/JaeSeoKim/badge42)
 
-![jaeskim's stats](https://badge42.herokuapp.com/api/stats/jaeskim)
+jaeskim's 42 ft_printf Score - [![jaeskim's 42 ft_printf Score](https://badge42.vercel.app/api/v2/cl0yx1v0j0158ns5shlllmdvb/project/2004625)](https://github.com/JaeSeoKim/badge42)
 
-# 💡 42 Stats Card!
+## 🤓 Usage
 
-Copy-paste this into your markdown content, and that's it. Simple!
-
-Change the `intra_id` value to your 42 Intra username.
-
-```
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/intra_id)](https://github.com/JaeSeoKim/badge42)
-```
-
-### 🔒 If you want to protect your **email, name privacy**, please add the options below!
-
-```
-privacyEmail=true
-privacyName=true
-```
-
-#### example
-
-```
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyEmail=true)](https://github.com/JaeSeoKim/badge42)
-```
-
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyEmail=true)](https://github.com/JaeSeoKim/badge42)
-
-```
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyName=true)](https://github.com/JaeSeoKim/badge42)
-```
-
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?privacyName=true)](https://github.com/JaeSeoKim/badge42)
-
-### ⚓️ Now you can choose **cursus**!
-
-```
-cursus=cursus_name
-```
-
-#### example
-
-```
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cursus=C%20Piscine)](https://github.com/JaeSeoKim/badge42)
-```
-
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?cursus=C%20Piscine)](https://github.com/JaeSeoKim/badge42)
-
-### 🌌 Now Support DarkMode!
-
-```
-darkmode=true
-```
-
-#### example
-
-```****
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?darkmode=true&cursus=C%20Piscine)](https://github.com/JaeSeoKim/badge42)
-```
-
-[![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jaeskim?darkmode=true&cursus=C%20Piscine)](https://github.com/JaeSeoKim/badge42)
-
-# ✅ 42 ProjectScore Badge!
-
-**jaeskim's 42 ft_printf Score** - ![jaeskim's 42 ft_printf Score](https://badge42.herokuapp.com/api/project/jaeskim/ft_printf)
-
-Copy-paste this into your markdown content, and that's it. Simple!
-
-Change the `intra_id` value to your 42 Intra username.
-
-Change the `project_name` value to the project_name you want to mark!
-
-```
-[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/intra_id/project_name)](https://github.com/JaeSeoKim/badge42)
-```
+1. Go to <https://badge42.vercel.app/> and sign in!
+2. generat code snippet for your profile card
+3. Copy-paste this into your markdown content, and that's it. Simple 🥳
 
 ## Contributors ✨
 
