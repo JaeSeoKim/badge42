@@ -84,6 +84,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "Nimon77",
+      "name": "Nicolas Simon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11821952?v=4",
+      "profile": "https://github.com/Nimon77",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
