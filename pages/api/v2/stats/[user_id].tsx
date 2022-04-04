@@ -31,6 +31,7 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       cursusId?: string;
       coalitionId?: string;
     };
+    console.log(coalitionId);
 
     const user = await updateUserExtends42Data({
       id: user_id,
@@ -51,13 +52,14 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         ];
 
     const coalition = getCoalitions(
-      coalitionId ?? cursus_user.cursus.slug.includes("piscine")
-        ? "piscine"
-        : user.extended42Data.coalitions.length
-        ? user.extended42Data.coalitions[
-            user.extended42Data.coalitions.length - 1
-          ].id.toString()
-        : "undefined",
+      coalitionId ??
+        (cursus_user.cursus.slug.includes("piscine")
+          ? "piscine"
+          : user.extended42Data.coalitions.length
+          ? user.extended42Data.coalitions[
+              user.extended42Data.coalitions.length - 1
+            ].id.toString()
+          : "undefined"),
       user.extended42Data.coalitions,
       BASE_URL
     );
