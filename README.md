@@ -40,6 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Nimon77"><img src="https://avatars.githubusercontent.com/u/11821952?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nicolas Simon</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3ANimon77" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/GlaceCoding"><img src="https://avatars.githubusercontent.com/u/92152391?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Guillaume</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/pulls?q=is%3Apr+reviewed-by%3AGlaceCoding" title="Reviewed Pull Requests">👀</a> <a href="#ideas-GlaceCoding" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/raccoman"><img src="https://avatars.githubusercontent.com/u/48388138?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Riccardo Accomando</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/pulls?q=is%3Apr+reviewed-by%3Araccoman" title="Reviewed Pull Requests">👀</a> <a href="#ideas-raccoman" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/gabcollet"><img src="https://avatars.githubusercontent.com/u/79753678?v=4?s=100" width="100px;" alt=""/><br /><sub><b>gabcollet</b></sub></a><br /><a href="https://github.com/JaeSeoKim/badge42/issues?q=author%3Agabcollet" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
