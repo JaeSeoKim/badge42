@@ -116,11 +116,9 @@ const Home = () => {
   const { data } = useContext(AuthContext);
 
   const [cursusId, setCursusId] = useState(
-    data.extended42Data.cursus_users.length
-      ? data.extended42Data.cursus_users[
-          data.extended42Data.cursus_users.length - 1
-        ].cursus_id.toString()
-      : "undefined"
+    data.extended42Data.cursus_users[
+      data.extended42Data.cursus_users.length - 1
+    ].cursus_id.toString()
   );
   const cursus_users = collection.keyBy(
     data.extended42Data.cursus_users,
@@ -131,9 +129,11 @@ const Home = () => {
     cursus_users[cursusId] ?? data.extended42Data.cursus_users[0];
 
   const [coalitionId, setCoalitionId] = useState(
-    data.extended42Data.coalitions[
-      data.extended42Data.coalitions.length - 1
-    ].id.toString()
+    data.extended42Data.coalitions.length
+      ? data.extended42Data.coalitions[
+          data.extended42Data.coalitions.length - 1
+        ].id.toString()
+      : "undefined"
   );
 
   const [isDisplayName, setIsDisplayName] = useState(data.isDisplayName);
@@ -146,12 +146,12 @@ const Home = () => {
 
   useEffect(() => {
     if (
-      data.extended42Data.cursus_users.length &&
+      data.extended42Data.coalitions.length &&
       selectedCursus.cursus.slug.includes("piscine")
     ) {
       setCoalitionId("piscine");
     }
-  }, [selectedCursus, data.extended42Data.cursus_users.length]);
+  }, [selectedCursus, data.extended42Data.coalitions.length]);
 
   const statsUrl = `https://badge42.vercel.app/api/v2/${data.id}/stats?cursusId=${cursusId}&coalitionId=${coalitionId}`;
   const projectUrl = `https://badge42.vercel.app/api/v2/${data.id}/project`;
