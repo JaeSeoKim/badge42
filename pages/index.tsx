@@ -116,9 +116,11 @@ const Home = () => {
   const { data } = useContext(AuthContext);
 
   const [cursusId, setCursusId] = useState(
-    data.extended42Data.cursus_users[
-      data.extended42Data.cursus_users.length - 1
-    ].cursus_id.toString()
+    data.extended42Data.cursus_users.length
+      ? data.extended42Data.cursus_users[
+          data.extended42Data.cursus_users.length - 1
+        ].cursus_id.toString()
+      : "undefined"
   );
   const cursus_users = collection.keyBy(
     data.extended42Data.cursus_users,
@@ -143,10 +145,13 @@ const Home = () => {
   );
 
   useEffect(() => {
-    if (selectedCursus.cursus.slug.includes("piscine")) {
+    if (
+      data.extended42Data.cursus_users.length &&
+      selectedCursus.cursus.slug.includes("piscine")
+    ) {
       setCoalitionId("piscine");
     }
-  }, [selectedCursus]);
+  }, [selectedCursus, data.extended42Data.cursus_users.length]);
 
   const statsUrl = `https://badge42.vercel.app/api/v2/${data.id}/stats?cursusId=${cursusId}&coalitionId=${coalitionId}`;
   const projectUrl = `https://badge42.vercel.app/api/v2/${data.id}/project`;
@@ -213,6 +218,7 @@ const Home = () => {
           value={coalitionId}
           onChange={(option) => setCoalitionId(option.target.value)}
         >
+          <option value={"undefined"}>Undefined(No coalition)</option>
           <option value={"piscine"}>Piscine</option>
           {data.extended42Data.coalitions.map((colation) => (
             <option key={colation.id} value={colation.id}>
