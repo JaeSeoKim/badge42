@@ -14,8 +14,8 @@ const Level = ({ color, level, height }: LevelProps) => {
   );
 
   const expandWidth = keyframes`
-    0% { width: 0; }
-    100% { width: ${level_percentage}%; }
+    0% { width: 0px; }
+    100% { width: ${parseInt(level_percentage) * 4.7}px; }
   `;
 
   return (
@@ -49,7 +49,7 @@ const Level = ({ color, level, height }: LevelProps) => {
         }}
         x="14"
         y={height - 40}
-        width="162"
+        width="470"
         height="35"
         rx="5"
         fill={color}
