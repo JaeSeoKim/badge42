@@ -167,8 +167,17 @@ const Home = () => {
   );
 
   const primaryCampus =
-    collection.find(data.extended42Data.campus, (campus) => campus.active) ??
-    data.extended42Data.campus[0];
+    collection.find(
+      data.extended42Data.campus,
+      (campus) =>
+        campus.id ===
+        (
+          collection.find(
+            data.extended42Data.campus_users,
+            (campus_user) => campus_user.is_primary
+          ) ?? data.extended42Data.campus_users[0]
+        ).campus_id
+    ) ?? data.extended42Data.campus[0];
 
   return (
     <Layout>
