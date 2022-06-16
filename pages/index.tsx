@@ -166,6 +166,10 @@ const Home = () => {
     [cursusId, data.extended42Data.projects_users]
   );
 
+  const primaryCampus =
+    collection.find(data.extended42Data.campus, (campus) => campus.active) ??
+    data.extended42Data.campus[0];
+
   return (
     <Layout>
       <h1 id="badge42" className="text-3xl font-bold">
@@ -183,7 +187,7 @@ const Home = () => {
           data={{
             login: data.extended42Data.login,
             name: isDisplayName && data.extended42Data.displayname,
-            campus: `42${data.extended42Data.campus[0].name}`,
+            campus: `42${primaryCampus.name}`,
             begin_at: selectedCursus.begin_at,
             end_at: selectedCursus.end_at,
             blackholed_at: selectedCursus.blackholed_at,

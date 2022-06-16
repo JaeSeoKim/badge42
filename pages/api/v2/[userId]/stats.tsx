@@ -63,6 +63,10 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       BASE_URL
     );
 
+    const primaryCampus =
+      collection.find(user.extended42Data.campus, (campus) => campus.active) ??
+      user.extended42Data.campus[0];
+
     const [logo, cover] = await Promise.all([
       getBase64ImageFromUrl(coalition.image_url),
       getBase64ImageFromUrl(
@@ -84,7 +88,7 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           data={{
             login: user.extended42Data.login,
             name: user.isDisplayName && user.extended42Data.displayname,
-            campus: `42${user.extended42Data.campus[0].name}`,
+            campus: `42${primaryCampus.name}`,
             begin_at: cursus_user.begin_at,
             end_at: cursus_user.end_at,
             blackholed_at: cursus_user.blackholed_at,
