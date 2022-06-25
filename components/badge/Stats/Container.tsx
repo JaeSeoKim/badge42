@@ -36,7 +36,10 @@ const Container: React.FC<ContainerProps> = ({
           }
         `}
       />
-      <g id="panel" filter="url(#container_filter)">
+      <g>
+        <g filter="url(#container_shadow)">
+          <rect x="4" y="5" width="492" height={height} rx="5" fill="black" fillOpacity="0.25" />
+        </g>
         <rect x="5" y="5" width="490" height={height} rx="5" fill={color} />
         <rect
           x="5"
@@ -85,41 +88,34 @@ const Container: React.FC<ContainerProps> = ({
           />
         </filter>
         <filter
-          id="container_filter"
-          x="4"
-          y="4"
-          width="496"
-          height={height + 6}
+          id="container_shadow"
+          x="0"
+          y="-4"
+          width="500"
+          height="200"
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset dx="2" dy="2" />
-          <feGaussianBlur stdDeviation="1" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_101_3"
-          />
           <feBlend
             mode="normal"
             in="SourceGraphic"
-            in2="effect1_dropShadow_101_3"
+            in2="BackgroundImageFix"
             result="shape"
           />
+          <feGaussianBlur
+            stdDeviation="2"
+            result="effect1_foregroundBlur_101_2"
+          />
         </filter>
-        <rect id="container_rect" x="5" y="5" width="490" height={height} rx="5" />
+        <rect
+          id="container_rect"
+          x="5"
+          y="5"
+          width="490"
+          height={height}
+          rx="5"
+        />
         <clipPath id="container_clip">
           <use xlinkHref="#container_rect" />
         </clipPath>
