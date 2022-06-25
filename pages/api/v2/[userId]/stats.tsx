@@ -77,9 +77,9 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       ) ?? user.extended42Data.campus[0];
 
     const [logo, cover] = await Promise.all([
-      getBase64ImageFromUrl(coalition.image_url),
+      getBase64ImageFromUrl(encodeURI(coalition.image_url)),
       getBase64ImageFromUrl(
-        coalition.cover_url ?? `${BASE_URL}/assets/cover/default.jpg`
+        encodeURI(coalition.cover_url) ?? `${BASE_URL}/assets/cover/default.jpg`
       ),
     ]);
 

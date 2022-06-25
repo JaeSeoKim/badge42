@@ -52,10 +52,9 @@ const Container: React.FC<ContainerProps> = ({
           y="5"
           width="490"
           height={height}
-          rx="5"
-          radius="5"
           xlinkHref={cover_url}
-          preserveAspectRatio="xMinYMin slice"
+          preserveAspectRatio="xMinYMid slice"
+          clipPath="url(#container_clip)"
         />
         <rect
           x="4.5"
@@ -120,15 +119,10 @@ const Container: React.FC<ContainerProps> = ({
             result="shape"
           />
         </filter>
-        {/* <pattern
-          id="cover"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
-          <use href="#cover_image" transform="scale(0.000333333 0.000859649)" />
-        </pattern>
-        <image id="cover_image" xlinkHref={cover_url} /> */}
+        <rect id="container_rect" x="5" y="5" width="490" height={height} rx="5" />
+        <clipPath id="container_clip">
+          <use xlinkHref="#container_rect" />
+        </clipPath>
       </defs>
     </svg>
   );

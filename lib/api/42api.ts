@@ -6,7 +6,8 @@ export const END_POINT_42API = "https://api.intra.42.fr";
 
 const apiCache = new NodeCache();
 const queue = new PQueue({
-  concurrency: process.env.NODE_ENV === "production" ? 8 : 2,
+  interval: 1000,
+  intervalCap: process.env.NODE_ENV === "production" ? 6 : 2,
 });
 
 export const axiosClientFor42 = axios.create({
