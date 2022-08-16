@@ -79,7 +79,7 @@ const GetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     const [logo, cover] = await Promise.all([
       getBase64ImageFromUrl(encodeURI(coalition.image_url)),
       getBase64ImageFromUrl(
-        encodeURI(coalition.cover_url) ?? `${BASE_URL}/assets/cover/default.jpg`
+        coalition.cover_url ? encodeURI(coalition.cover_url) : `${BASE_URL}/assets/cover/default.jpg`
       ),
     ]);
 
