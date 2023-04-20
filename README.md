@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Maintainer Announcement</h1>
-  <p>I am currently serving in the military, <strike>(In South Korean, men are obligated to serve in the military…)</strike> so maintenance is difficult.</p>
+  <p>I am currently serving in the military, <strike>(In South Korea, men are obligated to serve in the military…)</strike> so maintenance is difficult.</p>
   <p>The service may not function properly because it exceeds 100% of the free API usage in Vercel. <strike>I have an idea to improve the service, but I don't have the environment and time to develop it :(</strike></p>
   <p>If you want to maintain the service, please contact to me.</p>
 </div>
