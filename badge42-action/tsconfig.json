@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "newLine": "lf",
+    "noEmit": true,
+
+    "jsx": "preserve"
+  },
+  "include": ["./vite.config.ts", "./vitest.config.ts", "./src", "__tests__"],
+  "exclude": ["./dist", "./node_modules", "./coverage"]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "badge42-action",
+  "version": "0.0.1",
+  "author": {
+    "name": "Jaeseo Kim(aka. jaeskim)",
+    "email": "hello@jaeseokim.dev",
+    "url": "https://jaeseokim.dev/"
+  },
+  "description": "🚀 Dynamically generated 42 badge for your git readmes. (feat. GitHub Actions)",
+  "license": "MIT",
+  "homepage": "https://github.com/JaeSeoKim/badge42",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaeSeoKim/badge42.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JaeSeoKim/badge42/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "bundle": "pnpm run format:write && pnpm run package",
+    "ci-test": "vitest",
+    "format:write": "prettier --write **/*.{ts,tsx}",
+    "format:check": "prettier --check **/*.{ts,tsx}",
+    "lint": "eslint .",
+    "package": "ncc build src/index.ts --license ./LICENSE",
+    "package:watch": "pnpm run package -- --watch",
+    "test": "vitest"
+  },
+  "keywords": [
+    "badge",
+    "42born2code",
+    "42",
+    "42School",
+    "42Network",
+    "42Seoul"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "@vercel/ncc": "^0.38.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-vitest": "^0.3.20",
+    "msw": "^2.0.13",
+    "prettier": "^3.1.1",
+    "prettier-eslint": "^16.2.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vite-node": "^1.1.3",
+    "vitest": "^1.1.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@emotion/react": "^11.11.3",
+    "axios": "^1.6.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "string-pixel-width": "^1.11.0"
+  }
+}

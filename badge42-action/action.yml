@@ -1,0 +1,31 @@
+name: 'badge42-action'
+description:
+  '🚀 Dynamically generated 42 badge for your git readmes. (feat. GitHub
+  Actions)'
+author: 'Jaeseo Kim(aka. jaeskim) <hello@jaeseokim.dev>'
+
+branding:
+  icon: 'award'
+  color: 'gray-dark'
+
+inputs:
+  fourtytwo-client-id:
+    description: 'your UID of intra.42.fr API'
+    required: true
+  fourtytwo-client-secret:
+    description: 'your SECRET of intra.42.fr API'
+    required: true
+  intra-id:
+    description: 'your intra id of intra.42.fr'
+    required: true
+  email:
+    description: 'if you want to show your email, put it.!'
+    required: false
+
+outputs:
+  time:
+    description: 'Your output description here'
+
+runs:
+  using: node20
+  main: dist/index.js
